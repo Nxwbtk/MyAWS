@@ -1,5 +1,0 @@
-services:
-  floci-gcp:
-    image: floci/floci-gcp:latest
-    ports:
-      - "4588:4588"
