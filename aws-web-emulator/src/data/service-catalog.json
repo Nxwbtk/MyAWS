@@ -1,0 +1,4694 @@
+{
+  "commit": "c29ca200a147e8100a600a7aaaf26acf82d31158",
+  "services": [
+    {
+      "id": "account",
+      "name": "AWS Account Management",
+      "aliases": [
+        "Account",
+        "account",
+        "Account Access",
+        "Account Access Runtime",
+        "accountaccess",
+        "accountaccessruntime",
+        "AWS Account"
+      ],
+      "models": [
+        {
+          "id": "account",
+          "name": "Account"
+        },
+        {
+          "id": "accountaccess",
+          "name": "Account Access"
+        },
+        {
+          "id": "accountaccessruntime",
+          "name": "Account Access Runtime"
+        }
+      ]
+    },
+    {
+      "id": "agentregistry",
+      "name": "AWS Agent Registry",
+      "aliases": [
+        "Agent Registry",
+        "Agent Registry Control",
+        "agentregistry",
+        "agentregistrycontrol"
+      ],
+      "models": [
+        {
+          "id": "agentregistry",
+          "name": "Agent Registry"
+        },
+        {
+          "id": "agentregistrycontrol",
+          "name": "Agent Registry Control"
+        }
+      ]
+    },
+    {
+      "id": "amplify",
+      "name": "AWS Amplify",
+      "aliases": [
+        "Amplify",
+        "amplify",
+        "AmplifyBackend",
+        "amplifybackend",
+        "AmplifyUIBuilder",
+        "amplifyuibuilder",
+        "AWS Amplify UI Builder"
+      ],
+      "models": [
+        {
+          "id": "amplify",
+          "name": "Amplify"
+        },
+        {
+          "id": "amplifybackend",
+          "name": "AmplifyBackend"
+        },
+        {
+          "id": "amplifyuibuilder",
+          "name": "AmplifyUIBuilder"
+        }
+      ]
+    },
+    {
+      "id": "apigateway",
+      "name": "Amazon API Gateway",
+      "aliases": [
+        "AmazonApiGatewayManagementApi",
+        "AmazonApiGatewayV2",
+        "API Gateway",
+        "apigateway",
+        "ApiGatewayManagementApi",
+        "apigatewaymanagementapi",
+        "ApiGatewayV2",
+        "apigatewayv2"
+      ],
+      "models": [
+        {
+          "id": "apigateway",
+          "name": "API Gateway"
+        },
+        {
+          "id": "apigatewaymanagementapi",
+          "name": "ApiGatewayManagementApi"
+        },
+        {
+          "id": "apigatewayv2",
+          "name": "ApiGatewayV2"
+        }
+      ]
+    },
+    {
+      "id": "appmesh",
+      "name": "AWS App Mesh",
+      "aliases": [
+        "App Mesh",
+        "appmesh"
+      ],
+      "models": [
+        {
+          "id": "appmesh",
+          "name": "App Mesh"
+        }
+      ]
+    },
+    {
+      "id": "apprunner",
+      "name": "AWS App Runner",
+      "aliases": [
+        "AppRunner",
+        "apprunner"
+      ],
+      "models": [
+        {
+          "id": "apprunner",
+          "name": "AppRunner"
+        }
+      ]
+    },
+    {
+      "id": "appconfig",
+      "name": "Amazon AppConfig",
+      "aliases": [
+        "AppConfig",
+        "appconfig",
+        "AppConfigData",
+        "appconfigdata",
+        "AWS AppConfig Data"
+      ],
+      "models": [
+        {
+          "id": "appconfig",
+          "name": "AppConfig"
+        },
+        {
+          "id": "appconfigdata",
+          "name": "AppConfigData"
+        }
+      ]
+    },
+    {
+      "id": "appfabric",
+      "name": "AppFabric",
+      "aliases": [
+        "appfabric"
+      ],
+      "models": [
+        {
+          "id": "appfabric",
+          "name": "AppFabric"
+        }
+      ]
+    },
+    {
+      "id": "appflow",
+      "name": "Amazon AppFlow",
+      "aliases": [
+        "Amazon Appflow",
+        "Appflow",
+        "appflow"
+      ],
+      "models": [
+        {
+          "id": "appflow",
+          "name": "Appflow"
+        }
+      ]
+    },
+    {
+      "id": "applicationautoscaling",
+      "name": "Application Auto Scaling",
+      "aliases": [
+        "applicationautoscaling",
+        "Auto Scaling Plans",
+        "autoscalingplans",
+        "AWS Auto Scaling Plans"
+      ],
+      "models": [
+        {
+          "id": "applicationautoscaling",
+          "name": "Application Auto Scaling"
+        },
+        {
+          "id": "autoscalingplans",
+          "name": "Auto Scaling Plans"
+        }
+      ]
+    },
+    {
+      "id": "applicationcostprofiler",
+      "name": "AWS Application Cost Profiler",
+      "aliases": [
+        "ApplicationCostProfiler",
+        "applicationcostprofiler"
+      ],
+      "models": [
+        {
+          "id": "applicationcostprofiler",
+          "name": "ApplicationCostProfiler"
+        }
+      ]
+    },
+    {
+      "id": "applicationdiscoveryservice",
+      "name": "AWS Application Discovery Service",
+      "aliases": [
+        "Application Discovery Service",
+        "applicationdiscoveryservice"
+      ],
+      "models": [
+        {
+          "id": "applicationdiscoveryservice",
+          "name": "Application Discovery Service"
+        }
+      ]
+    },
+    {
+      "id": "mgn",
+      "name": "AWS Application Migration Service",
+      "aliases": [
+        "Application Migration Service",
+        "mgn"
+      ],
+      "models": [
+        {
+          "id": "mgn",
+          "name": "mgn"
+        }
+      ]
+    },
+    {
+      "id": "arc",
+      "name": "Amazon Application Recovery Controller (ARC)",
+      "aliases": [
+        "ARC - Region switch",
+        "ARC Region switch",
+        "ARC Zonal Shift",
+        "arcregionswitch",
+        "arczonalshift",
+        "AWS ARC - Zonal Shift",
+        "AWS Route53 Recovery Control Config",
+        "AWS Route53 Recovery Readiness",
+        "Route53 Recovery Cluster",
+        "Route53 Recovery Control Config",
+        "Route53 Recovery Readiness",
+        "route53recoverycluster",
+        "route53recoverycontrolconfig",
+        "route53recoveryreadiness"
+      ],
+      "models": [
+        {
+          "id": "arcregionswitch",
+          "name": "ARC Region switch"
+        },
+        {
+          "id": "arczonalshift",
+          "name": "ARC Zonal Shift"
+        },
+        {
+          "id": "route53recoverycluster",
+          "name": "Route53 Recovery Cluster"
+        },
+        {
+          "id": "route53recoverycontrolconfig",
+          "name": "Route53 Recovery Control Config"
+        },
+        {
+          "id": "route53recoveryreadiness",
+          "name": "Route53 Recovery Readiness"
+        }
+      ]
+    },
+    {
+      "id": "appsync",
+      "name": "AWS AppSync",
+      "aliases": [
+        "AppSync",
+        "appsync"
+      ],
+      "models": [
+        {
+          "id": "appsync",
+          "name": "AppSync"
+        }
+      ]
+    },
+    {
+      "id": "artifact",
+      "name": "AWS Artifact",
+      "aliases": [
+        "Artifact",
+        "artifact"
+      ],
+      "models": [
+        {
+          "id": "artifact",
+          "name": "Artifact"
+        }
+      ]
+    },
+    {
+      "id": "athena",
+      "name": "Amazon Athena",
+      "aliases": [
+        "Athena",
+        "athena"
+      ],
+      "models": [
+        {
+          "id": "athena",
+          "name": "Athena"
+        }
+      ]
+    },
+    {
+      "id": "auditmanager",
+      "name": "AWS Audit Manager",
+      "aliases": [
+        "AuditManager",
+        "auditmanager"
+      ],
+      "models": [
+        {
+          "id": "auditmanager",
+          "name": "AuditManager"
+        }
+      ]
+    },
+    {
+      "id": "sagemakera2iruntime",
+      "name": "Amazon Augmented AI",
+      "aliases": [
+        "Amazon Augmented AI Runtime",
+        "SageMaker A2I Runtime",
+        "sagemakera2iruntime"
+      ],
+      "models": [
+        {
+          "id": "sagemakera2iruntime",
+          "name": "SageMaker A2I Runtime"
+        }
+      ]
+    },
+    {
+      "id": "dsql",
+      "name": "Amazon Aurora DSQL",
+      "aliases": [
+        "DSQL",
+        "dsql"
+      ],
+      "models": [
+        {
+          "id": "dsql",
+          "name": "DSQL"
+        }
+      ]
+    },
+    {
+      "id": "kendra",
+      "name": "AWSKendraFrontendService",
+      "aliases": [
+        "Amazon Kendra Intelligent Ranking",
+        "kendra",
+        "Kendra Ranking",
+        "kendraranking"
+      ],
+      "models": [
+        {
+          "id": "kendra",
+          "name": "kendra"
+        },
+        {
+          "id": "kendraranking",
+          "name": "Kendra Ranking"
+        }
+      ]
+    },
+    {
+      "id": "serverlessapplicationrepository",
+      "name": "AWSServerlessApplicationRepository",
+      "aliases": [
+        "ServerlessApplicationRepository",
+        "serverlessapplicationrepository"
+      ],
+      "models": [
+        {
+          "id": "serverlessapplicationrepository",
+          "name": "ServerlessApplicationRepository"
+        }
+      ]
+    },
+    {
+      "id": "b2bi",
+      "name": "AWS B2B Data Interchange",
+      "aliases": [
+        "b2bi"
+      ],
+      "models": [
+        {
+          "id": "b2bi",
+          "name": "b2bi"
+        }
+      ]
+    },
+    {
+      "id": "backup",
+      "name": "AWS Backup",
+      "aliases": [
+        "AWS Backup Gateway",
+        "AWS Backup Search",
+        "Backup",
+        "backup",
+        "Backup Gateway",
+        "backupgateway",
+        "BackupSearch",
+        "backupsearch"
+      ],
+      "models": [
+        {
+          "id": "backup",
+          "name": "Backup"
+        },
+        {
+          "id": "backupgateway",
+          "name": "Backup Gateway"
+        },
+        {
+          "id": "backupsearch",
+          "name": "BackupSearch"
+        }
+      ]
+    },
+    {
+      "id": "batch",
+      "name": "AWS Batch",
+      "aliases": [
+        "Batch",
+        "batch"
+      ],
+      "models": [
+        {
+          "id": "batch",
+          "name": "Batch"
+        }
+      ]
+    },
+    {
+      "id": "bedrock",
+      "name": "Amazon Bedrock",
+      "aliases": [
+        "Agents for Amazon Bedrock",
+        "Agents for Amazon Bedrock Runtime",
+        "Amazon Bedrock Runtime",
+        "Bedrock",
+        "bedrock",
+        "Bedrock Agent",
+        "Bedrock Agent Runtime",
+        "Bedrock Data Automation",
+        "Bedrock Data Automation Runtime",
+        "Bedrock Runtime",
+        "bedrockagent",
+        "bedrockagentruntime",
+        "bedrockdataautomation",
+        "bedrockdataautomationruntime",
+        "bedrockruntime",
+        "Data Automation for Amazon Bedrock",
+        "Runtime for Amazon Bedrock Data Automation"
+      ],
+      "models": [
+        {
+          "id": "bedrock",
+          "name": "Bedrock"
+        },
+        {
+          "id": "bedrockagent",
+          "name": "Bedrock Agent"
+        },
+        {
+          "id": "bedrockagentruntime",
+          "name": "Bedrock Agent Runtime"
+        },
+        {
+          "id": "bedrockdataautomation",
+          "name": "Bedrock Data Automation"
+        },
+        {
+          "id": "bedrockdataautomationruntime",
+          "name": "Bedrock Data Automation Runtime"
+        },
+        {
+          "id": "bedrockruntime",
+          "name": "Bedrock Runtime"
+        }
+      ]
+    },
+    {
+      "id": "bedrockagentcore",
+      "name": "Amazon Bedrock AgentCore",
+      "aliases": [
+        "Amazon Bedrock AgentCore Control",
+        "Bedrock AgentCore",
+        "Bedrock AgentCore Control",
+        "bedrockagentcore",
+        "bedrockagentcorecontrol"
+      ],
+      "models": [
+        {
+          "id": "bedrockagentcore",
+          "name": "Bedrock AgentCore"
+        },
+        {
+          "id": "bedrockagentcorecontrol",
+          "name": "Bedrock AgentCore Control"
+        }
+      ]
+    },
+    {
+      "id": "billing",
+      "name": "AWS Billing and Cost Management",
+      "aliases": [
+        "AWS Billing",
+        "AWS Billing and Cost Management Dashboards",
+        "AWS Billing and Cost Management Data Exports",
+        "AWS Billing and Cost Management Pricing Calculator",
+        "AWS Billing and Cost Management Recommended Actions",
+        "AWS Budgets",
+        "AWS Cost and Usage Report Service",
+        "AWS Cost Explorer Service",
+        "AWS Free Tier",
+        "AWS Invoicing",
+        "AWS Price List Service",
+        "AWS Savings Plans",
+        "AWS Sustainability",
+        "BCM Dashboards",
+        "BCM Data Exports",
+        "BCM Pricing Calculator",
+        "BCM Recommended Actions",
+        "bcmdashboards",
+        "bcmdataexports",
+        "bcmpricingcalculator",
+        "bcmrecommendedactions",
+        "Billing",
+        "billing",
+        "Budgets",
+        "budgets",
+        "Cost and Usage Report Service",
+        "Cost Explorer",
+        "Cost Optimization Hub",
+        "costandusagereportservice",
+        "costexplorer",
+        "costoptimizationhub",
+        "FreeTier",
+        "freetier",
+        "Invoicing",
+        "invoicing",
+        "Pricing",
+        "pricing",
+        "Pricing Plan Manager",
+        "PricingPlanManager",
+        "pricingplanmanager",
+        "savingsplans",
+        "Sustainability",
+        "sustainability",
+        "Tax Settings",
+        "TaxSettings",
+        "taxsettings"
+      ],
+      "models": [
+        {
+          "id": "bcmdashboards",
+          "name": "BCM Dashboards"
+        },
+        {
+          "id": "bcmdataexports",
+          "name": "BCM Data Exports"
+        },
+        {
+          "id": "bcmpricingcalculator",
+          "name": "BCM Pricing Calculator"
+        },
+        {
+          "id": "bcmrecommendedactions",
+          "name": "BCM Recommended Actions"
+        },
+        {
+          "id": "billing",
+          "name": "Billing"
+        },
+        {
+          "id": "budgets",
+          "name": "Budgets"
+        },
+        {
+          "id": "costandusagereportservice",
+          "name": "Cost and Usage Report Service"
+        },
+        {
+          "id": "costexplorer",
+          "name": "Cost Explorer"
+        },
+        {
+          "id": "costoptimizationhub",
+          "name": "Cost Optimization Hub"
+        },
+        {
+          "id": "freetier",
+          "name": "FreeTier"
+        },
+        {
+          "id": "invoicing",
+          "name": "Invoicing"
+        },
+        {
+          "id": "pricing",
+          "name": "Pricing"
+        },
+        {
+          "id": "pricingplanmanager",
+          "name": "Pricing Plan Manager"
+        },
+        {
+          "id": "savingsplans",
+          "name": "savingsplans"
+        },
+        {
+          "id": "sustainability",
+          "name": "Sustainability"
+        },
+        {
+          "id": "taxsettings",
+          "name": "TaxSettings"
+        }
+      ]
+    },
+    {
+      "id": "billingconductor",
+      "name": "AWS Billing Conductor",
+      "aliases": [
+        "AWSBillingConductor",
+        "billingconductor"
+      ],
+      "models": [
+        {
+          "id": "billingconductor",
+          "name": "billingconductor"
+        }
+      ]
+    },
+    {
+      "id": "braket",
+      "name": "Braket",
+      "aliases": [
+        "braket"
+      ],
+      "models": [
+        {
+          "id": "braket",
+          "name": "Braket"
+        }
+      ]
+    },
+    {
+      "id": "acm",
+      "name": "AWS Certificate Manager",
+      "aliases": [
+        "ACM",
+        "acm"
+      ],
+      "models": [
+        {
+          "id": "acm",
+          "name": "ACM"
+        }
+      ]
+    },
+    {
+      "id": "chime",
+      "name": "Amazon Chime",
+      "aliases": [
+        "Chime",
+        "chime"
+      ],
+      "models": [
+        {
+          "id": "chime",
+          "name": "Chime"
+        }
+      ]
+    },
+    {
+      "id": "chime-sdk",
+      "name": "Amazon Chime SDK",
+      "aliases": [
+        "Amazon Chime SDK Identity",
+        "Amazon Chime SDK Media Pipelines",
+        "Amazon Chime SDK Meetings",
+        "Amazon Chime SDK Messaging",
+        "Amazon Chime SDK Voice",
+        "Chime SDK Identity",
+        "Chime SDK Media Pipelines",
+        "Chime SDK Meetings",
+        "Chime SDK Messaging",
+        "Chime SDK Voice",
+        "chimesdkidentity",
+        "chimesdkmediapipelines",
+        "chimesdkmeetings",
+        "chimesdkmessaging",
+        "chimesdkvoice"
+      ],
+      "models": [
+        {
+          "id": "chimesdkidentity",
+          "name": "Chime SDK Identity"
+        },
+        {
+          "id": "chimesdkmediapipelines",
+          "name": "Chime SDK Media Pipelines"
+        },
+        {
+          "id": "chimesdkmeetings",
+          "name": "Chime SDK Meetings"
+        },
+        {
+          "id": "chimesdkmessaging",
+          "name": "Chime SDK Messaging"
+        },
+        {
+          "id": "chimesdkvoice",
+          "name": "Chime SDK Voice"
+        }
+      ]
+    },
+    {
+      "id": "cleanrooms",
+      "name": "AWS Clean Rooms",
+      "aliases": [
+        "AWS Clean Rooms ML",
+        "AWS Clean Rooms Service",
+        "CleanRooms",
+        "cleanrooms",
+        "CleanRoomsML",
+        "cleanroomsml"
+      ],
+      "models": [
+        {
+          "id": "cleanrooms",
+          "name": "CleanRooms"
+        },
+        {
+          "id": "cleanroomsml",
+          "name": "CleanRoomsML"
+        }
+      ]
+    },
+    {
+      "id": "cloudcontrol",
+      "name": "AWS Cloud Control API",
+      "aliases": [
+        "CloudControl",
+        "cloudcontrol"
+      ],
+      "models": [
+        {
+          "id": "cloudcontrol",
+          "name": "CloudControl"
+        }
+      ]
+    },
+    {
+      "id": "clouddirectory",
+      "name": "Amazon Cloud Directory",
+      "aliases": [
+        "Amazon CloudDirectory",
+        "CloudDirectory",
+        "clouddirectory"
+      ],
+      "models": [
+        {
+          "id": "clouddirectory",
+          "name": "CloudDirectory"
+        }
+      ]
+    },
+    {
+      "id": "servicediscovery",
+      "name": "AWS Cloud Map",
+      "aliases": [
+        "ServiceDiscovery",
+        "servicediscovery"
+      ],
+      "models": [
+        {
+          "id": "servicediscovery",
+          "name": "ServiceDiscovery"
+        }
+      ]
+    },
+    {
+      "id": "cloud9",
+      "name": "AWS Cloud9",
+      "aliases": [
+        "Cloud9",
+        "cloud9"
+      ],
+      "models": [
+        {
+          "id": "cloud9",
+          "name": "Cloud9"
+        }
+      ]
+    },
+    {
+      "id": "cloudformation",
+      "name": "AWS CloudFormation",
+      "aliases": [
+        "CloudFormation",
+        "cloudformation"
+      ],
+      "models": [
+        {
+          "id": "cloudformation",
+          "name": "CloudFormation"
+        }
+      ]
+    },
+    {
+      "id": "cloudfront",
+      "name": "Amazon CloudFront",
+      "aliases": [
+        "Amazon CloudFront KeyValueStore",
+        "CloudFront",
+        "cloudfront",
+        "CloudFront KeyValueStore",
+        "cloudfrontkeyvaluestore"
+      ],
+      "models": [
+        {
+          "id": "cloudfront",
+          "name": "CloudFront"
+        },
+        {
+          "id": "cloudfrontkeyvaluestore",
+          "name": "CloudFront KeyValueStore"
+        }
+      ]
+    },
+    {
+      "id": "cloudhsm",
+      "name": "AWS CloudHSM",
+      "aliases": [
+        "Amazon CloudHSM",
+        "AWS CloudHSM V2",
+        "CloudHSM",
+        "cloudhsm",
+        "CloudHSM V2",
+        "cloudhsmv2"
+      ],
+      "models": [
+        {
+          "id": "cloudhsm",
+          "name": "CloudHSM"
+        },
+        {
+          "id": "cloudhsmv2",
+          "name": "CloudHSM V2"
+        }
+      ]
+    },
+    {
+      "id": "cloudsearch",
+      "name": "Amazon CloudSearch",
+      "aliases": [
+        "Amazon CloudSearch Domain",
+        "CloudSearch",
+        "cloudsearch",
+        "CloudSearch Domain",
+        "cloudsearchdomain"
+      ],
+      "models": [
+        {
+          "id": "cloudsearch",
+          "name": "CloudSearch"
+        },
+        {
+          "id": "cloudsearchdomain",
+          "name": "CloudSearch Domain"
+        }
+      ]
+    },
+    {
+      "id": "cloudtrail",
+      "name": "AWS CloudTrail",
+      "aliases": [
+        "AWS CloudTrail Data Service",
+        "CloudTrail",
+        "cloudtrail",
+        "CloudTrail Data",
+        "cloudtraildata"
+      ],
+      "models": [
+        {
+          "id": "cloudtrail",
+          "name": "CloudTrail"
+        },
+        {
+          "id": "cloudtraildata",
+          "name": "CloudTrail Data"
+        }
+      ]
+    },
+    {
+      "id": "cloudwatch",
+      "name": "Amazon CloudWatch",
+      "aliases": [
+        "AIOps",
+        "aiops",
+        "Amazon CloudWatch Application Insights",
+        "Amazon CloudWatch Application Signals",
+        "Amazon CloudWatch Internet Monitor",
+        "Amazon CloudWatch Logs",
+        "Amazon CloudWatch Network Monitor",
+        "Application Insights",
+        "Application Signals",
+        "applicationinsights",
+        "applicationsignals",
+        "AWS AI Ops",
+        "CloudWatch",
+        "cloudwatch",
+        "CloudWatch Logs",
+        "CloudWatch Observability Access Manager",
+        "CloudWatch Observability Admin Service",
+        "CloudWatch Omni",
+        "CloudWatch RUM",
+        "cloudwatchlogs",
+        "CloudWatchOmni",
+        "cloudwatchomni",
+        "InternetMonitor",
+        "internetmonitor",
+        "Network Flow Monitor",
+        "NetworkFlowMonitor",
+        "networkflowmonitor",
+        "NetworkMonitor",
+        "networkmonitor",
+        "OAM",
+        "oam",
+        "ObservabilityAdmin",
+        "observabilityadmin",
+        "RUM",
+        "rum",
+        "Synthetics",
+        "synthetics"
+      ],
+      "models": [
+        {
+          "id": "aiops",
+          "name": "AIOps"
+        },
+        {
+          "id": "applicationinsights",
+          "name": "Application Insights"
+        },
+        {
+          "id": "applicationsignals",
+          "name": "Application Signals"
+        },
+        {
+          "id": "cloudwatch",
+          "name": "CloudWatch"
+        },
+        {
+          "id": "cloudwatchlogs",
+          "name": "CloudWatch Logs"
+        },
+        {
+          "id": "cloudwatchomni",
+          "name": "CloudWatchOmni"
+        },
+        {
+          "id": "internetmonitor",
+          "name": "InternetMonitor"
+        },
+        {
+          "id": "networkflowmonitor",
+          "name": "NetworkFlowMonitor"
+        },
+        {
+          "id": "networkmonitor",
+          "name": "NetworkMonitor"
+        },
+        {
+          "id": "oam",
+          "name": "OAM"
+        },
+        {
+          "id": "observabilityadmin",
+          "name": "ObservabilityAdmin"
+        },
+        {
+          "id": "rum",
+          "name": "RUM"
+        },
+        {
+          "id": "synthetics",
+          "name": "synthetics"
+        }
+      ]
+    },
+    {
+      "id": "codeartifact",
+      "name": "CodeArtifact",
+      "aliases": [
+        "codeartifact"
+      ],
+      "models": [
+        {
+          "id": "codeartifact",
+          "name": "codeartifact"
+        }
+      ]
+    },
+    {
+      "id": "codebuild",
+      "name": "AWS CodeBuild",
+      "aliases": [
+        "CodeBuild",
+        "codebuild"
+      ],
+      "models": [
+        {
+          "id": "codebuild",
+          "name": "CodeBuild"
+        }
+      ]
+    },
+    {
+      "id": "codecatalyst",
+      "name": "Amazon CodeCatalyst",
+      "aliases": [
+        "CodeCatalyst",
+        "codecatalyst"
+      ],
+      "models": [
+        {
+          "id": "codecatalyst",
+          "name": "CodeCatalyst"
+        }
+      ]
+    },
+    {
+      "id": "codecommit",
+      "name": "AWS CodeCommit",
+      "aliases": [
+        "CodeCommit",
+        "codecommit"
+      ],
+      "models": [
+        {
+          "id": "codecommit",
+          "name": "CodeCommit"
+        }
+      ]
+    },
+    {
+      "id": "codeconnections",
+      "name": "AWS CodeConnections",
+      "aliases": [
+        "AWS CodeStar connections",
+        "CodeConnections",
+        "codeconnections",
+        "CodeStar connections",
+        "codestarconnections"
+      ],
+      "models": [
+        {
+          "id": "codeconnections",
+          "name": "CodeConnections"
+        },
+        {
+          "id": "codestarconnections",
+          "name": "CodeStar connections"
+        }
+      ]
+    },
+    {
+      "id": "codedeploy",
+      "name": "AWS CodeDeploy",
+      "aliases": [
+        "CodeDeploy",
+        "codedeploy"
+      ],
+      "models": [
+        {
+          "id": "codedeploy",
+          "name": "CodeDeploy"
+        }
+      ]
+    },
+    {
+      "id": "codeguru",
+      "name": "Amazon CodeGuru",
+      "aliases": [
+        "Amazon CodeGuru Profiler",
+        "Amazon CodeGuru Reviewer",
+        "Amazon CodeGuru Security",
+        "CodeGuru Reviewer",
+        "CodeGuru Security",
+        "CodeGuruProfiler",
+        "codeguruprofiler",
+        "codegurureviewer",
+        "codegurusecurity"
+      ],
+      "models": [
+        {
+          "id": "codeguruprofiler",
+          "name": "CodeGuruProfiler"
+        },
+        {
+          "id": "codegurureviewer",
+          "name": "CodeGuru Reviewer"
+        },
+        {
+          "id": "codegurusecurity",
+          "name": "CodeGuru Security"
+        }
+      ]
+    },
+    {
+      "id": "codepipeline",
+      "name": "AWS CodePipeline",
+      "aliases": [
+        "CodePipeline",
+        "codepipeline"
+      ],
+      "models": [
+        {
+          "id": "codepipeline",
+          "name": "CodePipeline"
+        }
+      ]
+    },
+    {
+      "id": "cognito",
+      "name": "Amazon Cognito",
+      "aliases": [
+        "Amazon Cognito Identity",
+        "Amazon Cognito Identity Provider",
+        "Amazon Cognito Sync",
+        "Cognito Identity",
+        "Cognito Identity Provider",
+        "Cognito Sync",
+        "cognitoidentity",
+        "cognitoidentityprovider",
+        "cognitosync"
+      ],
+      "models": [
+        {
+          "id": "cognitoidentity",
+          "name": "Cognito Identity"
+        },
+        {
+          "id": "cognitoidentityprovider",
+          "name": "Cognito Identity Provider"
+        },
+        {
+          "id": "cognitosync",
+          "name": "Cognito Sync"
+        }
+      ]
+    },
+    {
+      "id": "comprehend",
+      "name": "Amazon Comprehend",
+      "aliases": [
+        "Comprehend",
+        "comprehend"
+      ],
+      "models": [
+        {
+          "id": "comprehend",
+          "name": "Comprehend"
+        }
+      ]
+    },
+    {
+      "id": "comprehendmedical",
+      "name": "Amazon Comprehend Medical",
+      "aliases": [
+        "AWS Comprehend Medical",
+        "ComprehendMedical",
+        "comprehendmedical"
+      ],
+      "models": [
+        {
+          "id": "comprehendmedical",
+          "name": "ComprehendMedical"
+        }
+      ]
+    },
+    {
+      "id": "computeoptimizer",
+      "name": "AWS Compute Optimizer",
+      "aliases": [
+        "Compute Optimizer",
+        "Compute Optimizer Automation",
+        "computeoptimizer",
+        "computeoptimizerautomation"
+      ],
+      "models": [
+        {
+          "id": "computeoptimizer",
+          "name": "Compute Optimizer"
+        },
+        {
+          "id": "computeoptimizerautomation",
+          "name": "Compute Optimizer Automation"
+        }
+      ]
+    },
+    {
+      "id": "configservice",
+      "name": "AWS Config",
+      "aliases": [
+        "Config Service",
+        "configservice"
+      ],
+      "models": [
+        {
+          "id": "configservice",
+          "name": "Config Service"
+        }
+      ]
+    },
+    {
+      "id": "connect",
+      "name": "Amazon Connect",
+      "aliases": [
+        "Amazon AppIntegrations Service",
+        "Amazon Connect Cases",
+        "Amazon Connect Contact Lens",
+        "Amazon Connect Customer Profiles",
+        "Amazon Connect Participant Service",
+        "Amazon Connect Service",
+        "Amazon Connect Wisdom Service",
+        "Amazon Q Connect",
+        "Amazon Voice ID",
+        "AmazonConnectCampaignService",
+        "AmazonConnectCampaignServiceV2",
+        "AppIntegrations",
+        "appintegrations",
+        "Connect",
+        "connect",
+        "Connect Contact Lens",
+        "ConnectCampaigns",
+        "connectcampaigns",
+        "ConnectCampaignsV2",
+        "connectcampaignsv2",
+        "ConnectCases",
+        "connectcases",
+        "connectcontactlens",
+        "ConnectParticipant",
+        "connectparticipant",
+        "Customer Profiles",
+        "customerprofiles",
+        "QConnect",
+        "qconnect",
+        "Voice ID",
+        "voiceid",
+        "Wisdom",
+        "wisdom"
+      ],
+      "models": [
+        {
+          "id": "appintegrations",
+          "name": "AppIntegrations"
+        },
+        {
+          "id": "connect",
+          "name": "Connect"
+        },
+        {
+          "id": "connectcampaigns",
+          "name": "ConnectCampaigns"
+        },
+        {
+          "id": "connectcampaignsv2",
+          "name": "ConnectCampaignsV2"
+        },
+        {
+          "id": "connectcases",
+          "name": "ConnectCases"
+        },
+        {
+          "id": "connectcontactlens",
+          "name": "Connect Contact Lens"
+        },
+        {
+          "id": "connectparticipant",
+          "name": "ConnectParticipant"
+        },
+        {
+          "id": "customerprofiles",
+          "name": "Customer Profiles"
+        },
+        {
+          "id": "qconnect",
+          "name": "QConnect"
+        },
+        {
+          "id": "voiceid",
+          "name": "Voice ID"
+        },
+        {
+          "id": "wisdom",
+          "name": "Wisdom"
+        }
+      ]
+    },
+    {
+      "id": "connecthealth",
+      "name": "Amazon Connect Health",
+      "aliases": [
+        "Connect Health",
+        "ConnectHealth",
+        "connecthealth"
+      ],
+      "models": [
+        {
+          "id": "connecthealth",
+          "name": "ConnectHealth"
+        }
+      ]
+    },
+    {
+      "id": "continuum",
+      "name": "AWS Continuum",
+      "aliases": [
+        "AWS Security Agent",
+        "Continuum",
+        "continuum",
+        "SecurityAgent",
+        "securityagent"
+      ],
+      "models": [
+        {
+          "id": "continuum",
+          "name": "Continuum"
+        },
+        {
+          "id": "securityagent",
+          "name": "SecurityAgent"
+        }
+      ]
+    },
+    {
+      "id": "controlcatalog",
+      "name": "AWS Control Catalog",
+      "aliases": [
+        "ControlCatalog",
+        "controlcatalog"
+      ],
+      "models": [
+        {
+          "id": "controlcatalog",
+          "name": "ControlCatalog"
+        }
+      ]
+    },
+    {
+      "id": "controltower",
+      "name": "AWS Control Tower",
+      "aliases": [
+        "ControlTower",
+        "controltower"
+      ],
+      "models": [
+        {
+          "id": "controltower",
+          "name": "ControlTower"
+        }
+      ]
+    },
+    {
+      "id": "dataexchange",
+      "name": "AWS Data Exchange",
+      "aliases": [
+        "DataExchange",
+        "dataexchange"
+      ],
+      "models": [
+        {
+          "id": "dataexchange",
+          "name": "DataExchange"
+        }
+      ]
+    },
+    {
+      "id": "firehose",
+      "name": "Amazon Data Firehose",
+      "aliases": [
+        "Amazon Kinesis Firehose",
+        "Firehose",
+        "firehose"
+      ],
+      "models": [
+        {
+          "id": "firehose",
+          "name": "Firehose"
+        }
+      ]
+    },
+    {
+      "id": "datapipeline",
+      "name": "AWS Data Pipeline",
+      "aliases": [
+        "Data Pipeline",
+        "datapipeline"
+      ],
+      "models": [
+        {
+          "id": "datapipeline",
+          "name": "Data Pipeline"
+        }
+      ]
+    },
+    {
+      "id": "databasemigrationservice",
+      "name": "AWS Database Migration Service (DMS)",
+      "aliases": [
+        "AWS Database Migration Service",
+        "Database Migration Service",
+        "databasemigrationservice"
+      ],
+      "models": [
+        {
+          "id": "databasemigrationservice",
+          "name": "Database Migration Service"
+        }
+      ]
+    },
+    {
+      "id": "datasync",
+      "name": "AWS DataSync",
+      "aliases": [
+        "DataSync",
+        "datasync"
+      ],
+      "models": [
+        {
+          "id": "datasync",
+          "name": "DataSync"
+        }
+      ]
+    },
+    {
+      "id": "datazone",
+      "name": "Amazon DataZone",
+      "aliases": [
+        "DataZone",
+        "datazone"
+      ],
+      "models": [
+        {
+          "id": "datazone",
+          "name": "DataZone"
+        }
+      ]
+    },
+    {
+      "id": "deadline",
+      "name": "AWS Deadline Cloud",
+      "aliases": [
+        "AWSDeadlineCloud",
+        "deadline"
+      ],
+      "models": [
+        {
+          "id": "deadline",
+          "name": "deadline"
+        }
+      ]
+    },
+    {
+      "id": "detective",
+      "name": "Amazon Detective",
+      "aliases": [
+        "Detective",
+        "detective"
+      ],
+      "models": [
+        {
+          "id": "detective",
+          "name": "Detective"
+        }
+      ]
+    },
+    {
+      "id": "codestarnotifications",
+      "name": "AWS Developer Tools Notifications",
+      "aliases": [
+        "AWS CodeStar Notifications",
+        "codestar notifications",
+        "codestarnotifications"
+      ],
+      "models": [
+        {
+          "id": "codestarnotifications",
+          "name": "codestar notifications"
+        }
+      ]
+    },
+    {
+      "id": "devicefarm",
+      "name": "AWS Device Farm",
+      "aliases": [
+        "Device Farm",
+        "devicefarm"
+      ],
+      "models": [
+        {
+          "id": "devicefarm",
+          "name": "Device Farm"
+        }
+      ]
+    },
+    {
+      "id": "devopsagent",
+      "name": "AWS DevOps Agent Service",
+      "aliases": [
+        "DevOps Agent",
+        "devopsagent"
+      ],
+      "models": [
+        {
+          "id": "devopsagent",
+          "name": "DevOps Agent"
+        }
+      ]
+    },
+    {
+      "id": "devopsguru",
+      "name": "Amazon DevOps Guru",
+      "aliases": [
+        "DevOps Guru",
+        "devopsguru"
+      ],
+      "models": [
+        {
+          "id": "devopsguru",
+          "name": "DevOps Guru"
+        }
+      ]
+    },
+    {
+      "id": "directconnect",
+      "name": "AWS Direct Connect",
+      "aliases": [
+        "Direct Connect",
+        "directconnect"
+      ],
+      "models": [
+        {
+          "id": "directconnect",
+          "name": "Direct Connect"
+        }
+      ]
+    },
+    {
+      "id": "directoryservice",
+      "name": "AWS Directory Service",
+      "aliases": [
+        "AWS Directory Service Data",
+        "Directory Service",
+        "Directory Service Data",
+        "directoryservice",
+        "directoryservicedata"
+      ],
+      "models": [
+        {
+          "id": "directoryservice",
+          "name": "Directory Service"
+        },
+        {
+          "id": "directoryservicedata",
+          "name": "Directory Service Data"
+        }
+      ]
+    },
+    {
+      "id": "docdb",
+      "name": "Amazon DocumentDB",
+      "aliases": [
+        "Amazon DocumentDB Elastic Clusters",
+        "Amazon DocumentDB with MongoDB compatibility",
+        "DocDB",
+        "docdb",
+        "DocDB Elastic",
+        "docdbelastic"
+      ],
+      "models": [
+        {
+          "id": "docdb",
+          "name": "DocDB"
+        },
+        {
+          "id": "docdbelastic",
+          "name": "DocDB Elastic"
+        }
+      ]
+    },
+    {
+      "id": "dynamodb",
+      "name": "DynamoDB",
+      "aliases": [
+        "Amazon DynamoDB",
+        "Amazon DynamoDB Accelerator (DAX)",
+        "Amazon DynamoDB Streams",
+        "DAX",
+        "dax",
+        "dynamodb",
+        "DynamoDB Streams",
+        "dynamodbstreams",
+        "NoSQL database"
+      ],
+      "models": [
+        {
+          "id": "dax",
+          "name": "DAX"
+        },
+        {
+          "id": "dynamodb",
+          "name": "DynamoDB"
+        },
+        {
+          "id": "dynamodbstreams",
+          "name": "DynamoDB Streams"
+        }
+      ]
+    },
+    {
+      "id": "ebs",
+      "name": "Amazon EBS",
+      "aliases": [
+        "Amazon Data Lifecycle Manager",
+        "Amazon Elastic Block Store",
+        "Amazon Recycle Bin",
+        "DLM",
+        "dlm",
+        "EBS",
+        "ebs",
+        "rbin"
+      ],
+      "models": [
+        {
+          "id": "dlm",
+          "name": "DLM"
+        },
+        {
+          "id": "ebs",
+          "name": "EBS"
+        },
+        {
+          "id": "rbin",
+          "name": "rbin"
+        }
+      ]
+    },
+    {
+      "id": "ec2",
+      "name": "Amazon EC2",
+      "aliases": [
+        "Amazon Elastic Compute Cloud",
+        "AWS EC2 Instance Connect",
+        "EC2",
+        "ec2",
+        "EC2 Instance Connect",
+        "ec2instanceconnect",
+        "instances",
+        "virtual machines"
+      ],
+      "models": [
+        {
+          "id": "ec2",
+          "name": "EC2"
+        },
+        {
+          "id": "ec2instanceconnect",
+          "name": "EC2 Instance Connect"
+        }
+      ]
+    },
+    {
+      "id": "autoscaling",
+      "name": "Amazon EC2 Auto Scaling",
+      "aliases": [
+        "Auto Scaling",
+        "autoscaling"
+      ],
+      "models": [
+        {
+          "id": "autoscaling",
+          "name": "Auto Scaling"
+        }
+      ]
+    },
+    {
+      "id": "imagebuilder",
+      "name": "EC2 Image Builder",
+      "aliases": [
+        "imagebuilder"
+      ],
+      "models": [
+        {
+          "id": "imagebuilder",
+          "name": "imagebuilder"
+        }
+      ]
+    },
+    {
+      "id": "ecr",
+      "name": "Amazon ECR",
+      "aliases": [
+        "Amazon Elastic Container Registry",
+        "Amazon Elastic Container Registry Public",
+        "container registry",
+        "ECR",
+        "ecr",
+        "ECR PUBLIC",
+        "ecrpublic"
+      ],
+      "models": [
+        {
+          "id": "ecr",
+          "name": "ECR"
+        },
+        {
+          "id": "ecrpublic",
+          "name": "ECR PUBLIC"
+        }
+      ]
+    },
+    {
+      "id": "ecs",
+      "name": "Amazon ECS",
+      "aliases": [
+        "Amazon EC2 Container Service",
+        "ECS",
+        "ecs"
+      ],
+      "models": [
+        {
+          "id": "ecs",
+          "name": "ECS"
+        }
+      ]
+    },
+    {
+      "id": "efs",
+      "name": "Amazon EFS",
+      "aliases": [
+        "Amazon Elastic File System",
+        "EFS",
+        "efs"
+      ],
+      "models": [
+        {
+          "id": "efs",
+          "name": "EFS"
+        }
+      ]
+    },
+    {
+      "id": "eks",
+      "name": "Amazon EKS",
+      "aliases": [
+        "Amazon EKS Auth",
+        "Amazon Elastic Kubernetes Service",
+        "EKS",
+        "eks",
+        "EKS Auth",
+        "eksauth"
+      ],
+      "models": [
+        {
+          "id": "eks",
+          "name": "EKS"
+        },
+        {
+          "id": "eksauth",
+          "name": "EKS Auth"
+        }
+      ]
+    },
+    {
+      "id": "elasticbeanstalk",
+      "name": "AWS Elastic Beanstalk",
+      "aliases": [
+        "Elastic Beanstalk",
+        "elasticbeanstalk"
+      ],
+      "models": [
+        {
+          "id": "elasticbeanstalk",
+          "name": "Elastic Beanstalk"
+        }
+      ]
+    },
+    {
+      "id": "drs",
+      "name": "AWS Elastic Disaster Recovery",
+      "aliases": [
+        "drs",
+        "Elastic Disaster Recovery Service"
+      ],
+      "models": [
+        {
+          "id": "drs",
+          "name": "drs"
+        }
+      ]
+    },
+    {
+      "id": "elasticloadbalancing",
+      "name": "Elastic Load Balancing",
+      "aliases": [
+        "Elastic Load Balancing v2",
+        "elasticloadbalancing",
+        "elasticloadbalancingv2"
+      ],
+      "models": [
+        {
+          "id": "elasticloadbalancing",
+          "name": "Elastic Load Balancing"
+        },
+        {
+          "id": "elasticloadbalancingv2",
+          "name": "Elastic Load Balancing v2"
+        }
+      ]
+    },
+    {
+      "id": "evs",
+      "name": "Amazon Elastic VMware Service",
+      "aliases": [
+        "evs"
+      ],
+      "models": [
+        {
+          "id": "evs",
+          "name": "evs"
+        }
+      ]
+    },
+    {
+      "id": "elasticache",
+      "name": "Amazon ElastiCache",
+      "aliases": [
+        "ElastiCache",
+        "elasticache"
+      ],
+      "models": [
+        {
+          "id": "elasticache",
+          "name": "ElastiCache"
+        }
+      ]
+    },
+    {
+      "id": "elementalinference",
+      "name": "AWS Elemental Inference",
+      "aliases": [
+        "ElementalInference",
+        "elementalinference"
+      ],
+      "models": [
+        {
+          "id": "elementalinference",
+          "name": "ElementalInference"
+        }
+      ]
+    },
+    {
+      "id": "mediaconvert",
+      "name": "AWS Elemental MediaConvert",
+      "aliases": [
+        "MediaConvert",
+        "mediaconvert"
+      ],
+      "models": [
+        {
+          "id": "mediaconvert",
+          "name": "MediaConvert"
+        }
+      ]
+    },
+    {
+      "id": "medialive",
+      "name": "AWS Elemental MediaLive",
+      "aliases": [
+        "MediaLive",
+        "medialive"
+      ],
+      "models": [
+        {
+          "id": "medialive",
+          "name": "MediaLive"
+        }
+      ]
+    },
+    {
+      "id": "mediapackage",
+      "name": "AWS Elemental MediaPackage",
+      "aliases": [
+        "AWS Elemental MediaPackage v2",
+        "AWS Elemental MediaPackage VOD",
+        "MediaPackage",
+        "mediapackage",
+        "MediaPackage Vod",
+        "MediaPackageV2",
+        "mediapackagev2",
+        "mediapackagevod"
+      ],
+      "models": [
+        {
+          "id": "mediapackage",
+          "name": "MediaPackage"
+        },
+        {
+          "id": "mediapackagev2",
+          "name": "MediaPackageV2"
+        },
+        {
+          "id": "mediapackagevod",
+          "name": "MediaPackage Vod"
+        }
+      ]
+    },
+    {
+      "id": "mediastore",
+      "name": "AWS Elemental MediaStore",
+      "aliases": [
+        "AWS Elemental MediaStore Data Plane",
+        "MediaStore",
+        "mediastore",
+        "MediaStore Data",
+        "mediastoredata"
+      ],
+      "models": [
+        {
+          "id": "mediastore",
+          "name": "MediaStore"
+        },
+        {
+          "id": "mediastoredata",
+          "name": "MediaStore Data"
+        }
+      ]
+    },
+    {
+      "id": "emr",
+      "name": "Amazon EMR",
+      "aliases": [
+        "Amazon EMR Containers",
+        "EMR",
+        "emr",
+        "EMR containers",
+        "EMR Serverless",
+        "emrcontainers",
+        "emrserverless"
+      ],
+      "models": [
+        {
+          "id": "emr",
+          "name": "EMR"
+        },
+        {
+          "id": "emrcontainers",
+          "name": "EMR containers"
+        },
+        {
+          "id": "emrserverless",
+          "name": "EMR Serverless"
+        }
+      ]
+    },
+    {
+      "id": "endusermessaging",
+      "name": "AWS End User Messaging",
+      "aliases": [
+        "Amazon Pinpoint SMS and Voice Service",
+        "Amazon Pinpoint SMS Voice V2",
+        "AWS End User Messaging Social",
+        "EndUserMessaging",
+        "endusermessaging",
+        "Pinpoint SMS Voice",
+        "Pinpoint SMS Voice V2",
+        "pinpointsmsvoice",
+        "pinpointsmsvoicev2",
+        "SocialMessaging",
+        "socialmessaging"
+      ],
+      "models": [
+        {
+          "id": "endusermessaging",
+          "name": "EndUserMessaging"
+        },
+        {
+          "id": "pinpointsmsvoice",
+          "name": "Pinpoint SMS Voice"
+        },
+        {
+          "id": "pinpointsmsvoicev2",
+          "name": "Pinpoint SMS Voice V2"
+        },
+        {
+          "id": "socialmessaging",
+          "name": "SocialMessaging"
+        }
+      ]
+    },
+    {
+      "id": "entityresolution",
+      "name": "AWS EntityResolution",
+      "aliases": [
+        "EntityResolution",
+        "entityresolution"
+      ],
+      "models": [
+        {
+          "id": "entityresolution",
+          "name": "EntityResolution"
+        }
+      ]
+    },
+    {
+      "id": "eventbridge",
+      "name": "Amazon EventBridge",
+      "aliases": [
+        "Amazon CloudWatch Events",
+        "Amazon EventBridge Pipes",
+        "Amazon EventBridge Scheduler",
+        "Amazon EventBridgeV2",
+        "CloudWatch Events",
+        "cloudwatchevents",
+        "EventBridge",
+        "eventbridge",
+        "EventBridgeV2",
+        "eventbridgev2",
+        "Pipes",
+        "pipes",
+        "Scheduler",
+        "scheduler",
+        "Schemas",
+        "schemas"
+      ],
+      "models": [
+        {
+          "id": "cloudwatchevents",
+          "name": "CloudWatch Events"
+        },
+        {
+          "id": "eventbridge",
+          "name": "EventBridge"
+        },
+        {
+          "id": "eventbridgev2",
+          "name": "EventBridgeV2"
+        },
+        {
+          "id": "pipes",
+          "name": "Pipes"
+        },
+        {
+          "id": "scheduler",
+          "name": "Scheduler"
+        },
+        {
+          "id": "schemas",
+          "name": "schemas"
+        }
+      ]
+    },
+    {
+      "id": "fis",
+      "name": "AWS Fault Injection Service",
+      "aliases": [
+        "AWS Fault Injection Simulator",
+        "fis"
+      ],
+      "models": [
+        {
+          "id": "fis",
+          "name": "fis"
+        }
+      ]
+    },
+    {
+      "id": "fms",
+      "name": "AWS Firewall Manager",
+      "aliases": [
+        "Firewall Management Service",
+        "FMS",
+        "fms"
+      ],
+      "models": [
+        {
+          "id": "fms",
+          "name": "FMS"
+        }
+      ]
+    },
+    {
+      "id": "forecast",
+      "name": "Amazon Forecast Service",
+      "aliases": [
+        "Amazon Forecast Query Service",
+        "forecast",
+        "forecastquery"
+      ],
+      "models": [
+        {
+          "id": "forecast",
+          "name": "forecast"
+        },
+        {
+          "id": "forecastquery",
+          "name": "forecastquery"
+        }
+      ]
+    },
+    {
+      "id": "frauddetector",
+      "name": "Amazon Fraud Detector",
+      "aliases": [
+        "FraudDetector",
+        "frauddetector"
+      ],
+      "models": [
+        {
+          "id": "frauddetector",
+          "name": "FraudDetector"
+        }
+      ]
+    },
+    {
+      "id": "fsx",
+      "name": "Amazon FSx",
+      "aliases": [
+        "FSx",
+        "fsx"
+      ],
+      "models": [
+        {
+          "id": "fsx",
+          "name": "FSx"
+        }
+      ]
+    },
+    {
+      "id": "gamelift",
+      "name": "Amazon GameLift Servers",
+      "aliases": [
+        "Amazon GameLift",
+        "GameLift",
+        "gamelift"
+      ],
+      "models": [
+        {
+          "id": "gamelift",
+          "name": "GameLift"
+        }
+      ]
+    },
+    {
+      "id": "gameliftstreams",
+      "name": "Amazon GameLift Streams",
+      "aliases": [
+        "GameLiftStreams",
+        "gameliftstreams"
+      ],
+      "models": [
+        {
+          "id": "gameliftstreams",
+          "name": "GameLiftStreams"
+        }
+      ]
+    },
+    {
+      "id": "glacier",
+      "name": "Amazon Glacier",
+      "aliases": [
+        "Glacier",
+        "glacier"
+      ],
+      "models": [
+        {
+          "id": "glacier",
+          "name": "Glacier"
+        }
+      ]
+    },
+    {
+      "id": "globalaccelerator",
+      "name": "AWS Global Accelerator",
+      "aliases": [
+        "Global Accelerator",
+        "globalaccelerator"
+      ],
+      "models": [
+        {
+          "id": "globalaccelerator",
+          "name": "Global Accelerator"
+        }
+      ]
+    },
+    {
+      "id": "glue",
+      "name": "AWS Glue",
+      "aliases": [
+        "AWS Glue DataBrew",
+        "DataBrew",
+        "databrew",
+        "Glue",
+        "glue"
+      ],
+      "models": [
+        {
+          "id": "databrew",
+          "name": "DataBrew"
+        },
+        {
+          "id": "glue",
+          "name": "Glue"
+        }
+      ]
+    },
+    {
+      "id": "greengrass",
+      "name": "AWS Greengrass",
+      "aliases": [
+        "AWS IoT Greengrass V2",
+        "Greengrass",
+        "greengrass",
+        "GreengrassV2",
+        "greengrassv2"
+      ],
+      "models": [
+        {
+          "id": "greengrass",
+          "name": "Greengrass"
+        },
+        {
+          "id": "greengrassv2",
+          "name": "GreengrassV2"
+        }
+      ]
+    },
+    {
+      "id": "groundstation",
+      "name": "AWS Ground Station",
+      "aliases": [
+        "GroundStation",
+        "groundstation"
+      ],
+      "models": [
+        {
+          "id": "groundstation",
+          "name": "GroundStation"
+        }
+      ]
+    },
+    {
+      "id": "guardduty",
+      "name": "Amazon GuardDuty",
+      "aliases": [
+        "GuardDuty",
+        "guardduty"
+      ],
+      "models": [
+        {
+          "id": "guardduty",
+          "name": "GuardDuty"
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "name": "AWS Health",
+      "aliases": [
+        "AWS Health APIs and Notifications",
+        "Health",
+        "health"
+      ],
+      "models": [
+        {
+          "id": "health",
+          "name": "Health"
+        }
+      ]
+    },
+    {
+      "id": "medicalimaging",
+      "name": "AWS HealthImaging",
+      "aliases": [
+        "AWS Health Imaging",
+        "Medical Imaging",
+        "medicalimaging"
+      ],
+      "models": [
+        {
+          "id": "medicalimaging",
+          "name": "Medical Imaging"
+        }
+      ]
+    },
+    {
+      "id": "healthlake",
+      "name": "Amazon HealthLake",
+      "aliases": [
+        "HealthLake",
+        "healthlake"
+      ],
+      "models": [
+        {
+          "id": "healthlake",
+          "name": "HealthLake"
+        }
+      ]
+    },
+    {
+      "id": "omics",
+      "name": "AWS HealthOmics",
+      "aliases": [
+        "Amazon Omics",
+        "Omics",
+        "omics"
+      ],
+      "models": [
+        {
+          "id": "omics",
+          "name": "Omics"
+        }
+      ]
+    },
+    {
+      "id": "iam-identity-center",
+      "name": "AWS IAM Identity Center",
+      "aliases": [
+        "AWS Single Sign-On",
+        "AWS Single Sign-On Admin",
+        "AWS SSO Identity Store",
+        "AWS SSO OIDC",
+        "identitystore",
+        "SSO",
+        "sso",
+        "SSO Admin",
+        "SSO OIDC",
+        "ssoadmin",
+        "ssooidc"
+      ],
+      "models": [
+        {
+          "id": "identitystore",
+          "name": "identitystore"
+        },
+        {
+          "id": "sso",
+          "name": "SSO"
+        },
+        {
+          "id": "ssoadmin",
+          "name": "SSO Admin"
+        },
+        {
+          "id": "ssooidc",
+          "name": "SSO OIDC"
+        }
+      ]
+    },
+    {
+      "id": "rolesanywhere",
+      "name": "IAM Roles Anywhere",
+      "aliases": [
+        "RolesAnywhere",
+        "rolesanywhere"
+      ],
+      "models": [
+        {
+          "id": "rolesanywhere",
+          "name": "RolesAnywhere"
+        }
+      ]
+    },
+    {
+      "id": "iam",
+      "name": "AWS Identity and Access Management (IAM)",
+      "aliases": [
+        "Access Analyzer",
+        "AccessAnalyzer",
+        "accessanalyzer",
+        "AWS Identity and Access Management",
+        "IAM",
+        "iam",
+        "IAM Toolbox",
+        "IAM Toolbox (Preview)",
+        "iamtoolbox",
+        "identity and access management"
+      ],
+      "models": [
+        {
+          "id": "accessanalyzer",
+          "name": "AccessAnalyzer"
+        },
+        {
+          "id": "iam",
+          "name": "IAM"
+        },
+        {
+          "id": "iamtoolbox",
+          "name": "IAM Toolbox"
+        }
+      ]
+    },
+    {
+      "id": "inspector",
+      "name": "Amazon Inspector",
+      "aliases": [
+        "Inspector",
+        "inspector",
+        "Inspector Scan",
+        "Inspector2",
+        "inspector2",
+        "inspectorscan"
+      ],
+      "models": [
+        {
+          "id": "inspector",
+          "name": "Inspector"
+        },
+        {
+          "id": "inspector2",
+          "name": "Inspector2"
+        },
+        {
+          "id": "inspectorscan",
+          "name": "Inspector Scan"
+        }
+      ]
+    },
+    {
+      "id": "ivs",
+      "name": "Amazon Interactive Video Service (IVS)",
+      "aliases": [
+        "Amazon Interactive Video Service",
+        "Amazon Interactive Video Service Chat",
+        "Amazon Interactive Video Service RealTime",
+        "ivs",
+        "IVS RealTime",
+        "ivschat",
+        "ivsrealtime"
+      ],
+      "models": [
+        {
+          "id": "ivs",
+          "name": "ivs"
+        },
+        {
+          "id": "ivschat",
+          "name": "ivschat"
+        },
+        {
+          "id": "ivsrealtime",
+          "name": "IVS RealTime"
+        }
+      ]
+    },
+    {
+      "id": "interconnect",
+      "name": "AWS Interconnect",
+      "aliases": [
+        "Interconnect",
+        "interconnect"
+      ],
+      "models": [
+        {
+          "id": "interconnect",
+          "name": "Interconnect"
+        }
+      ]
+    },
+    {
+      "id": "iot",
+      "name": "AWS IoT Core",
+      "aliases": [
+        "AWS IoT",
+        "AWS IoT Core Device Advisor",
+        "AWS IoT Data Plane",
+        "AWS IoT Wireless",
+        "IoT",
+        "iot",
+        "IoT Data Plane",
+        "IoT Wireless",
+        "iotdataplane",
+        "IotDeviceAdvisor",
+        "iotdeviceadvisor",
+        "iotwireless"
+      ],
+      "models": [
+        {
+          "id": "iot",
+          "name": "IoT"
+        },
+        {
+          "id": "iotdataplane",
+          "name": "IoT Data Plane"
+        },
+        {
+          "id": "iotdeviceadvisor",
+          "name": "IotDeviceAdvisor"
+        },
+        {
+          "id": "iotwireless",
+          "name": "IoT Wireless"
+        }
+      ]
+    },
+    {
+      "id": "iot-device-management",
+      "name": "AWS IoT Device Management",
+      "aliases": [
+        "AWS IoT Jobs Data Plane",
+        "AWS IoT Secure Tunneling",
+        "IoT Jobs Data Plane",
+        "IoT Managed Integrations",
+        "iotjobsdataplane",
+        "iotmanagedintegrations",
+        "IoTSecureTunneling",
+        "iotsecuretunneling",
+        "Managed integrations for AWS IoT Device Management"
+      ],
+      "models": [
+        {
+          "id": "iotjobsdataplane",
+          "name": "IoT Jobs Data Plane"
+        },
+        {
+          "id": "iotmanagedintegrations",
+          "name": "IoT Managed Integrations"
+        },
+        {
+          "id": "iotsecuretunneling",
+          "name": "IoTSecureTunneling"
+        }
+      ]
+    },
+    {
+      "id": "iotfleetwise",
+      "name": "AWS IoT FleetWise",
+      "aliases": [
+        "IoTFleetWise",
+        "iotfleetwise"
+      ],
+      "models": [
+        {
+          "id": "iotfleetwise",
+          "name": "IoTFleetWise"
+        }
+      ]
+    },
+    {
+      "id": "iotsitewise",
+      "name": "AWS IoT SiteWise",
+      "aliases": [
+        "IoTSiteWise",
+        "iotsitewise"
+      ],
+      "models": [
+        {
+          "id": "iotsitewise",
+          "name": "IoTSiteWise"
+        }
+      ]
+    },
+    {
+      "id": "iotthingsgraph",
+      "name": "AWS IoT Things Graph",
+      "aliases": [
+        "IoTThingsGraph",
+        "iotthingsgraph"
+      ],
+      "models": [
+        {
+          "id": "iotthingsgraph",
+          "name": "IoTThingsGraph"
+        }
+      ]
+    },
+    {
+      "id": "iottwinmaker",
+      "name": "AWS IoT TwinMaker",
+      "aliases": [
+        "IoTTwinMaker",
+        "iottwinmaker"
+      ],
+      "models": [
+        {
+          "id": "iottwinmaker",
+          "name": "IoTTwinMaker"
+        }
+      ]
+    },
+    {
+      "id": "kms",
+      "name": "AWS Key Management Service (KMS)",
+      "aliases": [
+        "AWS Key Management Service",
+        "KMS",
+        "kms"
+      ],
+      "models": [
+        {
+          "id": "kms",
+          "name": "KMS"
+        }
+      ]
+    },
+    {
+      "id": "keyspaces",
+      "name": "Amazon Keyspaces",
+      "aliases": [
+        "Amazon Keyspaces Streams",
+        "Keyspaces",
+        "keyspaces",
+        "KeyspacesStreams",
+        "keyspacesstreams"
+      ],
+      "models": [
+        {
+          "id": "keyspaces",
+          "name": "Keyspaces"
+        },
+        {
+          "id": "keyspacesstreams",
+          "name": "KeyspacesStreams"
+        }
+      ]
+    },
+    {
+      "id": "kinesis",
+      "name": "Amazon Kinesis Data Streams",
+      "aliases": [
+        "Amazon Kinesis",
+        "Kinesis",
+        "kinesis"
+      ],
+      "models": [
+        {
+          "id": "kinesis",
+          "name": "Kinesis"
+        }
+      ]
+    },
+    {
+      "id": "kinesisvideo",
+      "name": "Amazon Kinesis Video Streams",
+      "aliases": [
+        "Amazon Kinesis Video Signaling Channels",
+        "Amazon Kinesis Video Streams Archived Media",
+        "Amazon Kinesis Video Streams Media",
+        "Amazon Kinesis Video WebRTC Storage",
+        "Kinesis Video",
+        "Kinesis Video Archived Media",
+        "Kinesis Video Media",
+        "Kinesis Video Signaling",
+        "Kinesis Video WebRTC Storage",
+        "kinesisvideo",
+        "kinesisvideoarchivedmedia",
+        "kinesisvideomedia",
+        "kinesisvideosignaling",
+        "kinesisvideowebrtcstorage"
+      ],
+      "models": [
+        {
+          "id": "kinesisvideo",
+          "name": "Kinesis Video"
+        },
+        {
+          "id": "kinesisvideoarchivedmedia",
+          "name": "Kinesis Video Archived Media"
+        },
+        {
+          "id": "kinesisvideomedia",
+          "name": "Kinesis Video Media"
+        },
+        {
+          "id": "kinesisvideosignaling",
+          "name": "Kinesis Video Signaling"
+        },
+        {
+          "id": "kinesisvideowebrtcstorage",
+          "name": "Kinesis Video WebRTC Storage"
+        }
+      ]
+    },
+    {
+      "id": "lakeformation",
+      "name": "AWS Lake Formation",
+      "aliases": [
+        "LakeFormation",
+        "lakeformation"
+      ],
+      "models": [
+        {
+          "id": "lakeformation",
+          "name": "LakeFormation"
+        }
+      ]
+    },
+    {
+      "id": "lambda",
+      "name": "AWS Lambda",
+      "aliases": [
+        "AWS Lambda Core",
+        "Lambda",
+        "lambda",
+        "Lambda Core",
+        "Lambda MicroVMs",
+        "Lambda Microvms",
+        "Lambda Web",
+        "lambdacore",
+        "lambdamicrovms",
+        "lambdaweb"
+      ],
+      "models": [
+        {
+          "id": "lambda",
+          "name": "Lambda"
+        },
+        {
+          "id": "lambdacore",
+          "name": "Lambda Core"
+        },
+        {
+          "id": "lambdamicrovms",
+          "name": "Lambda Microvms"
+        },
+        {
+          "id": "lambdaweb",
+          "name": "Lambda Web"
+        }
+      ]
+    },
+    {
+      "id": "launchwizard",
+      "name": "AWS Launch Wizard",
+      "aliases": [
+        "Launch Wizard",
+        "launchwizard"
+      ],
+      "models": [
+        {
+          "id": "launchwizard",
+          "name": "Launch Wizard"
+        }
+      ]
+    },
+    {
+      "id": "lex",
+      "name": "Amazon Lex",
+      "aliases": [
+        "Amazon Lex Model Building Service",
+        "Amazon Lex Model Building V2",
+        "Amazon Lex Runtime Service",
+        "Amazon Lex Runtime V2",
+        "Lex Model Building Service",
+        "Lex Models V2",
+        "Lex Runtime Service",
+        "Lex Runtime V2",
+        "lexmodelbuildingservice",
+        "lexmodelsv2",
+        "lexruntimeservice",
+        "lexruntimev2"
+      ],
+      "models": [
+        {
+          "id": "lexmodelbuildingservice",
+          "name": "Lex Model Building Service"
+        },
+        {
+          "id": "lexmodelsv2",
+          "name": "Lex Models V2"
+        },
+        {
+          "id": "lexruntimeservice",
+          "name": "Lex Runtime Service"
+        },
+        {
+          "id": "lexruntimev2",
+          "name": "Lex Runtime V2"
+        }
+      ]
+    },
+    {
+      "id": "licensemanager",
+      "name": "AWS License Manager",
+      "aliases": [
+        "AWS License Manager Linux Subscriptions",
+        "AWS License Manager User Subscriptions",
+        "License Manager",
+        "License Manager Linux Subscriptions",
+        "License Manager User Subscriptions",
+        "licensemanager",
+        "licensemanagerlinuxsubscriptions",
+        "licensemanagerusersubscriptions"
+      ],
+      "models": [
+        {
+          "id": "licensemanager",
+          "name": "License Manager"
+        },
+        {
+          "id": "licensemanagerlinuxsubscriptions",
+          "name": "License Manager Linux Subscriptions"
+        },
+        {
+          "id": "licensemanagerusersubscriptions",
+          "name": "License Manager User Subscriptions"
+        }
+      ]
+    },
+    {
+      "id": "lightsail",
+      "name": "Amazon Lightsail",
+      "aliases": [
+        "Lightsail",
+        "lightsail"
+      ],
+      "models": [
+        {
+          "id": "lightsail",
+          "name": "Lightsail"
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "name": "Amazon Location Service",
+      "aliases": [
+        "Amazon Location Service Maps V2",
+        "Amazon Location Service Places V2",
+        "Amazon Location Service Routes V2",
+        "Geo Maps",
+        "Geo Places",
+        "Geo Routes",
+        "geomaps",
+        "geoplaces",
+        "georoutes",
+        "Location",
+        "location"
+      ],
+      "models": [
+        {
+          "id": "geomaps",
+          "name": "Geo Maps"
+        },
+        {
+          "id": "geoplaces",
+          "name": "Geo Places"
+        },
+        {
+          "id": "georoutes",
+          "name": "Geo Routes"
+        },
+        {
+          "id": "location",
+          "name": "Location"
+        }
+      ]
+    },
+    {
+      "id": "lookoutequipment",
+      "name": "Amazon Lookout for Equipment",
+      "aliases": [
+        "LookoutEquipment",
+        "lookoutequipment"
+      ],
+      "models": [
+        {
+          "id": "lookoutequipment",
+          "name": "LookoutEquipment"
+        }
+      ]
+    },
+    {
+      "id": "machinelearning",
+      "name": "Amazon Machine Learning",
+      "aliases": [
+        "Machine Learning",
+        "machinelearning"
+      ],
+      "models": [
+        {
+          "id": "machinelearning",
+          "name": "Machine Learning"
+        }
+      ]
+    },
+    {
+      "id": "macie2",
+      "name": "Amazon Macie",
+      "aliases": [
+        "Amazon Macie 2",
+        "Macie2",
+        "macie2"
+      ],
+      "models": [
+        {
+          "id": "macie2",
+          "name": "Macie2"
+        }
+      ]
+    },
+    {
+      "id": "m2",
+      "name": "AWS Mainframe Modernization",
+      "aliases": [
+        "AWSMainframeModernization",
+        "m2"
+      ],
+      "models": [
+        {
+          "id": "m2",
+          "name": "m2"
+        }
+      ]
+    },
+    {
+      "id": "managedblockchain",
+      "name": "Amazon Managed Blockchain",
+      "aliases": [
+        "Amazon Managed Blockchain Query",
+        "ManagedBlockchain",
+        "managedblockchain",
+        "ManagedBlockchain Query",
+        "managedblockchainquery"
+      ],
+      "models": [
+        {
+          "id": "managedblockchain",
+          "name": "ManagedBlockchain"
+        },
+        {
+          "id": "managedblockchainquery",
+          "name": "ManagedBlockchain Query"
+        }
+      ]
+    },
+    {
+      "id": "grafana",
+      "name": "Amazon Managed Grafana",
+      "aliases": [
+        "grafana"
+      ],
+      "models": [
+        {
+          "id": "grafana",
+          "name": "grafana"
+        }
+      ]
+    },
+    {
+      "id": "kinesisanalytics",
+      "name": "Amazon Managed Service for Apache Flink",
+      "aliases": [
+        "Amazon Kinesis Analytics",
+        "Kinesis Analytics",
+        "Kinesis Analytics V2",
+        "kinesisanalytics",
+        "kinesisanalyticsv2"
+      ],
+      "models": [
+        {
+          "id": "kinesisanalytics",
+          "name": "Kinesis Analytics"
+        },
+        {
+          "id": "kinesisanalyticsv2",
+          "name": "Kinesis Analytics V2"
+        }
+      ]
+    },
+    {
+      "id": "amp",
+      "name": "Amazon Managed Service for Prometheus",
+      "aliases": [
+        "Amazon Prometheus Service",
+        "amp"
+      ],
+      "models": [
+        {
+          "id": "amp",
+          "name": "amp"
+        }
+      ]
+    },
+    {
+      "id": "kafka",
+      "name": "Amazon Managed Streaming for Apache Kafka (MSK)",
+      "aliases": [
+        "Kafka",
+        "kafka",
+        "KafkaConnect",
+        "kafkaconnect",
+        "Managed Streaming for Kafka",
+        "Managed Streaming for Kafka Connect"
+      ],
+      "models": [
+        {
+          "id": "kafka",
+          "name": "Kafka"
+        },
+        {
+          "id": "kafkaconnect",
+          "name": "KafkaConnect"
+        }
+      ]
+    },
+    {
+      "id": "mwaa",
+      "name": "Amazon Managed Workflows for Apache Airflow (MWAA)",
+      "aliases": [
+        "AmazonMWAA",
+        "AmazonMWAAServerless",
+        "MWAA",
+        "mwaa",
+        "MWAA Serverless",
+        "mwaaserverless"
+      ],
+      "models": [
+        {
+          "id": "mwaa",
+          "name": "MWAA"
+        },
+        {
+          "id": "mwaaserverless",
+          "name": "MWAA Serverless"
+        }
+      ]
+    },
+    {
+      "id": "marketplace",
+      "name": "AWS Marketplace",
+      "aliases": [
+        "AWS Marketplace Agreement Service",
+        "AWS Marketplace Catalog Service",
+        "AWS Marketplace Commerce Analytics",
+        "AWS Marketplace Deployment Service",
+        "AWS Marketplace Discovery",
+        "AWS Marketplace Entitlement Service",
+        "AWS Marketplace Reporting Service",
+        "AWSMarketplace Metering",
+        "Marketplace Agreement",
+        "Marketplace Catalog",
+        "Marketplace Commerce Analytics",
+        "Marketplace Deployment",
+        "Marketplace Discovery",
+        "Marketplace Entitlement Service",
+        "Marketplace Metering",
+        "Marketplace Reporting",
+        "marketplaceagreement",
+        "marketplacecatalog",
+        "marketplacecommerceanalytics",
+        "marketplacedeployment",
+        "marketplacediscovery",
+        "marketplaceentitlementservice",
+        "marketplacemetering",
+        "marketplacereporting"
+      ],
+      "models": [
+        {
+          "id": "marketplaceagreement",
+          "name": "Marketplace Agreement"
+        },
+        {
+          "id": "marketplacecatalog",
+          "name": "Marketplace Catalog"
+        },
+        {
+          "id": "marketplacecommerceanalytics",
+          "name": "Marketplace Commerce Analytics"
+        },
+        {
+          "id": "marketplacedeployment",
+          "name": "Marketplace Deployment"
+        },
+        {
+          "id": "marketplacediscovery",
+          "name": "Marketplace Discovery"
+        },
+        {
+          "id": "marketplaceentitlementservice",
+          "name": "Marketplace Entitlement Service"
+        },
+        {
+          "id": "marketplacemetering",
+          "name": "Marketplace Metering"
+        },
+        {
+          "id": "marketplacereporting",
+          "name": "Marketplace Reporting"
+        }
+      ]
+    },
+    {
+      "id": "mturk",
+      "name": "Amazon Mechanical Turk",
+      "aliases": [
+        "MTurk",
+        "mturk"
+      ],
+      "models": [
+        {
+          "id": "mturk",
+          "name": "MTurk"
+        }
+      ]
+    },
+    {
+      "id": "mediaconnect",
+      "name": "AWS MediaConnect",
+      "aliases": [
+        "MediaConnect",
+        "mediaconnect"
+      ],
+      "models": [
+        {
+          "id": "mediaconnect",
+          "name": "MediaConnect"
+        }
+      ]
+    },
+    {
+      "id": "mediatailor",
+      "name": "AWS MediaTailor",
+      "aliases": [
+        "MediaTailor",
+        "mediatailor"
+      ],
+      "models": [
+        {
+          "id": "mediatailor",
+          "name": "MediaTailor"
+        }
+      ]
+    },
+    {
+      "id": "memorydb",
+      "name": "Amazon MemoryDB",
+      "aliases": [
+        "MemoryDB",
+        "memorydb"
+      ],
+      "models": [
+        {
+          "id": "memorydb",
+          "name": "MemoryDB"
+        }
+      ]
+    },
+    {
+      "id": "migrationhub",
+      "name": "AWS Migration Hub",
+      "aliases": [
+        "AWS Migration Hub Config",
+        "AWS Migration Hub Orchestrator",
+        "AWS Migration Hub Refactor Spaces",
+        "Migration Hub",
+        "Migration Hub Refactor Spaces",
+        "Migration Hub Strategy Recommendations",
+        "migrationhub",
+        "MigrationHub Config",
+        "migrationhubconfig",
+        "MigrationHubOrchestrator",
+        "migrationhuborchestrator",
+        "migrationhubrefactorspaces",
+        "MigrationHubStrategy",
+        "migrationhubstrategy"
+      ],
+      "models": [
+        {
+          "id": "migrationhub",
+          "name": "Migration Hub"
+        },
+        {
+          "id": "migrationhubconfig",
+          "name": "MigrationHub Config"
+        },
+        {
+          "id": "migrationhuborchestrator",
+          "name": "MigrationHubOrchestrator"
+        },
+        {
+          "id": "migrationhubrefactorspaces",
+          "name": "Migration Hub Refactor Spaces"
+        },
+        {
+          "id": "migrationhubstrategy",
+          "name": "MigrationHubStrategy"
+        }
+      ]
+    },
+    {
+      "id": "mq",
+      "name": "Amazon MQ",
+      "aliases": [
+        "AmazonMQ",
+        "mq"
+      ],
+      "models": [
+        {
+          "id": "mq",
+          "name": "mq"
+        }
+      ]
+    },
+    {
+      "id": "neptune",
+      "name": "Amazon Neptune",
+      "aliases": [
+        "Amazon Neptune Graph",
+        "Amazon NeptuneData",
+        "Neptune",
+        "neptune",
+        "Neptune Graph",
+        "neptunedata",
+        "neptunegraph"
+      ],
+      "models": [
+        {
+          "id": "neptune",
+          "name": "Neptune"
+        },
+        {
+          "id": "neptunedata",
+          "name": "neptunedata"
+        },
+        {
+          "id": "neptunegraph",
+          "name": "Neptune Graph"
+        }
+      ]
+    },
+    {
+      "id": "networkfirewall",
+      "name": "AWS Network Firewall",
+      "aliases": [
+        "Network Firewall",
+        "networkfirewall"
+      ],
+      "models": [
+        {
+          "id": "networkfirewall",
+          "name": "Network Firewall"
+        }
+      ]
+    },
+    {
+      "id": "networkmanager",
+      "name": "AWS Network Manager",
+      "aliases": [
+        "NetworkManager",
+        "networkmanager"
+      ],
+      "models": [
+        {
+          "id": "networkmanager",
+          "name": "NetworkManager"
+        }
+      ]
+    },
+    {
+      "id": "networksecuritymanager",
+      "name": "AWS Network Security Manager Customer API",
+      "aliases": [
+        "Network Security Manager",
+        "networksecuritymanager"
+      ],
+      "models": [
+        {
+          "id": "networksecuritymanager",
+          "name": "Network Security Manager"
+        }
+      ]
+    },
+    {
+      "id": "novaact",
+      "name": "Amazon Nova Act",
+      "aliases": [
+        "Nova Act",
+        "Nova Act Service",
+        "novaact"
+      ],
+      "models": [
+        {
+          "id": "novaact",
+          "name": "Nova Act"
+        }
+      ]
+    },
+    {
+      "id": "opensearch",
+      "name": "Amazon OpenSearch Service",
+      "aliases": [
+        "Amazon Elasticsearch Service",
+        "Amazon OpenSearch Ingestion",
+        "Elasticsearch Service",
+        "elasticsearchservice",
+        "OpenSearch",
+        "opensearch",
+        "OpenSearch Service Serverless",
+        "OpenSearchServerless",
+        "opensearchserverless",
+        "OSIS",
+        "osis"
+      ],
+      "models": [
+        {
+          "id": "elasticsearchservice",
+          "name": "Elasticsearch Service"
+        },
+        {
+          "id": "opensearch",
+          "name": "OpenSearch"
+        },
+        {
+          "id": "opensearchserverless",
+          "name": "OpenSearchServerless"
+        },
+        {
+          "id": "osis",
+          "name": "OSIS"
+        }
+      ]
+    },
+    {
+      "id": "odb",
+      "name": "Oracle Database@AWS",
+      "aliases": [
+        "odb"
+      ],
+      "models": [
+        {
+          "id": "odb",
+          "name": "odb"
+        }
+      ]
+    },
+    {
+      "id": "organizations",
+      "name": "AWS Organizations",
+      "aliases": [
+        "AWS Multi-party Approval",
+        "MPA",
+        "mpa",
+        "Organizations",
+        "organizations"
+      ],
+      "models": [
+        {
+          "id": "mpa",
+          "name": "MPA"
+        },
+        {
+          "id": "organizations",
+          "name": "Organizations"
+        }
+      ]
+    },
+    {
+      "id": "outposts",
+      "name": "AWS Outposts",
+      "aliases": [
+        "Outposts",
+        "outposts"
+      ],
+      "models": [
+        {
+          "id": "outposts",
+          "name": "Outposts"
+        }
+      ]
+    },
+    {
+      "id": "pcs",
+      "name": "AWS Parallel Computing Service",
+      "aliases": [
+        "PCS",
+        "pcs"
+      ],
+      "models": [
+        {
+          "id": "pcs",
+          "name": "PCS"
+        }
+      ]
+    },
+    {
+      "id": "partner-central",
+      "name": "AWS Partner Central",
+      "aliases": [
+        "Partner Central Account API",
+        "Partner Central Benefits API",
+        "Partner Central Channel API",
+        "Partner Central Revenue Measurement API",
+        "Partner Central Selling API",
+        "PartnerCentral Account",
+        "PartnerCentral Benefits",
+        "PartnerCentral Channel",
+        "PartnerCentral Revenue Measurement",
+        "PartnerCentral Selling",
+        "partnercentralaccount",
+        "partnercentralbenefits",
+        "partnercentralchannel",
+        "partnercentralrevenuemeasurement",
+        "partnercentralselling"
+      ],
+      "models": [
+        {
+          "id": "partnercentralaccount",
+          "name": "PartnerCentral Account"
+        },
+        {
+          "id": "partnercentralbenefits",
+          "name": "PartnerCentral Benefits"
+        },
+        {
+          "id": "partnercentralchannel",
+          "name": "PartnerCentral Channel"
+        },
+        {
+          "id": "partnercentralrevenuemeasurement",
+          "name": "PartnerCentral Revenue Measurement"
+        },
+        {
+          "id": "partnercentralselling",
+          "name": "PartnerCentral Selling"
+        }
+      ]
+    },
+    {
+      "id": "paymentcryptography",
+      "name": "AWS Payment Cryptography",
+      "aliases": [
+        "Payment Cryptography",
+        "Payment Cryptography Control Plane",
+        "Payment Cryptography Data",
+        "Payment Cryptography Data Plane",
+        "paymentcryptography",
+        "paymentcryptographydata"
+      ],
+      "models": [
+        {
+          "id": "paymentcryptography",
+          "name": "Payment Cryptography"
+        },
+        {
+          "id": "paymentcryptographydata",
+          "name": "Payment Cryptography Data"
+        }
+      ]
+    },
+    {
+      "id": "personalize",
+      "name": "Amazon Personalize",
+      "aliases": [
+        "Amazon Personalize Events",
+        "Amazon Personalize Runtime",
+        "Personalize",
+        "personalize",
+        "Personalize Events",
+        "Personalize Runtime",
+        "personalizeevents",
+        "personalizeruntime"
+      ],
+      "models": [
+        {
+          "id": "personalize",
+          "name": "Personalize"
+        },
+        {
+          "id": "personalizeevents",
+          "name": "Personalize Events"
+        },
+        {
+          "id": "personalizeruntime",
+          "name": "Personalize Runtime"
+        }
+      ]
+    },
+    {
+      "id": "pinpoint",
+      "name": "Amazon Pinpoint",
+      "aliases": [
+        "Amazon Pinpoint Email Service",
+        "Pinpoint",
+        "pinpoint",
+        "Pinpoint Email",
+        "pinpointemail"
+      ],
+      "models": [
+        {
+          "id": "pinpoint",
+          "name": "Pinpoint"
+        },
+        {
+          "id": "pinpointemail",
+          "name": "Pinpoint Email"
+        }
+      ]
+    },
+    {
+      "id": "polly",
+      "name": "Amazon Polly",
+      "aliases": [
+        "Polly",
+        "polly"
+      ],
+      "models": [
+        {
+          "id": "polly",
+          "name": "Polly"
+        }
+      ]
+    },
+    {
+      "id": "acmpca",
+      "name": "AWS Private CA",
+      "aliases": [
+        "ACM PCA",
+        "acmpca",
+        "AWS Certificate Manager Private Certificate Authority",
+        "Pca Connector Ad",
+        "Pca Connector Scep",
+        "PcaConnectorAd",
+        "pcaconnectorad",
+        "pcaconnectorscep",
+        "Private CA Connector for SCEP"
+      ],
+      "models": [
+        {
+          "id": "acmpca",
+          "name": "ACM PCA"
+        },
+        {
+          "id": "pcaconnectorad",
+          "name": "Pca Connector Ad"
+        },
+        {
+          "id": "pcaconnectorscep",
+          "name": "Pca Connector Scep"
+        }
+      ]
+    },
+    {
+      "id": "proton",
+      "name": "AWS Proton",
+      "aliases": [
+        "Proton",
+        "proton"
+      ],
+      "models": [
+        {
+          "id": "proton",
+          "name": "Proton"
+        }
+      ]
+    },
+    {
+      "id": "qbusiness",
+      "name": "Amazon Q Business",
+      "aliases": [
+        "QApps",
+        "qapps",
+        "QBusiness",
+        "qbusiness"
+      ],
+      "models": [
+        {
+          "id": "qapps",
+          "name": "QApps"
+        },
+        {
+          "id": "qbusiness",
+          "name": "QBusiness"
+        }
+      ]
+    },
+    {
+      "id": "chatbot",
+      "name": "Amazon Q Developer in chat applications",
+      "aliases": [
+        "AWS Chatbot",
+        "chatbot"
+      ],
+      "models": [
+        {
+          "id": "chatbot",
+          "name": "chatbot"
+        }
+      ]
+    },
+    {
+      "id": "quicksight",
+      "name": "Amazon Quick Sight",
+      "aliases": [
+        "Amazon QuickSight",
+        "QuickSight",
+        "quicksight"
+      ],
+      "models": [
+        {
+          "id": "quicksight",
+          "name": "QuickSight"
+        }
+      ]
+    },
+    {
+      "id": "rds",
+      "name": "Amazon RDS",
+      "aliases": [
+        "Amazon Relational Database Service",
+        "AWS Performance Insights",
+        "AWS RDS DataService",
+        "PI",
+        "pi",
+        "RDS",
+        "rds",
+        "RDS Data",
+        "rdsdata",
+        "relational database"
+      ],
+      "models": [
+        {
+          "id": "pi",
+          "name": "PI"
+        },
+        {
+          "id": "rds",
+          "name": "RDS"
+        },
+        {
+          "id": "rdsdata",
+          "name": "RDS Data"
+        }
+      ]
+    },
+    {
+      "id": "repostspace",
+      "name": "AWS re:Post Private",
+      "aliases": [
+        "repostspace"
+      ],
+      "models": [
+        {
+          "id": "repostspace",
+          "name": "repostspace"
+        }
+      ]
+    },
+    {
+      "id": "redshift",
+      "name": "Amazon Redshift",
+      "aliases": [
+        "Redshift",
+        "redshift",
+        "Redshift Data",
+        "Redshift Data API Service",
+        "Redshift Serverless",
+        "redshiftdata",
+        "redshiftserverless"
+      ],
+      "models": [
+        {
+          "id": "redshift",
+          "name": "Redshift"
+        },
+        {
+          "id": "redshiftdata",
+          "name": "Redshift Data"
+        },
+        {
+          "id": "redshiftserverless",
+          "name": "Redshift Serverless"
+        }
+      ]
+    },
+    {
+      "id": "rekognition",
+      "name": "Amazon Rekognition",
+      "aliases": [
+        "Rekognition",
+        "rekognition"
+      ],
+      "models": [
+        {
+          "id": "rekognition",
+          "name": "Rekognition"
+        }
+      ]
+    },
+    {
+      "id": "resiliencehub",
+      "name": "AWS Resilience Hub",
+      "aliases": [
+        "AWS Resilience Hub V2",
+        "resiliencehub",
+        "resiliencehubv2"
+      ],
+      "models": [
+        {
+          "id": "resiliencehub",
+          "name": "resiliencehub"
+        },
+        {
+          "id": "resiliencehubv2",
+          "name": "resiliencehubv2"
+        }
+      ]
+    },
+    {
+      "id": "ram",
+      "name": "AWS Resource Access Manager (RAM)",
+      "aliases": [
+        "AWS Resource Access Manager",
+        "RAM",
+        "ram"
+      ],
+      "models": [
+        {
+          "id": "ram",
+          "name": "RAM"
+        }
+      ]
+    },
+    {
+      "id": "resourceexplorer2",
+      "name": "AWS Resource Explorer",
+      "aliases": [
+        "Resource Explorer 2",
+        "resourceexplorer2"
+      ],
+      "models": [
+        {
+          "id": "resourceexplorer2",
+          "name": "Resource Explorer 2"
+        }
+      ]
+    },
+    {
+      "id": "resourcegroups",
+      "name": "AWS Resource Groups",
+      "aliases": [
+        "AWS Resource Groups Tagging API",
+        "Resource Groups",
+        "Resource Groups Tagging API",
+        "resourcegroups",
+        "resourcegroupstaggingapi"
+      ],
+      "models": [
+        {
+          "id": "resourcegroups",
+          "name": "Resource Groups"
+        },
+        {
+          "id": "resourcegroupstaggingapi",
+          "name": "Resource Groups Tagging API"
+        }
+      ]
+    },
+    {
+      "id": "route53",
+      "name": "Amazon Route 53",
+      "aliases": [
+        "Amazon Route 53 Domains",
+        "Amazon Route 53 Global Resolver",
+        "Amazon Route 53 Resolver",
+        "Route 53",
+        "Route 53 Domains",
+        "Route 53 Profiles",
+        "route53",
+        "route53domains",
+        "Route53GlobalResolver",
+        "route53globalresolver",
+        "Route53Profiles",
+        "route53profiles",
+        "Route53Resolver",
+        "route53resolver"
+      ],
+      "models": [
+        {
+          "id": "route53",
+          "name": "Route 53"
+        },
+        {
+          "id": "route53domains",
+          "name": "Route 53 Domains"
+        },
+        {
+          "id": "route53globalresolver",
+          "name": "Route53GlobalResolver"
+        },
+        {
+          "id": "route53profiles",
+          "name": "Route53Profiles"
+        },
+        {
+          "id": "route53resolver",
+          "name": "Route53Resolver"
+        }
+      ]
+    },
+    {
+      "id": "rtbfabric",
+      "name": "AWS RTB Fabric",
+      "aliases": [
+        "RTBFabric",
+        "rtbfabric"
+      ],
+      "models": [
+        {
+          "id": "rtbfabric",
+          "name": "RTBFabric"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "name": "Amazon S3",
+      "aliases": [
+        "Amazon S3 Files",
+        "Amazon S3 on Outposts",
+        "Amazon S3 Tables",
+        "Amazon S3 Vectors",
+        "Amazon Simple Storage Service",
+        "AWS S3 Control",
+        "buckets",
+        "object storage",
+        "S3",
+        "s3",
+        "S3 Control",
+        "s3control",
+        "S3Files",
+        "s3files",
+        "S3Outposts",
+        "s3outposts",
+        "S3Tables",
+        "s3tables",
+        "S3Vectors",
+        "s3vectors"
+      ],
+      "models": [
+        {
+          "id": "s3",
+          "name": "S3"
+        },
+        {
+          "id": "s3control",
+          "name": "S3 Control"
+        },
+        {
+          "id": "s3files",
+          "name": "S3Files"
+        },
+        {
+          "id": "s3outposts",
+          "name": "S3Outposts"
+        },
+        {
+          "id": "s3tables",
+          "name": "S3Tables"
+        },
+        {
+          "id": "s3vectors",
+          "name": "S3Vectors"
+        }
+      ]
+    },
+    {
+      "id": "sagemaker",
+      "name": "Amazon SageMaker AI",
+      "aliases": [
+        "Amazon Sagemaker Edge Manager",
+        "Amazon SageMaker Feature Store Runtime",
+        "Amazon SageMaker geospatial capabilities",
+        "Amazon SageMaker Metrics Service",
+        "Amazon SageMaker Runtime",
+        "Amazon SageMaker Runtime HTTP2",
+        "Amazon SageMaker Service",
+        "SageMaker",
+        "sagemaker",
+        "Sagemaker Edge",
+        "SageMaker FeatureStore Runtime",
+        "SageMaker Geospatial",
+        "Sagemaker Job Runtime Service",
+        "SageMaker Metrics",
+        "SageMaker Runtime",
+        "SageMaker Runtime HTTP2",
+        "SageMaker Training Session Runtime",
+        "sagemakeredge",
+        "sagemakerfeaturestoreruntime",
+        "sagemakergeospatial",
+        "SagemakerJobRuntime",
+        "sagemakerjobruntime",
+        "sagemakermetrics",
+        "sagemakerruntime",
+        "sagemakerruntimehttp2",
+        "SageMakerTrainingSessionRuntime",
+        "sagemakertrainingsessionruntime"
+      ],
+      "models": [
+        {
+          "id": "sagemaker",
+          "name": "SageMaker"
+        },
+        {
+          "id": "sagemakeredge",
+          "name": "Sagemaker Edge"
+        },
+        {
+          "id": "sagemakerfeaturestoreruntime",
+          "name": "SageMaker FeatureStore Runtime"
+        },
+        {
+          "id": "sagemakergeospatial",
+          "name": "SageMaker Geospatial"
+        },
+        {
+          "id": "sagemakerjobruntime",
+          "name": "SagemakerJobRuntime"
+        },
+        {
+          "id": "sagemakermetrics",
+          "name": "SageMaker Metrics"
+        },
+        {
+          "id": "sagemakerruntime",
+          "name": "SageMaker Runtime"
+        },
+        {
+          "id": "sagemakerruntimehttp2",
+          "name": "SageMaker Runtime HTTP2"
+        },
+        {
+          "id": "sagemakertrainingsessionruntime",
+          "name": "SageMakerTrainingSessionRuntime"
+        }
+      ]
+    },
+    {
+      "id": "secretsmanager",
+      "name": "AWS Secrets Manager",
+      "aliases": [
+        "Secrets Manager",
+        "secretsmanager"
+      ],
+      "models": [
+        {
+          "id": "secretsmanager",
+          "name": "Secrets Manager"
+        }
+      ]
+    },
+    {
+      "id": "securityir",
+      "name": "AWS Security Incident Response",
+      "aliases": [
+        "Security Incident Response",
+        "Security IR",
+        "securityir"
+      ],
+      "models": [
+        {
+          "id": "securityir",
+          "name": "Security IR"
+        }
+      ]
+    },
+    {
+      "id": "securitylake",
+      "name": "Amazon Security Lake",
+      "aliases": [
+        "SecurityLake",
+        "securitylake"
+      ],
+      "models": [
+        {
+          "id": "securitylake",
+          "name": "SecurityLake"
+        }
+      ]
+    },
+    {
+      "id": "sts",
+      "name": "AWS Security Token Service (STS)",
+      "aliases": [
+        "AWS Security Token Service",
+        "STS",
+        "sts"
+      ],
+      "models": [
+        {
+          "id": "sts",
+          "name": "STS"
+        }
+      ]
+    },
+    {
+      "id": "securityhub",
+      "name": "AWS SecurityHub",
+      "aliases": [
+        "SecurityHub",
+        "securityhub"
+      ],
+      "models": [
+        {
+          "id": "securityhub",
+          "name": "SecurityHub"
+        }
+      ]
+    },
+    {
+      "id": "servicecatalog",
+      "name": "AWS Service Catalog",
+      "aliases": [
+        "AWS Service Catalog App Registry",
+        "Service Catalog",
+        "Service Catalog AppRegistry",
+        "servicecatalog",
+        "servicecatalogappregistry"
+      ],
+      "models": [
+        {
+          "id": "servicecatalog",
+          "name": "Service Catalog"
+        },
+        {
+          "id": "servicecatalogappregistry",
+          "name": "Service Catalog AppRegistry"
+        }
+      ]
+    },
+    {
+      "id": "servicequotas",
+      "name": "Service Quotas",
+      "aliases": [
+        "servicequotas"
+      ],
+      "models": [
+        {
+          "id": "servicequotas",
+          "name": "Service Quotas"
+        }
+      ]
+    },
+    {
+      "id": "ses",
+      "name": "Amazon SES",
+      "aliases": [
+        "Amazon Simple Email Service",
+        "MailManager",
+        "mailmanager",
+        "SES",
+        "ses",
+        "SESv2",
+        "sesv2"
+      ],
+      "models": [
+        {
+          "id": "mailmanager",
+          "name": "MailManager"
+        },
+        {
+          "id": "ses",
+          "name": "SES"
+        },
+        {
+          "id": "sesv2",
+          "name": "SESv2"
+        }
+      ]
+    },
+    {
+      "id": "shield",
+      "name": "AWS Shield",
+      "aliases": [
+        "Shield",
+        "shield"
+      ],
+      "models": [
+        {
+          "id": "shield",
+          "name": "Shield"
+        }
+      ]
+    },
+    {
+      "id": "signin",
+      "name": "AWS Sign-In Service",
+      "aliases": [
+        "Signin",
+        "signin"
+      ],
+      "models": [
+        {
+          "id": "signin",
+          "name": "Signin"
+        }
+      ]
+    },
+    {
+      "id": "signer",
+      "name": "AWS Signer",
+      "aliases": [
+        "AWS Signer Data Plane",
+        "signer",
+        "Signer Data",
+        "signerdata"
+      ],
+      "models": [
+        {
+          "id": "signer",
+          "name": "signer"
+        },
+        {
+          "id": "signerdata",
+          "name": "Signer Data"
+        }
+      ]
+    },
+    {
+      "id": "swf",
+      "name": "Amazon Simple Workflow Service (SWF)",
+      "aliases": [
+        "Amazon Simple Workflow Service",
+        "SWF",
+        "swf"
+      ],
+      "models": [
+        {
+          "id": "swf",
+          "name": "SWF"
+        }
+      ]
+    },
+    {
+      "id": "simpledbv2",
+      "name": "Amazon SimpleDB",
+      "aliases": [
+        "Amazon SimpleDB v2",
+        "SimpleDBv2",
+        "simpledbv2"
+      ],
+      "models": [
+        {
+          "id": "simpledbv2",
+          "name": "SimpleDBv2"
+        }
+      ]
+    },
+    {
+      "id": "snowball",
+      "name": "AWS Snow Family",
+      "aliases": [
+        "Amazon Import/Export Snowball",
+        "AWS Snow Device Management",
+        "Snow Device Management",
+        "Snowball",
+        "snowball",
+        "snowdevicemanagement"
+      ],
+      "models": [
+        {
+          "id": "snowball",
+          "name": "Snowball"
+        },
+        {
+          "id": "snowdevicemanagement",
+          "name": "Snow Device Management"
+        }
+      ]
+    },
+    {
+      "id": "sns",
+      "name": "Amazon SNS",
+      "aliases": [
+        "Amazon Simple Notification Service",
+        "SNS",
+        "sns"
+      ],
+      "models": [
+        {
+          "id": "sns",
+          "name": "SNS"
+        }
+      ]
+    },
+    {
+      "id": "sqs",
+      "name": "Amazon SQS",
+      "aliases": [
+        "Amazon Simple Queue Service",
+        "message queues",
+        "SQS",
+        "sqs"
+      ],
+      "models": [
+        {
+          "id": "sqs",
+          "name": "SQS"
+        }
+      ]
+    },
+    {
+      "id": "sfn",
+      "name": "AWS Step Functions",
+      "aliases": [
+        "SFN",
+        "sfn"
+      ],
+      "models": [
+        {
+          "id": "sfn",
+          "name": "SFN"
+        }
+      ]
+    },
+    {
+      "id": "storagegateway",
+      "name": "AWS Storage Gateway",
+      "aliases": [
+        "Storage Gateway",
+        "storagegateway"
+      ],
+      "models": [
+        {
+          "id": "storagegateway",
+          "name": "Storage Gateway"
+        }
+      ]
+    },
+    {
+      "id": "supplychain",
+      "name": "AWS Supply Chain",
+      "aliases": [
+        "SupplyChain",
+        "supplychain"
+      ],
+      "models": [
+        {
+          "id": "supplychain",
+          "name": "SupplyChain"
+        }
+      ]
+    },
+    {
+      "id": "support",
+      "name": "AWS Support",
+      "aliases": [
+        "AWS Support App",
+        "Support",
+        "support",
+        "Support App",
+        "supportapp",
+        "SupportAuthZ",
+        "supportauthz"
+      ],
+      "models": [
+        {
+          "id": "support",
+          "name": "Support"
+        },
+        {
+          "id": "supportapp",
+          "name": "Support App"
+        },
+        {
+          "id": "supportauthz",
+          "name": "SupportAuthZ"
+        }
+      ]
+    },
+    {
+      "id": "ssm",
+      "name": "AWS Systems Manager",
+      "aliases": [
+        "Amazon Simple Systems Manager (SSM)",
+        "AWS SSM-GUIConnect",
+        "AWS Systems Manager for SAP",
+        "AWS Systems Manager Incident Manager",
+        "AWS Systems Manager Incident Manager Contacts",
+        "AWS Systems Manager QuickSetup",
+        "SSM",
+        "ssm",
+        "SSM Contacts",
+        "SSM GuiConnect",
+        "SSM Incidents",
+        "SSM QuickSetup",
+        "Ssm Sap",
+        "ssmcontacts",
+        "ssmguiconnect",
+        "ssmincidents",
+        "ssmquicksetup",
+        "ssmsap"
+      ],
+      "models": [
+        {
+          "id": "ssm",
+          "name": "SSM"
+        },
+        {
+          "id": "ssmcontacts",
+          "name": "SSM Contacts"
+        },
+        {
+          "id": "ssmguiconnect",
+          "name": "SSM GuiConnect"
+        },
+        {
+          "id": "ssmincidents",
+          "name": "SSM Incidents"
+        },
+        {
+          "id": "ssmquicksetup",
+          "name": "SSM QuickSetup"
+        },
+        {
+          "id": "ssmsap",
+          "name": "Ssm Sap"
+        }
+      ]
+    },
+    {
+      "id": "textract",
+      "name": "Amazon Textract",
+      "aliases": [
+        "Textract",
+        "textract"
+      ],
+      "models": [
+        {
+          "id": "textract",
+          "name": "Textract"
+        }
+      ]
+    },
+    {
+      "id": "timestream",
+      "name": "Amazon Timestream",
+      "aliases": [
+        "Amazon Timestream Query",
+        "Amazon Timestream Write",
+        "Timestream InfluxDB",
+        "Timestream Query",
+        "Timestream Write",
+        "timestreaminfluxdb",
+        "timestreamquery",
+        "timestreamwrite"
+      ],
+      "models": [
+        {
+          "id": "timestreaminfluxdb",
+          "name": "Timestream InfluxDB"
+        },
+        {
+          "id": "timestreamquery",
+          "name": "Timestream Query"
+        },
+        {
+          "id": "timestreamwrite",
+          "name": "Timestream Write"
+        }
+      ]
+    },
+    {
+      "id": "transcribe",
+      "name": "Amazon Transcribe Service",
+      "aliases": [
+        "Amazon Transcribe Streaming Service",
+        "Transcribe",
+        "transcribe",
+        "Transcribe Streaming",
+        "transcribestreaming"
+      ],
+      "models": [
+        {
+          "id": "transcribe",
+          "name": "Transcribe"
+        },
+        {
+          "id": "transcribestreaming",
+          "name": "Transcribe Streaming"
+        }
+      ]
+    },
+    {
+      "id": "transfer",
+      "name": "AWS Transfer Family",
+      "aliases": [
+        "Transfer",
+        "transfer"
+      ],
+      "models": [
+        {
+          "id": "transfer",
+          "name": "Transfer"
+        }
+      ]
+    },
+    {
+      "id": "translate",
+      "name": "Amazon Translate",
+      "aliases": [
+        "Translate",
+        "translate"
+      ],
+      "models": [
+        {
+          "id": "translate",
+          "name": "Translate"
+        }
+      ]
+    },
+    {
+      "id": "trustedadvisor",
+      "name": "AWS Trusted Advisor",
+      "aliases": [
+        "TrustedAdvisor",
+        "trustedadvisor",
+        "TrustedAdvisor Public API"
+      ],
+      "models": [
+        {
+          "id": "trustedadvisor",
+          "name": "TrustedAdvisor"
+        }
+      ]
+    },
+    {
+      "id": "uxc",
+      "name": "AWS User Experience Customization",
+      "aliases": [
+        "uxc"
+      ],
+      "models": [
+        {
+          "id": "uxc",
+          "name": "uxc"
+        }
+      ]
+    },
+    {
+      "id": "notifications",
+      "name": "AWS User Notifications",
+      "aliases": [
+        "AWS User Notifications Contacts",
+        "Notifications",
+        "notifications",
+        "NotificationsContacts",
+        "notificationscontacts"
+      ],
+      "models": [
+        {
+          "id": "notifications",
+          "name": "Notifications"
+        },
+        {
+          "id": "notificationscontacts",
+          "name": "NotificationsContacts"
+        }
+      ]
+    },
+    {
+      "id": "verifiedpermissions",
+      "name": "Amazon Verified Permissions",
+      "aliases": [
+        "VerifiedPermissions",
+        "verifiedpermissions"
+      ],
+      "models": [
+        {
+          "id": "verifiedpermissions",
+          "name": "VerifiedPermissions"
+        }
+      ]
+    },
+    {
+      "id": "vpclattice",
+      "name": "Amazon VPC Lattice",
+      "aliases": [
+        "VPC Lattice",
+        "vpclattice"
+      ],
+      "models": [
+        {
+          "id": "vpclattice",
+          "name": "VPC Lattice"
+        }
+      ]
+    },
+    {
+      "id": "waf",
+      "name": "AWS WAF",
+      "aliases": [
+        "AWS WAF Regional",
+        "AWS WAFV2",
+        "WAF",
+        "waf",
+        "WAF Regional",
+        "wafregional",
+        "WAFV2",
+        "wafv2"
+      ],
+      "models": [
+        {
+          "id": "waf",
+          "name": "WAF"
+        },
+        {
+          "id": "wafregional",
+          "name": "WAF Regional"
+        },
+        {
+          "id": "wafv2",
+          "name": "WAFV2"
+        }
+      ]
+    },
+    {
+      "id": "wellarchitected",
+      "name": "AWS Well-Architected Tool",
+      "aliases": [
+        "WellArchitected",
+        "wellarchitected"
+      ],
+      "models": [
+        {
+          "id": "wellarchitected",
+          "name": "WellArchitected"
+        }
+      ]
+    },
+    {
+      "id": "wickr",
+      "name": "AWS Wickr Admin API",
+      "aliases": [
+        "Wickr",
+        "wickr"
+      ],
+      "models": [
+        {
+          "id": "wickr",
+          "name": "Wickr"
+        }
+      ]
+    },
+    {
+      "id": "workdocs",
+      "name": "Amazon WorkDocs",
+      "aliases": [
+        "WorkDocs",
+        "workdocs"
+      ],
+      "models": [
+        {
+          "id": "workdocs",
+          "name": "WorkDocs"
+        }
+      ]
+    },
+    {
+      "id": "workmail",
+      "name": "Amazon WorkMail",
+      "aliases": [
+        "Amazon WorkMail Message Flow",
+        "WorkMail",
+        "workmail",
+        "WorkMailMessageFlow",
+        "workmailmessageflow"
+      ],
+      "models": [
+        {
+          "id": "workmail",
+          "name": "WorkMail"
+        },
+        {
+          "id": "workmailmessageflow",
+          "name": "WorkMailMessageFlow"
+        }
+      ]
+    },
+    {
+      "id": "workspaces",
+      "name": "Amazon WorkSpaces",
+      "aliases": [
+        "Amazon Workspaces Instances",
+        "WorkSpaces",
+        "workspaces",
+        "Workspaces Instances",
+        "workspacesinstances"
+      ],
+      "models": [
+        {
+          "id": "workspaces",
+          "name": "WorkSpaces"
+        },
+        {
+          "id": "workspacesinstances",
+          "name": "Workspaces Instances"
+        }
+      ]
+    },
+    {
+      "id": "appstream",
+      "name": "Amazon WorkSpaces Applications",
+      "aliases": [
+        "Amazon AppStream",
+        "AppStream",
+        "appstream"
+      ],
+      "models": [
+        {
+          "id": "appstream",
+          "name": "AppStream"
+        }
+      ]
+    },
+    {
+      "id": "workspacesweb",
+      "name": "Amazon WorkSpaces Secure Browser",
+      "aliases": [
+        "Amazon WorkSpaces Web",
+        "WorkSpaces Web",
+        "workspacesweb"
+      ],
+      "models": [
+        {
+          "id": "workspacesweb",
+          "name": "WorkSpaces Web"
+        }
+      ]
+    },
+    {
+      "id": "workspacesthinclient",
+      "name": "Amazon WorkSpaces Thin Client",
+      "aliases": [
+        "WorkSpaces Thin Client",
+        "workspacesthinclient"
+      ],
+      "models": [
+        {
+          "id": "workspacesthinclient",
+          "name": "WorkSpaces Thin Client"
+        }
+      ]
+    },
+    {
+      "id": "xray",
+      "name": "AWS X-Ray",
+      "aliases": [
+        "XRay",
+        "xray"
+      ],
+      "models": [
+        {
+          "id": "xray",
+          "name": "XRay"
+        }
+      ]
+    }
+  ]
+}

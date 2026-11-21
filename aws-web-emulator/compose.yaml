@@ -1,0 +1,29 @@
+services:
+  emulator:
+    image: myaws/aws-emulator:local
+    build:
+      context: .
+      args:
+        RPM_ARCH: ${EMULATOR_RPM_ARCH:-x86_64}
+      dockerfile_inline: |
+        FROM public.ecr.aws/amazonlinux/amazonlinux:2023-minimal AS package
+        ARG RPM_ARCH
+        ADD https://downloads.aws.com/aws-emulator/packages/aws-emulator/LTS/latest/aws-emulator-$${RPM_ARCH}.rpm /emulator.rpm
+
+        FROM public.ecr.aws/amazonlinux/amazonlinux:2023-minimal
+        RUN --mount=type=bind,from=package,source=/emulator.rpm,target=/tmp/emulator.rpm \
+            rpm -i /tmp/emulator.rpm && mkdir -p /home/emulator/.aws
+        WORKDIR /home/emulator
+        ENTRYPOINT ["aws-emulator"]
+    user: "${EMULATOR_UID:-1000}:${EMULATOR_GID:-1000}"
+    environment:
+      HOME: /home/emulator
+    command: ["--bind", "0.0.0.0", "--port", "${EMULATOR_PORT:-9297}", "--telemetry", "off"]
+    ports:
+      - "127.0.0.1:${EMULATOR_PORT:-9297}:${EMULATOR_PORT:-9297}"
+    volumes:
+      - type: bind
+        source: ${EMULATOR_STATE_ROOT:-${HOME}/.aws/emulator}
+        target: /home/emulator/.aws/emulator
+        bind:
+          create_host_path: false
