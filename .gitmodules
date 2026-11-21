@@ -1,0 +1,3 @@
+[submodule "aws-emulator"]
+	path = aws-emulator
+	url = https://github.com/aws/aws-emulator.git
