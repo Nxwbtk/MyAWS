@@ -1,4 +1,13 @@
 import { Buffer } from "node:buffer"
+import * as AccessAnalyzerSdk from "@aws-sdk/client-accessanalyzer"
+import * as AioPsSdk from "@aws-sdk/client-aiops"
+import * as ApplicationInsightsSdk from "@aws-sdk/client-application-insights"
+import * as ApplicationSignalsSdk from "@aws-sdk/client-application-signals"
+import * as CloudTrailSdk from "@aws-sdk/client-cloudtrail"
+import * as CloudTrailDataSdk from "@aws-sdk/client-cloudtrail-data"
+import * as CloudWatchSdk from "@aws-sdk/client-cloudwatch"
+import * as CloudWatchLogsSdk from "@aws-sdk/client-cloudwatch-logs"
+import * as CloudWatchOmniSdk from "@aws-sdk/client-cloudwatchomni"
 import {
   CreateBucketCommand,
   GetObjectCommand,
@@ -10,6 +19,7 @@ import {
 } from "@aws-sdk/client-s3"
 import {
   CreateTableCommand,
+  DeleteItemCommand,
   DescribeTableCommand,
   DynamoDBClient,
   paginateListTables,
@@ -17,6 +27,17 @@ import {
   ScanCommand,
   type AttributeValue,
 } from "@aws-sdk/client-dynamodb"
+import * as DynamoDBSdk from "@aws-sdk/client-dynamodb"
+import * as DaxSdk from "@aws-sdk/client-dax"
+import * as DynamoDBStreamsSdk from "@aws-sdk/client-dynamodb-streams"
+import * as Ec2Sdk from "@aws-sdk/client-ec2"
+import * as Ec2InstanceConnectSdk from "@aws-sdk/client-ec2-instance-connect"
+import * as IamSdk from "@aws-sdk/client-iam"
+import * as IamToolboxSdk from "@aws-sdk/client-iam-toolbox"
+import * as InternetMonitorSdk from "@aws-sdk/client-internetmonitor"
+import * as LambdaSdk from "@aws-sdk/client-lambda"
+import * as LambdaCoreSdk from "@aws-sdk/client-lambda-core"
+import * as LambdaWebSdk from "@aws-sdk/client-lambda-web"
 import {
   CreateQueueCommand,
   GetQueueAttributesCommand,
@@ -25,6 +46,21 @@ import {
   SendMessageCommand,
   SQSClient,
 } from "@aws-sdk/client-sqs"
+import * as SqsSdk from "@aws-sdk/client-sqs"
+import * as NetworkFlowMonitorSdk from "@aws-sdk/client-networkflowmonitor"
+import * as NetworkMonitorSdk from "@aws-sdk/client-networkmonitor"
+import * as OamSdk from "@aws-sdk/client-oam"
+import * as ObservabilityAdminSdk from "@aws-sdk/client-observabilityadmin"
+import * as RumSdk from "@aws-sdk/client-rum"
+import * as S3ControlSdk from "@aws-sdk/client-s3-control"
+import * as S3FilesSdk from "@aws-sdk/client-s3files"
+import * as S3OutpostsSdk from "@aws-sdk/client-s3outposts"
+import * as S3TablesSdk from "@aws-sdk/client-s3tables"
+import * as S3VectorsSdk from "@aws-sdk/client-s3vectors"
+import * as S3Sdk from "@aws-sdk/client-s3"
+import * as StsSdk from "@aws-sdk/client-sts"
+import * as SyntheticsSdk from "@aws-sdk/client-synthetics"
+import phase1OperationData from "@/data/phase-1-operations.json"
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb"
 import { z } from "zod"
 import {
@@ -48,6 +84,110 @@ import {
 } from "@/lib/emulator"
 
 export const runtime = "nodejs"
+
+type EmulatorConfig = Awaited<ReturnType<typeof emulatorClientConfig>>
+type OperationClient = {
+  send(command: never): Promise<unknown>
+  destroy?: () => void
+}
+type OperationClientConstructor = new (config: EmulatorConfig) => OperationClient
+type OperationCommandConstructor = new (
+  input: Record<string, unknown>,
+) => never
+type SdkModule = {
+  Client: OperationClientConstructor
+  commands: Record<string, unknown>
+  options?: Record<string, unknown>
+}
+
+function sdkModule(
+  Client: unknown,
+  commands: object,
+  options?: Record<string, unknown>,
+): SdkModule {
+  return {
+    Client: Client as OperationClientConstructor,
+    commands: commands as Record<string, unknown>,
+    options,
+  }
+}
+
+const sdkModules: Record<string, SdkModule> = {
+  accessanalyzer: sdkModule(
+    AccessAnalyzerSdk.AccessAnalyzerClient,
+    AccessAnalyzerSdk,
+  ),
+  aiops: sdkModule(AioPsSdk.AIOpsClient, AioPsSdk),
+  applicationinsights: sdkModule(
+    ApplicationInsightsSdk.ApplicationInsightsClient,
+    ApplicationInsightsSdk,
+  ),
+  applicationsignals: sdkModule(
+    ApplicationSignalsSdk.ApplicationSignalsClient,
+    ApplicationSignalsSdk,
+  ),
+  cloudtrail: sdkModule(CloudTrailSdk.CloudTrailClient, CloudTrailSdk),
+  cloudtraildata: sdkModule(
+    CloudTrailDataSdk.CloudTrailDataClient,
+    CloudTrailDataSdk,
+  ),
+  cloudwatch: sdkModule(CloudWatchSdk.CloudWatchClient, CloudWatchSdk),
+  cloudwatchlogs: sdkModule(
+    CloudWatchLogsSdk.CloudWatchLogsClient,
+    CloudWatchLogsSdk,
+  ),
+  cloudwatchomni: sdkModule(
+    CloudWatchOmniSdk.CloudWatchOmniClient,
+    CloudWatchOmniSdk,
+  ),
+  dax: sdkModule(DaxSdk.DAXClient, DaxSdk),
+  dynamodb: sdkModule(DynamoDBSdk.DynamoDBClient, DynamoDBSdk),
+  dynamodbstreams: sdkModule(
+    DynamoDBStreamsSdk.DynamoDBStreamsClient,
+    DynamoDBStreamsSdk,
+  ),
+  ec2: sdkModule(Ec2Sdk.EC2Client, Ec2Sdk),
+  ec2instanceconnect: sdkModule(
+    Ec2InstanceConnectSdk.EC2InstanceConnectClient,
+    Ec2InstanceConnectSdk,
+  ),
+  iam: sdkModule(IamSdk.IAMClient, IamSdk),
+  iamtoolbox: sdkModule(IamToolboxSdk.IAMToolboxClient, IamToolboxSdk),
+  internetmonitor: sdkModule(
+    InternetMonitorSdk.InternetMonitorClient,
+    InternetMonitorSdk,
+  ),
+  lambda: sdkModule(LambdaSdk.LambdaClient, LambdaSdk),
+  lambdacore: sdkModule(LambdaCoreSdk.LambdaCoreClient, LambdaCoreSdk),
+  lambdaweb: sdkModule(LambdaWebSdk.LambdaWebClient, LambdaWebSdk),
+  networkflowmonitor: sdkModule(
+    NetworkFlowMonitorSdk.NetworkFlowMonitorClient,
+    NetworkFlowMonitorSdk,
+  ),
+  networkmonitor: sdkModule(
+    NetworkMonitorSdk.NetworkMonitorClient,
+    NetworkMonitorSdk,
+  ),
+  oam: sdkModule(OamSdk.OAMClient, OamSdk),
+  observabilityadmin: sdkModule(
+    ObservabilityAdminSdk.ObservabilityAdminClient,
+    ObservabilityAdminSdk,
+  ),
+  rum: sdkModule(RumSdk.RUMClient, RumSdk),
+  s3: sdkModule(S3Sdk.S3Client, S3Sdk, {
+    forcePathStyle: true,
+    requestChecksumCalculation: "WHEN_REQUIRED",
+    responseChecksumValidation: "WHEN_REQUIRED",
+  }),
+  s3control: sdkModule(S3ControlSdk.S3ControlClient, S3ControlSdk),
+  s3files: sdkModule(S3FilesSdk.S3FilesClient, S3FilesSdk),
+  s3outposts: sdkModule(S3OutpostsSdk.S3OutpostsClient, S3OutpostsSdk),
+  s3tables: sdkModule(S3TablesSdk.S3TablesClient, S3TablesSdk),
+  s3vectors: sdkModule(S3VectorsSdk.S3VectorsClient, S3VectorsSdk),
+  sqs: sdkModule(SqsSdk.SQSClient, SqsSdk, { useQueueUrlAsEndpoint: false }),
+  sts: sdkModule(StsSdk.STSClient, StsSdk),
+  synthetics: sdkModule(SyntheticsSdk.SyntheticsClient, SyntheticsSdk),
+}
 
 function localRequest(request: Request, write = false) {
   const host = request.headers.get("host") ?? ""
@@ -174,6 +314,142 @@ function queueUrl(
   return url.href
 }
 
+function findOperationModel(modelId: string) {
+  for (const service of phase1OperationData.services) {
+    const model = service.models.find(({ id }) => id === modelId)
+    if (model) return model
+  }
+}
+
+function jsonSafe(value: unknown): unknown {
+  if (typeof value === "bigint") return value.toString()
+  if (value instanceof Date) return value.toISOString()
+  if (value instanceof Uint8Array)
+    return { encoding: "base64", bytes: value.byteLength, data: Buffer.from(value).toString("base64") }
+  if (Array.isArray(value)) return value.map(jsonSafe)
+  if (value && typeof value === "object") {
+    if (
+      "transformToByteArray" in value &&
+      typeof value.transformToByteArray === "function"
+    ) {
+      return { kind: "stream", message: "Use the service console download action for this response body." }
+    }
+    return Object.fromEntries(
+      Object.entries(value).map(([key, entry]) => [key, jsonSafe(entry)]),
+    )
+  }
+  return value
+}
+
+async function runOperation(
+  config: EmulatorConfig,
+  modelId: string,
+  operationName: string,
+  input: Record<string, unknown>,
+) {
+  const model = findOperationModel(modelId)
+  const operation = model?.operations.find(({ name }) => name === operationName)
+  if (!operation)
+    throw new EmulatorError("That operation is not in the Phase 1 API catalog.", 404)
+  if (operation.status === "retired")
+    throw new EmulatorError(
+      `${modelId}.${operationName} is retired in the MyAWS console.`,
+      410,
+    )
+  if (operation.status === "stub")
+    throw new EmulatorError(
+      `${modelId}.${operationName} is scaffolded as HTTP 501 in this emulator revision.`,
+      501,
+    )
+  if (operation.status === "no_handler")
+    throw new EmulatorError(
+      `${modelId}.${operationName} has no handler in this emulator revision.`,
+      501,
+    )
+
+  const sdk = sdkModules[modelId]
+  if (!sdk)
+    throw new EmulatorError(
+      `The AWS SDK does not publish a JavaScript client for ${modelId}.`,
+      501,
+    )
+  const Command = sdk.commands[`${operationName}Command`]
+  if (typeof Command !== "function")
+    throw new EmulatorError(
+      `The JavaScript SDK has no ${operationName} command for ${modelId}.`,
+      501,
+    )
+
+  const client = new sdk.Client({ ...config, ...sdk.options } as EmulatorConfig)
+  try {
+    const sdkInput = { ...input }
+    for (const field of operation.inputFields) {
+      if (field.type === "blob" && typeof sdkInput[field.name] === "string") {
+        sdkInput[field.name] = Buffer.from(sdkInput[field.name] as string, "base64")
+      } else if (
+        field.type === "timestamp" &&
+        typeof sdkInput[field.name] === "string"
+      ) {
+        const timestamp = new Date(sdkInput[field.name] as string)
+        if (Number.isFinite(timestamp.getTime())) sdkInput[field.name] = timestamp
+      }
+    }
+    normalizeNestedSdkValues(sdkInput)
+    if (modelId === "lambda" && operationName === "CreateFunction")
+      decodeNestedBlob(sdkInput, ["Code", "ZipFile"])
+    if (modelId === "lambda" && operationName === "PublishLayerVersion")
+      decodeNestedBlob(sdkInput, ["Content", "ZipFile"])
+    const command = new (Command as OperationCommandConstructor)(sdkInput)
+    return jsonSafe(await client.send(command))
+  } finally {
+    client.destroy?.()
+  }
+}
+
+function normalizeNestedSdkValues(value: unknown): void {
+  if (Array.isArray(value)) {
+    value.forEach(normalizeNestedSdkValues)
+    return
+  }
+  if (!value || typeof value !== "object" || value instanceof Date || value instanceof Uint8Array)
+    return
+  for (const [key, entry] of Object.entries(value)) {
+    if (
+      typeof entry === "string" &&
+      /(?:time|date|timestamp)$/i.test(key) &&
+      /^\d{4}-\d\d-\d\dT/.test(entry)
+    ) {
+      const timestamp = new Date(entry)
+      if (Number.isFinite(timestamp.getTime())) {
+        ;(value as Record<string, unknown>)[key] = timestamp
+        continue
+      }
+    }
+    if (key === "B" && typeof entry === "string") {
+      ;(value as Record<string, unknown>)[key] = Buffer.from(entry, "base64")
+      continue
+    }
+    if (key === "BS" && Array.isArray(entry)) {
+      ;(value as Record<string, unknown>)[key] = entry.map((part) =>
+        typeof part === "string" ? Buffer.from(part, "base64") : part,
+      )
+      continue
+    }
+    normalizeNestedSdkValues(entry)
+  }
+}
+
+function decodeNestedBlob(value: unknown, path: string[]): void {
+  if (!value || typeof value !== "object") return
+  const [key, ...rest] = path
+  const child = (value as Record<string, unknown>)[key]
+  if (rest.length) {
+    decodeNestedBlob(child, rest)
+  } else if (typeof child === "string") {
+    ;(value as Record<string, unknown>)[key] = Buffer.from(child, "base64")
+  }
+}
+
 const byName = (left: Resource, right: Resource) =>
   left.name.localeCompare(right.name)
 
@@ -193,6 +469,26 @@ export async function GET(request: Request) {
       Object.fromEntries(new URL(request.url).searchParams),
     )
     if (input.kind === "health") return json(await emulatorHealth())
+    if (input.kind === "operation-catalog") {
+      const model = findOperationModel(input.model)
+      if (!model)
+        throw new EmulatorError("That API model is not in Phase 1.", 404)
+      const sdk = sdkModules[input.model]
+      const operations = model.operations.map((operation) => ({
+        ...operation,
+        runnable:
+          operation.status === "implemented" &&
+          Boolean(sdk && typeof sdk.commands[`${operation.name}Command`] === "function"),
+      }))
+      return json({
+        sourceCommit: phase1OperationData.sourceCommit,
+        model: {
+          ...model,
+          runnableCount: operations.filter(({ runnable }) => runnable).length,
+          operations,
+        },
+      })
+    }
     const config = await emulatorClientConfig()
 
     switch (input.kind) {
@@ -278,6 +574,38 @@ export async function GET(request: Request) {
         )
         const metadata = {
           status: Table?.TableStatus,
+          tableArn: Table?.TableArn,
+          createdAt: Table?.CreationDateTime?.toISOString(),
+          tableClass: Table?.TableClassSummary?.TableClass,
+          deletionProtection: Table?.DeletionProtectionEnabled,
+          streamEnabled: Table?.StreamSpecification?.StreamEnabled,
+          streamViewType: Table?.StreamSpecification?.StreamViewType,
+          encryption: Table?.SSEDescription
+            ? `${Table.SSEDescription.SSEType ?? "Encryption"} (${Table.SSEDescription.Status ?? "unknown"})`
+            : undefined,
+          indexes: [
+            ...(Table?.GlobalSecondaryIndexes ?? []).map((index) => ({
+              name: index.IndexName ?? "",
+              type: "global" as const,
+              status: index.IndexStatus,
+              keys: (index.KeySchema ?? []).flatMap(({ AttributeName }) =>
+                AttributeName ? [AttributeName] : [],
+              ),
+              projection: index.Projection?.ProjectionType,
+              itemCount: index.ItemCount,
+              bytes: index.IndexSizeBytes,
+            })),
+            ...(Table?.LocalSecondaryIndexes ?? []).map((index) => ({
+              name: index.IndexName ?? "",
+              type: "local" as const,
+              keys: (index.KeySchema ?? []).flatMap(({ AttributeName }) =>
+                AttributeName ? [AttributeName] : [],
+              ),
+              projection: index.Projection?.ProjectionType,
+              itemCount: index.ItemCount,
+              bytes: index.IndexSizeBytes,
+            })),
+          ],
           partitionKey: Table?.KeySchema?.find(
             ({ KeyType }) => KeyType === "HASH",
           )?.AttributeName,
@@ -340,6 +668,7 @@ export async function GET(request: Request) {
               "VisibilityTimeout",
               "MessageRetentionPeriod",
               "DelaySeconds",
+              "All",
             ],
           }),
         )
@@ -355,6 +684,7 @@ export async function GET(request: Request) {
           visibilitySeconds: Attributes?.VisibilityTimeout,
           retentionSeconds: Attributes?.MessageRetentionPeriod,
           delaySeconds: Attributes?.DelaySeconds,
+          attributes: Attributes ?? {},
         } satisfies QueueDetails)
       }
     }
@@ -393,6 +723,15 @@ export async function POST(request: Request) {
     const input = writeSchema.parse(await request.json())
     const config = await emulatorClientConfig()
     switch (input.kind) {
+      case "operation":
+        return json(
+          await runOperation(
+            config,
+            input.model,
+            input.operation,
+            input.input,
+          ),
+        )
       case "vpc":
         return json(await createVpc(config, input), 201)
       case "s3":
@@ -450,6 +789,14 @@ export async function POST(request: Request) {
           }),
         )
         return json({ ok: true }, 201)
+      case "delete-item":
+        await new DynamoDBClient(config).send(
+          new DeleteItemCommand({
+            TableName: input.resource,
+            Key: marshall(input.key),
+          }),
+        )
+        return json({ ok: true })
       case "message": {
         const url = queueUrl(input.resource, config)
         const fifo = url.endsWith(".fifo")
@@ -482,12 +829,14 @@ export async function POST(request: Request) {
             QueueUrl: queueUrl(input.resource, config),
             MaxNumberOfMessages: 10,
             WaitTimeSeconds: 0,
+            MessageAttributeNames: ["All"],
+            MessageSystemAttributeNames: ["All"],
           }),
         )
         return json(
-          (Messages ?? []).flatMap(({ MessageId, Body }) =>
+          (Messages ?? []).flatMap(({ MessageId, Body, ReceiptHandle, Attributes, MessageAttributes }) =>
             MessageId && Body !== undefined
-              ? [{ id: MessageId, body: Body } satisfies QueueMessage]
+              ? [{ id: MessageId, body: Body, receiptHandle: ReceiptHandle, attributes: MessageAttributes, systemAttributes: Attributes } satisfies QueueMessage]
               : [],
           ),
         )

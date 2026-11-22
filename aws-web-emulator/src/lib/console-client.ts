@@ -34,10 +34,12 @@ export async function readEmulator<T>(
 
 export async function writeEmulator<T = { id?: string }>(
   input: Record<string, unknown> | FormData,
+  signal?: AbortSignal,
 ) {
   return readResponse<T>(
     await fetch("/api/emulator", {
       method: "POST",
+      signal,
       ...(input instanceof FormData
         ? { body: input }
         : {
@@ -45,6 +47,18 @@ export async function writeEmulator<T = { id?: string }>(
             body: JSON.stringify(input),
           }),
     }),
+  )
+}
+
+export function runEmulatorOperation<T = unknown>(
+  model: string,
+  operation: string,
+  input: Record<string, unknown> = {},
+  signal?: AbortSignal,
+) {
+  return writeEmulator<T>(
+    { kind: "operation", model, operation, input },
+    signal,
   )
 }
 

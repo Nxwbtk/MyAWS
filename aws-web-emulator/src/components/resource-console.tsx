@@ -10,6 +10,7 @@ import { CircleAlert, Download, File, Search } from "lucide-react"
 import { useState, type ReactNode } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ServiceIcon } from "@/components/service-icon"
+import { Phase1OperationExplorer } from "@/components/phase-1-operation-explorer"
 import {
   CreateResource,
   PutItem,
@@ -202,6 +203,7 @@ export function ResourceConsole({ service }: { service: Service }) {
       {active && (
         <ResourceDetail key={active.id} service={service} resource={active} />
       )}
+      <Phase1OperationExplorer service={service} />
     </>
   )
 }
@@ -397,6 +399,11 @@ function BucketDetail({ resource }: { resource: Resource }) {
 
 function TableDetail({ resource }: { resource: Resource }) {
   const [notice, setNotice] = useState("")
+  const [selectedAction, setSelectedAction] = useState<{
+    operation: string
+    input: Record<string, unknown>
+  }>()
+  const [confirmItemKey, setConfirmItemKey] = useState<string>()
   const client = useQueryClient()
   const queryKey = detailKey("dynamodb", resource.id)
   const result = useInfiniteQuery({
@@ -421,13 +428,56 @@ function TableDetail({ resource }: { resource: Resource }) {
     6,
   )
 
+  const deleteItem = useMutation({
+    mutationFn: (key: Record<string, unknown>) =>
+      writeEmulator({ kind: "delete-item", resource: resource.id, key }),
+    onSuccess: () => {
+      setNotice("Item deleted.")
+      setConfirmItemKey(undefined)
+    },
+    onSettled: () => void client.invalidateQueries({ queryKey }),
+  })
+
   return (
+    <>
     <DetailCard
       resource={resource}
       type="DynamoDB table"
       notice={notice}
       action={
-        table?.status && <Badge variant="secondary">{table.status}</Badge>
+        table?.status && (
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge variant="secondary">{table.status}</Badge>
+            {ready && (
+              <>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() =>
+                    setSelectedAction({
+                      operation: "UpdateTable",
+                      input: { TableName: resource.id },
+                    })
+                  }
+                >
+                  Edit settings
+                </Button>
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  onClick={() =>
+                    setSelectedAction({
+                      operation: "DeleteTable",
+                      input: { TableName: resource.id },
+                    })
+                  }
+                >
+                  Delete table
+                </Button>
+              </>
+            )}
+          </div>
+        )
       }
     >
       {result.error && <Problem message={result.error.message} />}
@@ -436,6 +486,9 @@ function TableDetail({ resource }: { resource: Resource }) {
         <Tabs defaultValue="overview">
           <TabsList>
             <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="indexes">
+              Indexes ({table.indexes?.length ?? 0})
+            </TabsTrigger>
             <TabsTrigger value="items">Explore items</TabsTrigger>
           </TabsList>
           <TabsContent value="overview">
@@ -443,6 +496,22 @@ function TableDetail({ resource }: { resource: Resource }) {
               entries={[
                 ["Partition key", table.partitionKey],
                 ["Sort key", table.sortKey],
+                ["Table ARN", table.tableArn],
+                [
+                  "Created",
+                  table.createdAt
+                    ? dateFormat.format(new Date(table.createdAt))
+                    : undefined,
+                ],
+                ["Table class", table.tableClass],
+                [
+                  "Deletion protection",
+                  table.deletionProtection === undefined
+                    ? undefined
+                    : table.deletionProtection
+                      ? "Enabled"
+                      : "Disabled",
+                ],
                 [
                   "Capacity mode",
                   table.billingMode === "PAY_PER_REQUEST"
@@ -456,10 +525,66 @@ function TableDetail({ resource }: { resource: Resource }) {
                     ? undefined
                     : sizeLabel(table.bytes),
                 ],
+                [
+                  "DynamoDB Streams",
+                  table.streamEnabled === undefined
+                    ? undefined
+                    : table.streamEnabled
+                      ? table.streamViewType
+                        ? `Enabled · ${table.streamViewType}`
+                        : "Enabled"
+                      : "Disabled",
+                ],
+                ["Encryption", table.encryption],
               ]}
             />
           </TabsContent>
+          <TabsContent value="indexes" className="space-y-3">
+            {table.indexes?.length ? (
+              <div className="overflow-hidden rounded-lg border">
+                <Table>
+                  <TableHeader className="bg-surface-subtle">
+                    <TableRow>
+                      <TableHead>Index name</TableHead>
+                      <TableHead>Type</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead>Key attributes</TableHead>
+                      <TableHead>Projection</TableHead>
+                      <TableHead>Items</TableHead>
+                      <TableHead>Size</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {table.indexes.map((index) => (
+                      <TableRow key={`${index.type}:${index.name}`}>
+                        <TableCell className="font-mono text-xs">
+                          {index.name || "—"}
+                        </TableCell>
+                        <TableCell>
+                          {index.type === "global"
+                            ? "Global secondary"
+                            : "Local secondary"}
+                        </TableCell>
+                        <TableCell>{index.status ?? "—"}</TableCell>
+                        <TableCell>{index.keys.join(", ") || "—"}</TableCell>
+                        <TableCell>{index.projection ?? "—"}</TableCell>
+                        <TableCell>{index.itemCount ?? "—"}</TableCell>
+                        <TableCell>
+                          {index.bytes === undefined
+                            ? "—"
+                            : sizeLabel(index.bytes)}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            ) : (
+              <Hint>This table has no secondary indexes.</Hint>
+            )}
+          </TabsContent>
           <TabsContent value="items" className="space-y-3">
+            {deleteItem.error && <Problem message={deleteItem.error.message} />}
             <div className="flex flex-wrap items-center justify-between gap-2">
               <h3 className="text-base font-semibold">
                 Items returned ({items.length})
@@ -484,34 +609,72 @@ function TableDetail({ resource }: { resource: Resource }) {
                         <TableHead key={column}>{column}</TableHead>
                       ))}
                       <TableHead>Item</TableHead>
+                      {ready && <TableHead>Actions</TableHead>}
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {items.map((item) => (
-                      <TableRow
-                        key={JSON.stringify(keys.map((key) => item[key]))}
-                      >
-                        {columns.map((column) => (
-                          <TableCell key={column} className="max-w-40 truncate">
-                            {item[column] === undefined
-                              ? "—"
-                              : typeof item[column] === "string"
-                                ? item[column]
-                                : JSON.stringify(item[column])}
+                    {items.map((item) => {
+                      const itemKey = Object.fromEntries(
+                        keys
+                          .filter((name) => item[name] !== undefined)
+                          .map((name) => [name, item[name]]),
+                      )
+                      const encodedKey = JSON.stringify(itemKey)
+                      const confirming = confirmItemKey === encodedKey
+                      return (
+                        <TableRow
+                          key={JSON.stringify(keys.map((key) => item[key]))}
+                        >
+                          {columns.map((column) => (
+                            <TableCell key={column} className="max-w-40 truncate">
+                              {item[column] === undefined
+                                ? "—"
+                                : typeof item[column] === "string"
+                                  ? item[column]
+                                  : JSON.stringify(item[column])}
+                            </TableCell>
+                          ))}
+                          <TableCell>
+                            <details>
+                              <summary className="cursor-pointer text-link">
+                                View JSON
+                              </summary>
+                              <pre className="max-w-xs overflow-auto whitespace-pre-wrap py-2 text-xs">
+                                {JSON.stringify(item, null, 2)}
+                              </pre>
+                            </details>
                           </TableCell>
-                        ))}
-                        <TableCell>
-                          <details>
-                            <summary className="cursor-pointer text-link">
-                              View JSON
-                            </summary>
-                            <pre className="max-w-xs overflow-auto whitespace-pre-wrap py-2 text-xs">
-                              {JSON.stringify(item, null, 2)}
-                            </pre>
-                          </details>
-                        </TableCell>
-                      </TableRow>
-                    ))}
+                          {ready && (
+                            <TableCell>
+                              <div className="flex flex-wrap gap-1">
+                                <Button
+                                  size="xs"
+                                  variant="destructive"
+                                  disabled={deleteItem.isPending || !keys.length}
+                                  onClick={() => {
+                                    if (Object.keys(itemKey).length !== keys.length)
+                                      return
+                                    if (confirming) deleteItem.mutate(itemKey)
+                                    else setConfirmItemKey(encodedKey)
+                                  }}
+                                >
+                                  {confirming ? "Confirm delete" : "Delete item"}
+                                </Button>
+                                {confirming && (
+                                  <Button
+                                    size="xs"
+                                    variant="outline"
+                                    onClick={() => setConfirmItemKey(undefined)}
+                                  >
+                                    Cancel
+                                  </Button>
+                                )}
+                              </div>
+                            </TableCell>
+                          )}
+                        </TableRow>
+                      )
+                    })}
                   </TableBody>
                 </Table>
               </div>
@@ -532,11 +695,26 @@ function TableDetail({ resource }: { resource: Resource }) {
         </Tabs>
       )}
     </DetailCard>
+    {selectedAction && (
+      <Phase1OperationExplorer
+        key={`${selectedAction.operation}:${JSON.stringify(selectedAction.input)}`}
+        service="dynamodb"
+        initialModel="dynamodb"
+        initialOperation={selectedAction.operation}
+        initialValues={selectedAction.input}
+        startExpanded
+      />
+    )}
+    </>
   )
 }
 
 function QueueDetail({ resource }: { resource: Resource }) {
   const [notice, setNotice] = useState("")
+  const [selectedAction, setSelectedAction] = useState<{
+    operation: string
+    input: Record<string, unknown>
+  }>()
   const queryKey = detailKey("sqs", resource.id)
   const client = useQueryClient()
   const result = useQuery({
@@ -551,14 +729,18 @@ function QueueDetail({ resource }: { resource: Resource }) {
   })
   const queue = result.data
   return (
+    <>
     <DetailCard
       resource={resource}
       type="SQS queue"
       notice={notice}
       action={
-        queue && (
+        queue && <div className="flex flex-wrap items-center gap-2">
           <Badge variant="secondary">{queue.fifo ? "FIFO" : "Standard"}</Badge>
-        )
+          <Button size="sm" variant="outline" onClick={() => setSelectedAction({ operation: "SetQueueAttributes", input: { QueueUrl: resource.id, Attributes: editableQueueAttributes(queue.attributes) } })}>Edit attributes</Button>
+          <Button size="sm" variant="outline" onClick={() => setSelectedAction({ operation: "PurgeQueue", input: { QueueUrl: resource.id } })}>Purge messages</Button>
+          <Button size="sm" variant="destructive" onClick={() => setSelectedAction({ operation: "DeleteQueue", input: { QueueUrl: resource.id } })}>Delete queue</Button>
+        </div>
       }
     >
       {result.error && <Problem message={result.error.message} />}
@@ -581,6 +763,7 @@ function QueueDetail({ resource }: { resource: Resource }) {
                 ["Message retention", seconds(queue.retentionSeconds)],
                 ["Delivery delay", seconds(queue.delaySeconds)],
                 ["Queue URL", resource.id],
+                ...Object.entries(queue.attributes).map(([name, value]) => [name, queueAttributeValue(name, value)] as [string, string]),
               ]}
             />
           </TabsContent>
@@ -615,10 +798,12 @@ function QueueDetail({ resource }: { resource: Resource }) {
                       <TableRow>
                         <TableHead>Message ID</TableHead>
                         <TableHead>Body</TableHead>
+                        <TableHead>Attributes</TableHead>
+                        <TableHead>Actions</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {receive.data.map(({ id, body }) => (
+                      {receive.data.map(({ id, body, receiptHandle, attributes, systemAttributes }) => (
                         <TableRow key={id}>
                           <TableCell className="font-mono text-xs">
                             {id}
@@ -627,6 +812,38 @@ function QueueDetail({ resource }: { resource: Resource }) {
                             <pre className="max-h-40 overflow-auto whitespace-pre-wrap [overflow-wrap:anywhere]">
                               {body}
                             </pre>
+                          </TableCell>
+                          <TableCell>
+                            {attributes || systemAttributes ? (
+                              <details>
+                                <summary className="cursor-pointer text-link">
+                                  View attributes
+                                </summary>
+                                <pre className="max-w-64 overflow-auto whitespace-pre-wrap py-2 text-xs">
+                                  {JSON.stringify(
+                                    { system: systemAttributes, message: attributes },
+                                    null,
+                                    2,
+                                  )}
+                                </pre>
+                              </details>
+                            ) : (
+                              "—"
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            <Button
+                              size="xs"
+                              variant="destructive"
+                              disabled={!receiptHandle}
+                              onClick={() => {
+                                if (!receiptHandle) return
+                                receive.reset()
+                                setSelectedAction({ operation: "DeleteMessage", input: { QueueUrl: resource.id, ReceiptHandle: receiptHandle } })
+                              }}
+                            >
+                              Delete message
+                            </Button>
                           </TableCell>
                         </TableRow>
                       ))}
@@ -640,11 +857,55 @@ function QueueDetail({ resource }: { resource: Resource }) {
         </Tabs>
       )}
     </DetailCard>
+    {selectedAction && (
+      <Phase1OperationExplorer
+        key={`${selectedAction.operation}:${JSON.stringify(selectedAction.input)}`}
+        service="sqs"
+        initialModel="sqs"
+        initialOperation={selectedAction.operation}
+        initialValues={selectedAction.input}
+        startExpanded
+      />
+    )}
+    </>
   )
 }
 
 function seconds(value: string | undefined) {
   return value === undefined ? undefined : `${value} s`
+}
+
+const settableQueueAttributes = new Set([
+  "VisibilityTimeout",
+  "MessageRetentionPeriod",
+  "DelaySeconds",
+  "MaximumMessageSize",
+  "ReceiveMessageWaitTimeSeconds",
+  "KmsMasterKeyId",
+  "KmsDataKeyReusePeriodSeconds",
+  "ContentBasedDeduplication",
+  "DeduplicationScope",
+  "FifoThroughputLimit",
+  "RedrivePolicy",
+  "RedriveAllowPolicy",
+])
+
+function editableQueueAttributes(attributes: Record<string, string>) {
+  return Object.fromEntries(
+    Object.entries(attributes).filter(([name]) =>
+      settableQueueAttributes.has(name),
+    ),
+  )
+}
+
+function queueAttributeValue(name: string, value: string) {
+  if (
+    (name === "CreatedTimestamp" || name === "LastModifiedTimestamp") &&
+    /^\d+$/.test(value)
+  ) {
+    return dateFormat.format(new Date(Number(value) * 1000))
+  }
+  return value
 }
 
 function Properties({

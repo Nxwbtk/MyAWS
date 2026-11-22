@@ -27,17 +27,38 @@ export const services = {
 export const serviceSchema = z.enum(["s3", "dynamodb", "sqs"])
 export type Service = z.infer<typeof serviceSchema>
 export const serviceNames = serviceSchema.options
-export const managedServiceNames = [...serviceNames, "ec2", "vpc"]
+export const managedServiceNames = [
+  ...serviceNames,
+  "ec2",
+  "vpc",
+  "iam",
+  "sts",
+  "lambda",
+  "cloudwatch",
+  "cloudtrail",
+]
 export const ec2SectionSchema = z.enum([
   "instances",
+  "launch-templates",
+  "spot-requests",
   "images",
   "volumes",
+  "snapshots",
+  "elastic-ips",
+  "placement-groups",
   "key-pairs",
   "network-interfaces",
   "vpcs",
   "subnets",
   "route-tables",
   "internet-gateways",
+  "egress-only-gateways",
+  "dhcp-options",
+  "prefix-lists",
+  "vpc-endpoints",
+  "nat-gateways",
+  "peering-connections",
+  "network-acls",
   "security-groups",
 ])
 export type Ec2Section = z.infer<typeof ec2SectionSchema>
@@ -144,9 +165,11 @@ export const messageSchema = z.object({
 
 export const resourceNameSchema = z.string().min(1).max(2048)
 const cursor = z.string().min(1).max(32_768).optional()
+const modelIdSchema = z.string().regex(/^[a-z0-9]+$/)
 
 export const readSchema = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("health") }),
+  z.object({ kind: z.literal("operation-catalog"), model: modelIdSchema }),
   z.object({ kind: serviceSchema }),
   z.object({ kind: z.literal("ec2"), section: ec2SectionSchema }),
   z.object({
@@ -164,11 +187,25 @@ export const readSchema = z.discriminatedUnion("kind", [
 ])
 
 export const writeSchema = z.discriminatedUnion("kind", [
+  z.object({
+    kind: z.literal("operation"),
+    model: modelIdSchema,
+    operation: z.string().regex(/^[A-Z][A-Za-z0-9]+$/),
+    input: z.record(z.string(), z.unknown()).default({}),
+  }),
   bucketSchema.extend({ kind: z.literal("s3") }),
   tableSchema.safeExtend({ kind: z.literal("dynamodb") }),
   queueSchema.extend({ kind: z.literal("sqs") }),
   vpcSchema.extend({ kind: z.literal("vpc") }),
   itemSchema.extend({ kind: z.literal("item"), resource: resourceNameSchema }),
+  z.object({
+    kind: z.literal("delete-item"),
+    resource: resourceNameSchema,
+    key: z.record(z.string(), z.unknown()).refine(
+      (value) => Object.keys(value).length > 0,
+      "The item key must not be empty.",
+    ),
+  }),
   messageSchema.extend({ kind: z.literal("message"), resource: z.url() }),
   z.object({ kind: z.literal("receive"), resource: z.url() }),
 ])
@@ -198,6 +235,22 @@ export type ItemPage = {
   items: Record<string, unknown>[]
   cursor?: string
   status?: string
+  tableArn?: string
+  createdAt?: string
+  tableClass?: string
+  deletionProtection?: boolean
+  streamEnabled?: boolean
+  streamViewType?: string
+  encryption?: string
+  indexes?: {
+    name: string
+    type: "global" | "local"
+    status?: string
+    keys: string[]
+    projection?: string
+    itemCount?: number
+    bytes?: number
+  }[]
   keys: string[]
   partitionKey?: string
   sortKey?: string
@@ -213,8 +266,15 @@ export type QueueDetails = {
   visibilitySeconds?: string
   retentionSeconds?: string
   delaySeconds?: string
+  attributes: Record<string, string>
 }
-export type QueueMessage = { id: string; body: string }
+export type QueueMessage = {
+  id: string
+  body: string
+  receiptHandle?: string
+  attributes?: Record<string, unknown>
+  systemAttributes?: Record<string, string>
+}
 export type Ec2Resource = {
   id: string
   name: string

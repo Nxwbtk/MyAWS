@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
 import { Ec2Console } from "@/components/ec2-console"
+import { Phase1ServiceConsole } from "@/components/phase-1-service-console"
 import { ResourceConsole } from "@/components/resource-console"
 import { S3Console } from "@/components/s3-console"
 import { ServiceIcon } from "@/components/service-icon"
@@ -35,6 +36,8 @@ export default async function ServicePage({ params }: PageProps<"/[service]">) {
   const managed = serviceSchema.safeParse(entry.id)
   if (managed.success)
     return <ResourceConsole key={managed.data} service={managed.data} />
+  if (["iam", "sts", "lambda", "cloudwatch", "cloudtrail"].includes(entry.id))
+    return <Phase1ServiceConsole key={entry.id} service={entry.id as "iam" | "sts" | "lambda" | "cloudwatch" | "cloudtrail"} />
 
   return (
     <>

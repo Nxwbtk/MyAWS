@@ -2,7 +2,7 @@
 
 ขอบเขตของแผนคือ **230 กลุ่มบริการและ 436 API models** ที่ลงทะเบียนใน AWS Emulator commit `c29ca200a147` เพิ่มหน้า **Amazon VPC** แยกจาก **Amazon EC2** เพราะ Console ของ AWS มีทางเข้าแยกกัน รวมเป็น **231 หน้าบริการ** โดย VPC ยังใช้ model ของ EC2 สำหรับการเรียก API [รายการ API ในโปรเจกต์](../src/data/service-catalog.json) · [คู่มือ VPC](https://docs.aws.amazon.com/vpc/latest/userguide/view-vpc-resource-map.html) · [EC2 API สำหรับ DescribeVpcs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html)
 
-Phase 1 กำลังพัฒนา มี 5 หน้าที่เรียก emulator ได้แล้วในขอบเขตที่ระบุในแต่ละรายการ ทั้ง 5 หน้าต้องตรวจเทียบ AWS Console และเติมฟีเจอร์ API ให้ครบตามเกณฑ์ด้านล่าง ส่วน Phase 2–11 อยู่ในแผน คอลัมน์เริ่มและจบระบุลำดับทำงานของแต่ละ Phase
+Phase 1 มีหน้า console สำหรับทั้ง 10 บริการแล้ว และมี operation explorer ที่สร้างจาก Smithy models ของ emulator commit `c29ca200a147`. Inventory มี 2,115 operations ใน 35 models: 1,812 ทำเครื่องหมาย implemented, 301 เป็น stub, 1 retired และ 1 ไม่มี handler. หน้า console และ inventory ไม่ได้แปลว่า operation ทุกตัวผ่านการทดสอบ runtime; ให้ยึด [บันทึก Phase 1](phase-1-console.md) และบันทึกเฉพาะบริการเป็นหลัก ส่วน Phase 2–11 ยังอยู่ในแผน คอลัมน์เริ่มและจบระบุลำดับทำงานของแต่ละ Phase
 
 | Phase | ขอบเขต | เริ่ม | จบ | จำนวนหน้า |
 | --- | --- | --- | --- | ---: |
@@ -35,16 +35,18 @@ Phase 1 กำลังพัฒนา มี 5 หน้าที่เรี�
 
 ตัวตนและสิทธิ์พื้นฐาน พื้นที่จัดเก็บ เครือข่าย เครื่องเสมือน คิว ฟังก์ชัน และการสังเกตระบบ
 
-1. Amazon S3 (`s3`) · ทดสอบผ่านครบ 259 operations ที่มี handler จาก 6 API models รอตรวจหน้าจอ AWS สำหรับทรัพยากรที่ยังไม่มีในบัญชีอ้างอิง [บันทึกและผลทดสอบ S3](phase-1-s3.md)
-2. Amazon VPC (`vpc`) · ใช้งานได้แล้วบางส่วน Your VPCs, Subnets, Route tables, Internet gateways และ Security groups พร้อมสร้าง IPv4 VPC
-3. Amazon EC2 (`ec2`) · ใช้งานได้แล้วบางส่วน Instances, AMIs ที่บัญชีเป็นเจ้าของ, Volumes, Security groups, Key pairs และ Network interfaces
-4. DynamoDB (`dynamodb`) · ใช้งานได้แล้วบางส่วน Tables และ Explore items พร้อมสร้างตารางและเพิ่ม item
-5. Amazon SQS (`sqs`) · ใช้งานได้แล้วบางส่วน Queues และรายละเอียด พร้อมสร้างคิว ส่งและรับข้อความ
-6. AWS Identity and Access Management (IAM) (`iam`)
-7. AWS Security Token Service (STS) (`sts`)
-8. AWS Lambda (`lambda`)
-9. Amazon CloudWatch (`cloudwatch`)
-10. AWS CloudTrail (`cloudtrail`)
+1. Amazon S3 (`s3`) · Buckets, objects, Tables, Vectors, Files, Access Points, Access Grants, Storage Lens, Batch Operations, account settings และ Outposts พร้อม API explorer ครบ 6 models. ผ่าน isolated emulator 259 operations; แยก 1 retired operation, 44 stubs และ 1 operation ที่ไม่มี handler. ยังมีงานเทียบหน้าจอเฉพาะทรัพยากรที่บัญชีอ้างอิงไม่มี [บันทึก S3](phase-1-s3.md)
+2. Amazon VPC (`vpc`) · Your VPCs, Subnets, Route tables, Internet gateways และ Security groups; สร้าง IPv4 VPC ได้ และเปิด EC2 API explorer สำหรับการดู/ทำงานกับ network resources เพิ่มเติม
+3. Amazon EC2 (`ec2`) · Instances, owned AMIs, Volumes, Security groups, Key pairs, Network interfaces และ EC2 Instance Connect พร้อม API explorer ครอบคลุมทั้งสอง models
+4. DynamoDB (`dynamodb`) · Tables และ Explore items พร้อมสร้างตาราง, scan, put item และ API explorer สำหรับ streams/DAX เพิ่มเติม
+5. Amazon SQS (`sqs`) · Queue configuration, counts, send/receive message และ API explorer
+6. AWS Identity and Access Management (IAM) (`iam`) · Identities, permissions, Access Analyzer และ API explorer
+7. AWS Security Token Service (STS) (`sts`) · Caller identity, temporary credentials, federation/assume-role APIs และ API explorer
+8. AWS Lambda (`lambda`) · Functions, event source mappings, function URLs, versions, aliases, layers และ API explorer
+9. Amazon CloudWatch (`cloudwatch`) · Metrics, alarms, dashboards, metric streams, logs, canaries, Application Insights, RUM, Internet/Network Monitors และ cross-account observability ผ่าน sinks/links พร้อม API explorer
+10. AWS CloudTrail (`cloudtrail`) · Event history, trails, delivery status, event data stores, queries และ API explorer
+
+สถานะและข้อจำกัดของ handler ตาม service/model รวมถึงผลตรวจปัจจุบันอยู่ใน [บันทึก Phase 1](phase-1-console.md).
 
 ### Phase 2 เครือข่ายและการส่งเนื้อหา
 

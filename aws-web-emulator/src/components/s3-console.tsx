@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { S3Buckets } from "@/components/s3-buckets"
 import { S3Collections } from "@/components/s3-collections"
 import { S3Operations, S3Settings, s3Models } from "@/components/s3-operations"
+import { Phase1OperationExplorer } from "@/components/phase-1-operation-explorer"
 import { s3SelectClass } from "@/components/s3-operation-form"
 import { ServiceIcon } from "@/components/service-icon"
 import { Button } from "@/components/ui/button"
@@ -237,6 +238,7 @@ export function S3Console() {
               ))}
             </select>
             <S3Operations key={model} model={model} />
+            <Phase1OperationExplorer service="s3" />
           </div>
         )}
       </div>

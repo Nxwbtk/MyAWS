@@ -44,25 +44,33 @@ For a different port, set `EMULATOR_PORT` when starting Compose and set `EMULATO
 
 Use the search box in the top bar or press `Alt+S`. Search matches service names, SDK aliases, and features such as S3 Tables. Console Home shows up to 12 recently visited services, ordered by most recent and saved in the current browser. The dashboard also shows the API connection, startup commands, and counts of local buckets, tables, and queues.
 
-The search catalog includes the service families registered in the checked-out emulator. Services with resource management open an interactive console. Other results open a page showing their registered API models. After updating the submodule, regenerate the search catalog with Python 3.11 or newer.
+The search catalog includes the service families registered in the checked-out emulator. The 10 Phase 1 services open AWS Console-aligned workspaces with their registered API operations and handler support status. After updating the submodule, regenerate the search catalog and Phase 1 operation inventory with Python 3.11 or newer.
 
 ```sh
 python3 scripts/generate-service-catalog.py
+python3 scripts/generate-phase-1-operations.py
 ```
 
 Service icons are keyed by catalog ID in `src/data/service-icons.json`. The SVGs in `public/service-icons/` come from the supplied AWS Architecture Icons package dated 07312026. Where the package lacks a named service icon, the index uses the corresponding category icon.
 
 ## Resource consoles
 
-- **S3** manages buckets, objects, S3 Tables, S3 Vectors, file systems, Access Points, and Batch Operations. Standard uploads switch to multipart above 16 MiB.
+- **S3** manages buckets, objects, S3 Tables, S3 Vectors, file systems, Access Points, Access Grants, Storage Lens, Batch Operations, account settings, and Outposts. Standard uploads switch to multipart above 16 MiB.
 - **VPC** lists VPCs, subnets, route tables, internet gateways, and security groups and can create IPv4 VPCs with an optional Name tag.
 - **EC2** lists instances, owned AMIs, volumes, security groups, key pairs, and network interfaces.
 - **DynamoDB** creates on-demand tables with string keys, displays configuration, and lets you explore, scan, or put items as JSON.
 - **SQS** creates standard and FIFO queues, displays delivery settings and queue depth, and sends or polls for messages. Polling uses the queue's visibility timeout.
+- **IAM** groups identity, permissions, and Access Analyzer workflows.
+- **STS** provides caller identity, session credentials, and assume-role workflows.
+- **Lambda** lists functions, event source mappings, function URLs, published versions, aliases, and layers; function-scoped views can page through the selected function's versions and aliases.
+- **CloudWatch** groups metrics, alarms, dashboards, metric streams, logs, canaries, Application Insights, RUM applications, Internet and Network Monitors, and cross-account observability sinks and links.
+- **CloudTrail** groups event history, trails, delivery status, event data stores, and saved queries.
+
+Every Phase 1 console has an API operation explorer backed by the Smithy models in the pinned emulator submodule. It shows request and response members, operation documentation, emulator handler source, and JavaScript SDK command availability. Complex requests can be entered as JSON. Writes are sent only to the configured local emulator.
 
 ## Development progress
 
-Phase 1 is at Amazon S3. The isolated emulator suite passed all 259 operations with handlers across the six S3 API models. Live AWS Console review for flows that require an existing Table bucket, file system, Storage Lens dashboard, or Batch Job is still pending. The Phase 1 VPC work follows that review. [S3 verification and remaining work](docs/phase-1-s3.md) · [Service roadmap](docs/service-roadmap.md)
+All 10 Phase 1 service entry points and their model-backed operation workbenches are implemented. The pinned inventory contains 2,115 operations across 35 API models: 1,812 are marked implemented, 301 are explicit stubs, one is retired, and one has no handler. Source support does not mean every feature has passed a live request test. See [Phase 1 status](docs/phase-1-console.md), the separate [S3 verification record](docs/phase-1-s3.md), and the [service roadmap](docs/service-roadmap.md).
 
 ## Verify the frontend
 
