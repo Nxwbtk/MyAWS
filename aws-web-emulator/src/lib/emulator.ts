@@ -1,3 +1,8 @@
+import {
+  AccountClient,
+  EnableRegionCommand,
+  GetRegionOptStatusCommand,
+} from "@aws-sdk/client-account"
 import { readFile } from "node:fs/promises"
 import { Agent, request } from "node:https"
 import { homedir } from "node:os"
@@ -35,7 +40,7 @@ export function emulatorSettings() {
 
   return {
     endpoint: endpoint.origin,
-    region: process.env.EMULATOR_REGION ?? "us-east-1",
+    region: process.env.EMULATOR_REGION ?? "ap-southeast-7",
     stateDir:
       process.env.EMULATOR_STATE_DIR ??
       join(homedir(), ".aws", "emulator", endpoint.port || "443"),
@@ -76,11 +81,42 @@ export async function emulatorHealth() {
       probe.end()
     })
     if (status !== 200) throw new Error(`Health check returned HTTP ${status}.`)
+    await ensureRegionEnabled(region)
     return { endpoint, region, connected: true }
   } catch (error) {
+    // A restarted emulator starts with opt-in Regions disabled again.
+    enabledRegions.clear()
     const detail =
       error instanceof Error ? error.message : "Emulator health check failed."
     return { endpoint, region, connected: false, detail }
+  }
+}
+
+const enabledRegions = new Set<string>()
+
+// Opt-in Regions such as ap-southeast-7 start disabled in a fresh emulator,
+// as they do in a new AWS account. Enable the console's Region in the local
+// emulator so every service accepts requests signed for it.
+async function ensureRegionEnabled(region: string) {
+  if (enabledRegions.has(region)) return
+  const config = await emulatorClientConfig()
+  const client = new AccountClient({ ...config, region: "us-east-1" })
+  try {
+    const { RegionOptStatus } = await client.send(
+      new GetRegionOptStatusCommand({ RegionName: region }),
+    )
+    if (RegionOptStatus === "DISABLED")
+      await client.send(new EnableRegionCommand({ RegionName: region }))
+    for (let attempt = 0; attempt < 10; attempt++) {
+      const status = await client.send(new GetRegionOptStatusCommand({ RegionName: region }))
+      if (status.RegionOptStatus === "ENABLED" || status.RegionOptStatus === "ENABLED_BY_DEFAULT") {
+        enabledRegions.add(region)
+        return
+      }
+      await new Promise((resolve) => setTimeout(resolve, 500))
+    }
+  } catch {
+    // Default Regions are always enabled; other failures surface on use.
   }
 }
 

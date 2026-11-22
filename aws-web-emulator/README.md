@@ -40,6 +40,18 @@ The Next.js server defaults to `https://127.0.0.1:9297` and `us-east-1`. It read
 
 For a different port, set `EMULATOR_PORT` when starting Compose and set `EMULATOR_ENDPOINT` when starting the frontend, for example `https://127.0.0.1:9300`. The default state directory follows the port. Set `EMULATOR_STATE_DIR` to the absolute state directory if needed. Set `EMULATOR_REGION` to use a different region.
 
+## Console UI
+
+The interface is built with [Cloudscape](https://cloudscape.design/), the design system the AWS Console uses. `src/app/one-theme.css` maps the AWS Console "one theme" token values (light and dark) onto the installed Cloudscape version; the source values live in `scripts/one-theme/`. Regenerate the file after upgrading `@cloudscape-design/components`:
+
+```sh
+node scripts/generate-one-theme.mjs
+```
+
+The top navigation includes service search (services, features, and resources in the emulator), a categorized services menu with favorites, the emulator Region, and the account from STS `GetCallerIdentity`. Settings switches between light, dark, and browser-default visual modes. The console defaults to `ap-southeast-7`; the health check enables that opt-in Region in the local emulator.
+
+`scripts/generate-service-meta.py` maps the console services menu (`scripts/console-services.tsv`) to catalog IDs for short names, categories, and taglines. `scripts/generate-operation-status.py` writes the client-side list of operations the emulator does not implement.
+
 ## Find services
 
 Use the search box in the top bar or press `Alt+S`. Search matches service names, SDK aliases, and features such as S3 Tables. Console Home shows up to 12 recently visited services, ordered by most recent and saved in the current browser. The dashboard also shows the API connection, startup commands, and counts of local buckets, tables, and queues.
@@ -56,7 +68,7 @@ Service icons are keyed by catalog ID in `src/data/service-icons.json`. The SVGs
 
 ## Resource consoles
 
-- **S3** manages buckets, objects, S3 Tables, S3 Vectors, file systems, Access Points, Access Grants, Storage Lens, Batch Operations, account settings, and Outposts. Standard uploads switch to multipart above 16 MiB.
+- **S3** follows the AWS Console page by page: general purpose and directory buckets, create bucket (all sections), bucket Objects / Metadata / Properties / Permissions / Metrics / Management / File systems / Access Points tabs, object details and versions, upload with status, empty and delete confirmations, table buckets, vector buckets, file systems, Access Points, Access Grants, Storage Lens, Batch Operations, and account Block Public Access. Controls for operations the emulator lacks stay visible but disabled.
 - **VPC** lists VPCs, subnets, route tables, internet gateways, and security groups and can create IPv4 VPCs with an optional Name tag.
 - **EC2** lists instances, owned AMIs, volumes, security groups, key pairs, and network interfaces.
 - **DynamoDB** creates on-demand tables with string keys, displays configuration, and lets you explore, scan, or put items as JSON.

@@ -1,0 +1,236 @@
+Analytics	Athena	Serverless interactive analytics service
+Analytics	AWS Clean Rooms	Easily and securely collaborate on collective datasets without sharing or revealing underlying raw data
+Analytics	CloudSearch	Managed Search Service
+Analytics	AWS Data Exchange	Easily find, subscribe to, and use third-party data
+Analytics	Amazon Data Firehose	Real-time streaming delivery for any data, at any scale, at low-cost
+Analytics	Amazon DataZone	Unlock data across organizational boundaries with built-in governance
+Analytics	EMR	Managed Hadoop Framework
+Analytics	AWS Entity Resolution	Easy-to-configure, machine learning powered entity resolution service
+Analytics	AWS Glue	AWS Glue is a serverless data integration service.
+Analytics	AWS Glue DataBrew	Visual data preparation tool to clean and normalize data for analytics and machine learning
+Analytics	Kinesis	Work with Real-Time Streaming Data
+Analytics	AWS Lake Formation	AWS Lake Formation makes it easy to set up a secure data lake
+Analytics	Managed Apache Flink	Fully managed, highly available, and secure service for Apache Flink
+Analytics	MSK	Fully managed, highly available, and secure service for Apache Kafka
+Analytics	Amazon OpenSearch Service	Run open-source OpenSearch or Elasticsearch using Managed Clusters or Serverless deployments.
+Analytics	AWS Quick	Agentic AI-powered suite of enterprise products
+Analytics	QuickSight	Fast, easy to use business analytics
+Analytics	Amazon Redshift	Fast, Serverless, and cost effective SQL analytics and data warehousing
+Analytics	Amazon SageMaker	The center for data, analytics, and AI
+Application Integration	Amazon AppFlow	Amazon AppFlow integrates apps and automates data flows without code.
+Application Integration	AWS B2B Data Interchange	Build and run EDI-based workflows at cloud scale
+Application Integration	Amazon EventBridge	Serverless service for building event-driven applications.
+Application Integration	Managed Apache Airflow	Run Apache Airflow without provisioning or managing servers.
+Application Integration	Amazon MQ	Managed message broker service for Apache ActiveMQ and RabbitMQ
+Application Integration	Simple Notification Service	SNS managed message topics for Pub/Sub
+Application Integration	Simple Queue Service	SQS Managed Message Queues
+Application Integration	Step Functions	Coordinate Distributed Applications
+Application Integration	SWF	Workflow Service for Coordinating Application Components
+Blockchain	Amazon Managed Blockchain	Easily access, query, and manage blockchain networks.
+Business Applications	AWS AppFabric	Connecting SaaS applications for better productivity and security.
+Business Applications	Amazon Chime	Amazon Chime is a communications service that transforms online meetings
+Business Applications	Amazon Chime SDK	Real-time communication for your applications
+Business Applications	Amazon Connect Customer	Deliver exceptional customer experiences at every touchpoint.
+Business Applications	Amazon Connect Decisions	Adaptive AI teammates that foresee and prevent supply chain disruptions and help you make better decisions.
+Business Applications	Amazon Connect Health	Agentic AI solution for healthcare providers
+Business Applications	Amazon Connect Talent	AI-powered hiring solution for talent acquisition teams.
+Business Applications	AWS End User Messaging	Engage your customers across multiple communication channels
+Business Applications	Amazon Pinpoint	Multichannel communication service
+Business Applications	Amazon Simple Email Service	Email Sending and Receiving Service
+Business Applications	AWS Wickr	Secure communication with end-to-end encryption
+Business Applications	Amazon WorkDocs	Secure Enterprise Storage and Sharing Service
+Business Applications	Amazon WorkMail	Secure Email and Calendaring Service
+Cloud Financial Management	Billing and Cost Management	View and pay bills, analyze and govern your spending, and optimize your costs
+Cloud Financial Management	AWS Billing Conductor	Simplifying your billing practice
+Cloud Financial Management	AWS FinOps Agent	A frontier agent that makes it easy for customers to continuously monitor costs, investigate anomalies, and surface optimization opportunities across their cloud environments.
+Cloud Financial Management	AWS Marketplace	Digital catalog where you can find, buy, and deploy software
+Compute	AWS App Runner	Build and run production web applications at scale
+Compute	Batch	Fully managed batch processing at any scale
+Compute	EC2	Virtual Servers in the Cloud
+Compute	EC2 Image Builder	A managed service to automate build, customize and deploy OS images
+Compute	Elastic Beanstalk	Run and Manage Web Apps
+Compute	AWS Global View	AWS Global View provides a global dashboard and search functionality that lets you find and view your EC2 and VPC resources across all AWS Regions.
+Compute	Lambda	Run code without thinking about servers
+Compute	Lightsail	Launch and Manage Virtual Private Servers
+Compute	AWS Outposts	Run AWS Services On Premises
+Compute	Parallel Computing Service	Easily run HPC workloads at virtually any scale
+Compute	Serverless Application Repository	Assemble, deploy, and share serverless applications within teams or publicly
+Containers	Elastic Container Registry	Fully-managed Docker container registry : Share and deploy container software, publicly or privately
+Containers	Elastic Container Service	Highly secure, reliable, and scalable way to run containers
+Containers	Elastic Kubernetes Service	The most trusted way to start, run, and scale Kubernetes
+Containers	Red Hat OpenShift Service on AWS	Fully managed Red Hat OpenShift service on AWS
+Customer Enablement	Activate for Startups	AWS Activate provides resources to help startups build and grow on AWS.
+Customer Enablement	Managed Services	IT operations management for AWS
+Customer Enablement	AWS re:Post Private	Increase internal collaboration and innovation through a curated cloud knowledge resource
+Customer Enablement	Support	Contact AWS for technical and account support.
+Database	Aurora and RDS	Managed Relational Database Service
+Database	Aurora DSQL	Serverless distributed SQL database with virtually unlimited scale, highest availability, and zero infrastructure management.
+Database	Amazon DocumentDB	Fully-managed MongoDB-compatible database service
+Database	DynamoDB	Managed NoSQL Database
+Database	ElastiCache	In-Memory Cache
+Database	Amazon Keyspaces	Serverless Cassandra-compatible database
+Database	Amazon MemoryDB	Fully managed, Valkey- and Redis OSS-compatible, in-memory database service
+Database	Neptune	Fast, reliable graph database built for the cloud
+Database	Oracle Database@AWS	Lift and shift Oracle Exadata workloads and rapidly innovate with the broad portfolio of AWS services
+Database	Amazon Timestream	Amazon Timestream is a fast, scalable, and serverless time series database for IoT and operational applications.
+Developer Tools	AWS App Studio	Build secure applications that solve business problems with generative AI
+Developer Tools	AWS AppConfig	Use feature flags, operational flags, experiments, and other runtime configuration to make changes quickly and safely on production
+Developer Tools	Cloud9	A Cloud IDE for Writing, Running, and Debugging Code
+Developer Tools	CloudShell	A browser-based shell with AWS CLI access from the AWS Management Console
+Developer Tools	CodeArtifact	Secure, scalable, and cost-effective artifact management for software development
+Developer Tools	CodeBuild	Build and Test Code
+Developer Tools	Amazon CodeCatalyst	Integrated DevOps Service
+Developer Tools	CodeCommit	Store Code in Private Git Repositories
+Developer Tools	CodeDeploy	Automate Code Deployments
+Developer Tools	CodePipeline	Release Software using Continuous Delivery
+Developer Tools	AWS DevOps Agent	A frontier agent that resolves and proactively prevents incidents, continuously improving reliability and performance of applications in AWS, multicloud, and hybrid environments.
+Developer Tools	AWS FIS	Improve resiliency and performance with controlled experiments.
+Developer Tools	Infrastructure Composer	Visually design and build modern applications quickly
+Developer Tools	Kiro	Build applications faster, and spend less time solving software development problems
+Developer Tools	Amazon Q Developer	Build applications faster, and spend less time solving software development problems
+Developer Tools	X-Ray	Analyze and Debug Your Applications
+End User Computing	WorkSpaces	Desktops in the Cloud
+End User Computing	WorkSpaces Applications	Stream desktop applications securely to any web browser
+End User Computing	WorkSpaces Secure Browser	Cloud-native secure web access
+End User Computing	WorkSpaces Thin Client	Affordable, easy-to-manage thin client for secure access to virtual desktops
+Front-end Web & Mobile	AWS Amplify	AWS Amplify offers web hosting and app backend services for fullstack developers.
+Front-end Web & Mobile	AWS AppSync	Real-Time Data Sync Using GraphQL for Mobile & Web Apps, Online or Offline
+Front-end Web & Mobile	Device Farm	Test Android, iOS, and Web Apps on Real Devices in the Cloud
+Front-end Web & Mobile	Amazon Location Service	Securely and easily add location data to applications.
+Game Development	Amazon GameLift Servers	Deploy and Scale Session-based Multiplayer Games
+Game Development	Amazon GameLift Streams	Deliver high frame rate, low-latency game streaming at global scale
+Internet of Things	IoT Core	Connect Devices to the Cloud
+Internet of Things	IoT Device Defender	Secure your fleet of connected IoT devices
+Internet of Things	IoT Device Management	Securely Manage Fleets as Small as One Device, or as Broad as Millions of Devices
+Internet of Things	AWS IoT FleetWise	Easily collect, organize, and transfer vehicle data to the cloud at scale.
+Internet of Things	IoT Greengrass	Deploy and run code on your devices
+Internet of Things	IoT SiteWise	Data driven decisions in Industrial operations
+Internet of Things	IoT TwinMaker	Easily create digital twins of real-world systems to optimize operations
+Machine Learning	AWS Agent Registry	Centrally manage and discover AI resources
+Machine Learning	Amazon Augmented AI	Easily implement human review of machine learning predictions
+Machine Learning	Amazon Bedrock	The easiest way to build and scale generative AI applications with foundation models (FMs).
+Machine Learning	Amazon Bedrock (mantle endpoint)	The new Bedrock Console enables developers to build and scale generative AI applications using industry-standard APIs. It is optimized for the bedrock-mantle endpoint. Bedrock supports 100+ foundation models from industry-leading providers, including Amazon, Anthropic, DeepSeek, Moonshot AI, MiniMax, and OpenAI. You can use existing standard APIs such as OpenAI-compatible Chat Completions and Responses API, and Anthropic-compatible Messages API
+Machine Learning	Amazon Bedrock AgentCore	Deploy and operate highly effective agents securely, at scale using any framework and model.
+Machine Learning	Amazon Bio Discovery	Design Antibodies with AI-Powered Lab-in-the-Loop Workflows
+Machine Learning	Claude Platform on AWS	Use Anthropic's Claude Platform through a native Anthropic experience in AWS
+Machine Learning	Amazon CodeGuru	Intelligent recommendations for building and running modern applications
+Machine Learning	Amazon Comprehend	Analyze Unstructured Text
+Machine Learning	Amazon Comprehend Medical	Amazon Comprehend Medical uses machine learning to extract insights and relationships from medical text.
+Machine Learning	Amazon DevOps Guru	ML-powered cloud operations service to improve application availability.
+Machine Learning	Amazon Forecast	Amazon Forecast is a fully-managed service for accurate time-series forecasting
+Machine Learning	Amazon Fraud Detector	Detect more online fraud faster using machine learning
+Machine Learning	AWS HealthImaging	Store, analyze, and share medical images
+Machine Learning	AWS HealthLake	Making sense of health data
+Machine Learning	AWS HealthOmics	Transform omics data into insights.
+Machine Learning	Amazon Kendra	Highly accurate enterprise search service powered by machine learning
+Machine Learning	Amazon Lex	Build Voice and Text Chatbots
+Machine Learning	Amazon Monitron	End-to-end system for equipment monitoring
+Machine Learning	Amazon Nova Act	Build and manage AI agents to automate UI workflows
+Machine Learning	Amazon Personalize	Amazon Personalize helps you easily add real-time recommendations to your apps
+Machine Learning	Amazon Polly	Turn Text into Lifelike Speech
+Machine Learning	Amazon Q	A generative-AI powered assistant from AWS to help reinvent how you work
+Machine Learning	Amazon Q Business	Generative AI-powered enterprise assistant
+Machine Learning	Amazon Rekognition	Search and Analyze Images
+Machine Learning	Amazon SageMaker AI	Build, Train, and Deploy Machine Learning Models
+Machine Learning	Amazon Textract	Easily extract text and data from virtually any document
+Machine Learning	Amazon Transcribe	Powerful Speech Recognition
+Machine Learning	Amazon Translate	Powerful Neural Machine Translation
+Management & Governance	AWS Auto Scaling	AWS Auto Scaling enables you to quickly scale your entire application on AWS
+Management & Governance	CloudFormation	Create and Manage Resources with Templates
+Management & Governance	CloudTrail	Track User Activity and API Usage
+Management & Governance	CloudWatch	Monitor Resources and Applications
+Management & Governance	AWS Compute Optimizer	Recommend optimal AWS Compute resources for your workloads
+Management & Governance	AWS Config	Track Resource Inventory and Changes
+Management & Governance	Control Tower	The easiest way to set up and govern a secure, compliant multi-account environment
+Management & Governance	AWS for SAP	Centrally manage, operate, and innovate with SAP applications
+Management & Governance	Amazon Grafana	Fully managed Grafana service for interactive data visualizations and dashboarding
+Management & Governance	AWS Health Dashboard	Personalized view of AWS service health.
+Management & Governance	Incident Manager	Automated incident response plans in AWS Systems Manager.
+Management & Governance	Launch Wizard	Guided deployment for Enterprise applications and complex workloads
+Management & Governance	AWS License Manager	Set rules to manage, discover, and report third-party license usage proactively
+Management & Governance	AWS Organizations	Central governance and management across AWS accounts.
+Management & Governance	AWS Partner Central	Manage your AWS partnership and selling on AWS Marketplace
+Management & Governance	Amazon Prometheus	A fully managed Prometheus-compatible monitoring service.
+Management & Governance	AWS Proton	Manage your infrastructure so developers can focus on coding.
+Management & Governance	Amazon Q Developer in chat applications (previously AWS Chatbot)	Generative AI-powered assistant for monitoring and optimizing your AWS resources
+Management & Governance	AWS Resilience Hub	AWS Resilience Hub provides a central place to define, validate, and track the resiliency of applications on AWS.
+Management & Governance	AWS Resource Explorer	Easily search for and discover relevant resources across AWS
+Management & Governance	Resource Groups & Tag Editor	AWS Resource Groups Lets You Search and Group AWS Resources
+Management & Governance	Service Catalog	Create, share, organize, and govern your curated infrastructure as code (IaC) templates
+Management & Governance	Service Quotas	View and manage your AWS service quotas from a central location
+Management & Governance	AWS Sustainability	Track, measure, and review the environmental impact from your AWS usage
+Management & Governance	Systems Manager	AWS Systems Manager is a Central Place to View and Manage AWS Resources
+Management & Governance	Trusted Advisor	Optimize performance, improve security, reduce costs
+Management & Governance	AWS User Notifications	Configure and view notifications from AWS services
+Management & Governance	AWS Well-Architected Tool	Use AWS Well-Architected Tool to learn best practices, measure, and improve your workloads
+Media Services	AWS Deadline Cloud	Simplified render management
+Media Services	Elemental Appliances & Software	On-premises solutions for video processing and delivery
+Media Services	Elemental Inference	Optimizes video content in real-time, expanding audience reach without requiring AI expertise
+Media Services	Amazon Interactive Video Service	Managed interactive live streams
+Media Services	Kinesis Video Streams	Capture, Process, and Store Video Streams for Analytics and Machine Learning
+Media Services	MediaConnect	Reliable, secure, and flexible transport for live video
+Media Services	MediaConvert	Convert file-based content for broadcast and multiscreen delivery
+Media Services	MediaLive	Convert video inputs into live outputs for broadcast and streaming delivery
+Media Services	MediaPackage	Deliver video to many devices using just-in-time format conversion.
+Media Services	MediaStore	Store and deliver video assets for live or on-demand media workflows
+Media Services	MediaTailor	Personalise and monetise multiscreen content with channel assembly and server-side ad insertion.
+Migration & Transfer	Application Discovery Service	Discover on-premises application inventory and dependencies
+Migration & Transfer	Database Migration Service	Managed Database Migration Service
+Migration & Transfer	DataSync	DataSync simplifies, automates, and accelerates moving data
+Migration & Transfer	Amazon Elastic VMware Service	The fastest path to migrate and operate VMware workloads on AWS
+Migration & Transfer	AWS Mainframe Modernization	AWS Mainframe Modernization
+Migration & Transfer	AWS Migration Hub	Simplify and accelerate the migration of your data centers to AWS
+Migration & Transfer	AWS Snow Family	Large Scale Data Transport
+Migration & Transfer	AWS Transfer Family	Fully managed support for SFTP, FTPS, FTP, and AS2
+Migration & Transfer	AWS Transform	AI agents to accelerate and simplify migration and modernization
+Migration & Transfer	AWS Transform MGN	AWS Transform MGN automates lift-and-shift migration.
+Networking & Content Delivery	API Gateway	Build, Deploy and Manage APIs
+Networking & Content Delivery	AWS App Mesh	Easily monitor and control microservices
+Networking & Content Delivery	Application Recovery Controller	Monitor application recovery readiness and manage failovers
+Networking & Content Delivery	AWS Cloud Map	Build a dynamic map of your cloud
+Networking & Content Delivery	CloudFront	Global Content Delivery Network
+Networking & Content Delivery	AWS Data Transfer Terminal	Location for high throughput transfer to the cloud
+Networking & Content Delivery	Direct Connect	Dedicated Network Connection to AWS
+Networking & Content Delivery	Global Accelerator	Improve your application’s availability and performance using the AWS Global Network
+Networking & Content Delivery	Route 53	Scalable DNS and Domain Name Registration
+Networking & Content Delivery	Amazon Route 53 Global Resolver	Secure anycast DNS resolution
+Networking & Content Delivery	RTB Fabric	Fast, private connectivity for real-time bidding
+Networking & Content Delivery	VPC	Isolated Cloud Resources
+Quantum Technologies	Amazon Braket	Service for exploring, evaluating, and experimenting with quantum computing.
+Satellite	Ground Station	Communicate with satellites
+Security, Identity, & Compliance	AWS Artifact	Security compliance reports and agreements
+Security, Identity, & Compliance	AWS Audit Manager	Continuously assess controls for risk and compliance
+Security, Identity, & Compliance	Certificate Manager	Provision, Manage, and Deploy SSL/TLS Certificates
+Security, Identity, & Compliance	CloudHSM	Managed Hardware Security Modules in the Cloud
+Security, Identity, & Compliance	Cognito	Consumer Identity Management and AWS Credentials for Federated Identities
+Security, Identity, & Compliance	AWS Continuum	AWS Continuum discovers, prioritizes, validates, and remediates security risks across the software development lifecycle
+Security, Identity, & Compliance	Detective	Investigate and Analyze potential security issues
+Security, Identity, & Compliance	Directory Service	Host and Manage Active Directory
+Security, Identity, & Compliance	AWS Firewall Manager	Central management of firewall rules
+Security, Identity, & Compliance	GuardDuty	Intelligent Threat Detection to Protect Your AWS Accounts and Workloads
+Security, Identity, & Compliance	IAM	Manage access to AWS resources
+Security, Identity, & Compliance	IAM Identity Center	Manage workforce user access to multiple AWS accounts and cloud applications
+Security, Identity, & Compliance	Amazon Inspector	Continual vulnerability management at scale
+Security, Identity, & Compliance	Key Management Service	Securely Generate and Manage AWS Encryption Keys
+Security, Identity, & Compliance	Amazon Macie	Amazon Macie classifies and secures your business-critical content.
+Security, Identity, & Compliance	Network Security Manager	Centrally manage network security policies across your AWS Organization
+Security, Identity, & Compliance	AWS Payment Cryptography	On-demand payment HSM functionality for card transactions and key management
+Security, Identity, & Compliance	AWS Private Certificate Authority	Managed private certificate authority service
+Security, Identity, & Compliance	Resource Access Manager	Share AWS resources with other accounts or AWS Organizations
+Security, Identity, & Compliance	Secrets Manager	Easily rotate, manage, and retrieve secrets throughout their lifecycle
+Security, Identity, & Compliance	AWS Security Agent (now part of AWS Continuum)	Proactively secure your applications throughout the development lifecycle
+Security, Identity, & Compliance	Security Hub	Detect, prioritize, and respond to critical cloud security issues faster
+Security, Identity, & Compliance	Security Hub CSPM	Automated security checks across your AWS environment.
+Security, Identity, & Compliance	AWS Security Incident Response	Quickly prepare for, respond to, and recover from security incidents
+Security, Identity, & Compliance	Security Lake	Automatically centralize all your security data with a few clicks
+Security, Identity, & Compliance	AWS Signer	Ensuring trust and integrity of your code
+Security, Identity, & Compliance	Amazon Verified Permissions	Manage, analyze and enforce permissions across your applications
+Security, Identity, & Compliance	WAF & Shield	Protects Against DDoS Attacks and Malicious Web Traffic
+Storage	AWS Backup	AWS Backup centrally manages and automates backups across AWS services
+Storage	EFS	Managed File Storage for EC2
+Storage	AWS Elastic Disaster Recovery	Scalable, cost-effective application recovery to AWS
+Storage	FSx	Fully managed third-party file systems optimized for a variety of workloads
+Storage	Recycle Bin	Protect resources from accidental deletion
+Storage	S3	Scalable Storage in the Cloud
+Storage	S3 Glacier	Amazon S3 Glacier API for vaults only. For the Glacier Deep Archive, Glacier Flexible Retrieval, or Glacier Instant Retrieval storage classes, use the S3 Console
+Storage	Storage Gateway	Hybrid Storage Integration

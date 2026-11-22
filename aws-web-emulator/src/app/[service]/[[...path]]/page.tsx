@@ -4,7 +4,7 @@ import { Ec2Console } from "@/components/ec2-console"
 import { Phase1ServiceConsole } from "@/components/phase-1-service-console"
 import { Phase2ServiceConsole } from "@/components/phase-2-service-console"
 import { ResourceConsole } from "@/components/resource-console"
-import { S3Console } from "@/components/s3-console"
+import { S3App } from "@/components/s3/s3-app"
 import { ServiceIcon } from "@/components/service-icon"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
@@ -16,22 +16,19 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { managedServiceNames, serviceSchema } from "@/lib/contracts"
+import { serviceSchema } from "@/lib/contracts"
 import { catalogCommit, findCatalogService } from "@/lib/service-catalog"
 
-export function generateStaticParams() {
-  return managedServiceNames.map((service) => ({ service }))
-}
-
-export async function generateMetadata({ params }: PageProps<"/[service]">) {
+export async function generateMetadata({ params }: PageProps<"/[service]/[[...path]]">) {
   const entry = findCatalogService((await params).service)
   return { title: entry ? `${entry.name} · MyAWS` : "MyAWS" }
 }
 
-export default async function ServicePage({ params }: PageProps<"/[service]">) {
-  const entry = findCatalogService((await params).service)
+export default async function ServicePage({ params }: PageProps<"/[service]/[[...path]]">) {
+  const { service, path = [] } = await params
+  const entry = findCatalogService(service)
   if (!entry) notFound()
-  if (entry.id === "s3") return <Suspense fallback={<p role="status">Loading Amazon S3…</p>}><S3Console /></Suspense>
+  if (entry.id === "s3") return <Suspense fallback={null}><S3App path={path} /></Suspense>
   if (entry.id === "ec2" || entry.id === "vpc")
     return <Ec2Console key={entry.id} service={entry.id} />
   const managed = serviceSchema.safeParse(entry.id)

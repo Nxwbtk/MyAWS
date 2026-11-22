@@ -1,0 +1,1104 @@
+{
+ "categories": [
+  "Analytics",
+  "Application Integration",
+  "Blockchain",
+  "Business Applications",
+  "Cloud Financial Management",
+  "Compute",
+  "Containers",
+  "Customer Enablement",
+  "Database",
+  "Developer Tools",
+  "End User Computing",
+  "Front-end Web & Mobile",
+  "Game Development",
+  "Internet of Things",
+  "Machine Learning",
+  "Management & Governance",
+  "Media Services",
+  "Migration & Transfer",
+  "Networking & Content Delivery",
+  "Quantum Technologies",
+  "Satellite",
+  "Security, Identity, & Compliance",
+  "Storage"
+ ],
+ "services": {
+  "agentregistry": {
+   "short": "AWS Agent Registry",
+   "category": "Machine Learning",
+   "description": "Centrally manage and discover AI resources"
+  },
+  "amplify": {
+   "short": "AWS Amplify",
+   "category": "Front-end Web & Mobile",
+   "description": "AWS Amplify offers web hosting and app backend services for fullstack developers."
+  },
+  "apigateway": {
+   "short": "API Gateway",
+   "category": "Networking & Content Delivery",
+   "description": "Build, Deploy and Manage APIs"
+  },
+  "appmesh": {
+   "short": "AWS App Mesh",
+   "category": "Networking & Content Delivery",
+   "description": "Easily monitor and control microservices"
+  },
+  "apprunner": {
+   "short": "AWS App Runner",
+   "category": "Compute",
+   "description": "Build and run production web applications at scale"
+  },
+  "appconfig": {
+   "short": "AWS AppConfig",
+   "category": "Developer Tools",
+   "description": "Use feature flags, operational flags, experiments, and other runtime configuration to make changes quickly and safely on production"
+  },
+  "appfabric": {
+   "short": "AWS AppFabric",
+   "category": "Business Applications",
+   "description": "Connecting SaaS applications for better productivity and security."
+  },
+  "appflow": {
+   "short": "Amazon AppFlow",
+   "category": "Application Integration",
+   "description": "Amazon AppFlow integrates apps and automates data flows without code."
+  },
+  "applicationautoscaling": {
+   "short": "AWS Auto Scaling",
+   "category": "Management & Governance",
+   "description": "AWS Auto Scaling enables you to quickly scale your entire application on AWS"
+  },
+  "applicationdiscoveryservice": {
+   "short": "Application Discovery Service",
+   "category": "Migration & Transfer",
+   "description": "Discover on-premises application inventory and dependencies"
+  },
+  "mgn": {
+   "short": "AWS Transform MGN",
+   "category": "Migration & Transfer",
+   "description": "AWS Transform MGN automates lift-and-shift migration."
+  },
+  "arc": {
+   "short": "Application Recovery Controller",
+   "category": "Networking & Content Delivery",
+   "description": "Monitor application recovery readiness and manage failovers"
+  },
+  "appsync": {
+   "short": "AWS AppSync",
+   "category": "Front-end Web & Mobile",
+   "description": "Real-Time Data Sync Using GraphQL for Mobile & Web Apps, Online or Offline"
+  },
+  "artifact": {
+   "short": "AWS Artifact",
+   "category": "Security, Identity, & Compliance",
+   "description": "Security compliance reports and agreements"
+  },
+  "athena": {
+   "short": "Athena",
+   "category": "Analytics",
+   "description": "Serverless interactive analytics service"
+  },
+  "auditmanager": {
+   "short": "AWS Audit Manager",
+   "category": "Security, Identity, & Compliance",
+   "description": "Continuously assess controls for risk and compliance"
+  },
+  "sagemakera2iruntime": {
+   "short": "Amazon Augmented AI",
+   "category": "Machine Learning",
+   "description": "Easily implement human review of machine learning predictions"
+  },
+  "dsql": {
+   "short": "Aurora DSQL",
+   "category": "Database",
+   "description": "Serverless distributed SQL database with virtually unlimited scale, highest availability, and zero infrastructure management."
+  },
+  "kendra": {
+   "short": "Amazon Kendra",
+   "category": "Machine Learning",
+   "description": "Highly accurate enterprise search service powered by machine learning"
+  },
+  "serverlessapplicationrepository": {
+   "short": "Serverless Application Repository",
+   "category": "Compute",
+   "description": "Assemble, deploy, and share serverless applications within teams or publicly"
+  },
+  "b2bi": {
+   "short": "AWS B2B Data Interchange",
+   "category": "Application Integration",
+   "description": "Build and run EDI-based workflows at cloud scale"
+  },
+  "backup": {
+   "short": "AWS Backup",
+   "category": "Storage",
+   "description": "AWS Backup centrally manages and automates backups across AWS services"
+  },
+  "batch": {
+   "short": "Batch",
+   "category": "Compute",
+   "description": "Fully managed batch processing at any scale"
+  },
+  "bedrock": {
+   "short": "Amazon Bedrock",
+   "category": "Machine Learning",
+   "description": "The easiest way to build and scale generative AI applications with foundation models (FMs)."
+  },
+  "bedrockagentcore": {
+   "short": "Amazon Bedrock AgentCore",
+   "category": "Machine Learning",
+   "description": "Deploy and operate highly effective agents securely, at scale using any framework and model."
+  },
+  "billing": {
+   "short": "Billing and Cost Management",
+   "category": "Cloud Financial Management",
+   "description": "View and pay bills, analyze and govern your spending, and optimize your costs"
+  },
+  "billingconductor": {
+   "short": "AWS Billing Conductor",
+   "category": "Cloud Financial Management",
+   "description": "Simplifying your billing practice"
+  },
+  "braket": {
+   "short": "Amazon Braket",
+   "category": "Quantum Technologies",
+   "description": "Service for exploring, evaluating, and experimenting with quantum computing."
+  },
+  "acm": {
+   "short": "Certificate Manager",
+   "category": "Security, Identity, & Compliance",
+   "description": "Provision, Manage, and Deploy SSL/TLS Certificates"
+  },
+  "chime": {
+   "short": "Amazon Chime",
+   "category": "Business Applications",
+   "description": "Amazon Chime is a communications service that transforms online meetings"
+  },
+  "chime-sdk": {
+   "short": "Amazon Chime SDK",
+   "category": "Business Applications",
+   "description": "Real-time communication for your applications"
+  },
+  "cleanrooms": {
+   "short": "AWS Clean Rooms",
+   "category": "Analytics",
+   "description": "Easily and securely collaborate on collective datasets without sharing or revealing underlying raw data"
+  },
+  "servicediscovery": {
+   "short": "AWS Cloud Map",
+   "category": "Networking & Content Delivery",
+   "description": "Build a dynamic map of your cloud"
+  },
+  "cloud9": {
+   "short": "Cloud9",
+   "category": "Developer Tools",
+   "description": "A Cloud IDE for Writing, Running, and Debugging Code"
+  },
+  "cloudformation": {
+   "short": "CloudFormation",
+   "category": "Management & Governance",
+   "description": "Create and Manage Resources with Templates"
+  },
+  "cloudfront": {
+   "short": "CloudFront",
+   "category": "Networking & Content Delivery",
+   "description": "Global Content Delivery Network"
+  },
+  "cloudhsm": {
+   "short": "CloudHSM",
+   "category": "Security, Identity, & Compliance",
+   "description": "Managed Hardware Security Modules in the Cloud"
+  },
+  "cloudsearch": {
+   "short": "CloudSearch",
+   "category": "Analytics",
+   "description": "Managed Search Service"
+  },
+  "cloudtrail": {
+   "short": "CloudTrail",
+   "category": "Management & Governance",
+   "description": "Track User Activity and API Usage"
+  },
+  "cloudwatch": {
+   "short": "CloudWatch",
+   "category": "Management & Governance",
+   "description": "Monitor Resources and Applications"
+  },
+  "codeartifact": {
+   "short": "CodeArtifact",
+   "category": "Developer Tools",
+   "description": "Secure, scalable, and cost-effective artifact management for software development"
+  },
+  "codebuild": {
+   "short": "CodeBuild",
+   "category": "Developer Tools",
+   "description": "Build and Test Code"
+  },
+  "codecatalyst": {
+   "short": "Amazon CodeCatalyst",
+   "category": "Developer Tools",
+   "description": "Integrated DevOps Service"
+  },
+  "codecommit": {
+   "short": "CodeCommit",
+   "category": "Developer Tools",
+   "description": "Store Code in Private Git Repositories"
+  },
+  "codedeploy": {
+   "short": "CodeDeploy",
+   "category": "Developer Tools",
+   "description": "Automate Code Deployments"
+  },
+  "codeguru": {
+   "short": "Amazon CodeGuru",
+   "category": "Machine Learning",
+   "description": "Intelligent recommendations for building and running modern applications"
+  },
+  "codepipeline": {
+   "short": "CodePipeline",
+   "category": "Developer Tools",
+   "description": "Release Software using Continuous Delivery"
+  },
+  "cognito": {
+   "short": "Cognito",
+   "category": "Security, Identity, & Compliance",
+   "description": "Consumer Identity Management and AWS Credentials for Federated Identities"
+  },
+  "comprehend": {
+   "short": "Amazon Comprehend",
+   "category": "Machine Learning",
+   "description": "Analyze Unstructured Text"
+  },
+  "comprehendmedical": {
+   "short": "Amazon Comprehend Medical",
+   "category": "Machine Learning",
+   "description": "Amazon Comprehend Medical uses machine learning to extract insights and relationships from medical text."
+  },
+  "computeoptimizer": {
+   "short": "AWS Compute Optimizer",
+   "category": "Management & Governance",
+   "description": "Recommend optimal AWS Compute resources for your workloads"
+  },
+  "configservice": {
+   "short": "AWS Config",
+   "category": "Management & Governance",
+   "description": "Track Resource Inventory and Changes"
+  },
+  "connecthealth": {
+   "short": "Amazon Connect Health",
+   "category": "Business Applications",
+   "description": "Agentic AI solution for healthcare providers"
+  },
+  "continuum": {
+   "short": "AWS Continuum",
+   "category": "Security, Identity, & Compliance",
+   "description": "AWS Continuum discovers, prioritizes, validates, and remediates security risks across the software development lifecycle"
+  },
+  "controlcatalog": {
+   "short": "Control Tower",
+   "category": "Management & Governance",
+   "description": "The easiest way to set up and govern a secure, compliant multi-account environment"
+  },
+  "controltower": {
+   "short": "Control Tower",
+   "category": "Management & Governance",
+   "description": "The easiest way to set up and govern a secure, compliant multi-account environment"
+  },
+  "dataexchange": {
+   "short": "AWS Data Exchange",
+   "category": "Analytics",
+   "description": "Easily find, subscribe to, and use third-party data"
+  },
+  "firehose": {
+   "short": "Amazon Data Firehose",
+   "category": "Analytics",
+   "description": "Real-time streaming delivery for any data, at any scale, at low-cost"
+  },
+  "databasemigrationservice": {
+   "short": "Database Migration Service",
+   "category": "Migration & Transfer",
+   "description": "Managed Database Migration Service"
+  },
+  "datasync": {
+   "short": "DataSync",
+   "category": "Migration & Transfer",
+   "description": "DataSync simplifies, automates, and accelerates moving data"
+  },
+  "datazone": {
+   "short": "Amazon DataZone",
+   "category": "Analytics",
+   "description": "Unlock data across organizational boundaries with built-in governance"
+  },
+  "deadline": {
+   "short": "AWS Deadline Cloud",
+   "category": "Media Services",
+   "description": "Simplified render management"
+  },
+  "detective": {
+   "short": "Detective",
+   "category": "Security, Identity, & Compliance",
+   "description": "Investigate and Analyze potential security issues"
+  },
+  "codestarnotifications": {
+   "short": "AWS User Notifications",
+   "category": "Management & Governance",
+   "description": "Configure and view notifications from AWS services"
+  },
+  "devicefarm": {
+   "short": "Device Farm",
+   "category": "Front-end Web & Mobile",
+   "description": "Test Android, iOS, and Web Apps on Real Devices in the Cloud"
+  },
+  "devopsagent": {
+   "short": "AWS DevOps Agent",
+   "category": "Developer Tools",
+   "description": "A frontier agent that resolves and proactively prevents incidents, continuously improving reliability and performance of applications in AWS, multicloud, and hybrid environments."
+  },
+  "devopsguru": {
+   "short": "Amazon DevOps Guru",
+   "category": "Machine Learning",
+   "description": "ML-powered cloud operations service to improve application availability."
+  },
+  "directconnect": {
+   "short": "Direct Connect",
+   "category": "Networking & Content Delivery",
+   "description": "Dedicated Network Connection to AWS"
+  },
+  "directoryservice": {
+   "short": "Directory Service",
+   "category": "Security, Identity, & Compliance",
+   "description": "Host and Manage Active Directory"
+  },
+  "docdb": {
+   "short": "Amazon DocumentDB",
+   "category": "Database",
+   "description": "Fully-managed MongoDB-compatible database service"
+  },
+  "dynamodb": {
+   "short": "DynamoDB",
+   "category": "Database",
+   "description": "Managed NoSQL Database"
+  },
+  "ebs": {
+   "short": "Recycle Bin",
+   "category": "Storage",
+   "description": "Protect resources from accidental deletion"
+  },
+  "ec2": {
+   "short": "EC2",
+   "category": "Compute",
+   "description": "Virtual Servers in the Cloud"
+  },
+  "autoscaling": {
+   "short": "AWS Auto Scaling",
+   "category": "Management & Governance",
+   "description": "AWS Auto Scaling enables you to quickly scale your entire application on AWS"
+  },
+  "imagebuilder": {
+   "short": "EC2 Image Builder",
+   "category": "Compute",
+   "description": "A managed service to automate build, customize and deploy OS images"
+  },
+  "ecr": {
+   "short": "Elastic Container Registry",
+   "category": "Containers",
+   "description": "Fully-managed Docker container registry : Share and deploy container software, publicly or privately"
+  },
+  "ecs": {
+   "short": "Elastic Container Service",
+   "category": "Containers",
+   "description": "Highly secure, reliable, and scalable way to run containers"
+  },
+  "efs": {
+   "short": "EFS",
+   "category": "Storage",
+   "description": "Managed File Storage for EC2"
+  },
+  "eks": {
+   "short": "Elastic Kubernetes Service",
+   "category": "Containers",
+   "description": "The most trusted way to start, run, and scale Kubernetes"
+  },
+  "elasticbeanstalk": {
+   "short": "Elastic Beanstalk",
+   "category": "Compute",
+   "description": "Run and Manage Web Apps"
+  },
+  "drs": {
+   "short": "AWS Elastic Disaster Recovery",
+   "category": "Storage",
+   "description": "Scalable, cost-effective application recovery to AWS"
+  },
+  "elasticloadbalancing": {
+   "short": "Elastic Load Balancing",
+   "category": "Networking & Content Delivery",
+   "description": "Distribute incoming traffic across targets"
+  },
+  "evs": {
+   "short": "Amazon Elastic VMware Service",
+   "category": "Migration & Transfer",
+   "description": "The fastest path to migrate and operate VMware workloads on AWS"
+  },
+  "elasticache": {
+   "short": "ElastiCache",
+   "category": "Database",
+   "description": "In-Memory Cache"
+  },
+  "elementalinference": {
+   "short": "Elemental Inference",
+   "category": "Media Services",
+   "description": "Optimizes video content in real-time, expanding audience reach without requiring AI expertise"
+  },
+  "mediaconvert": {
+   "short": "MediaConvert",
+   "category": "Media Services",
+   "description": "Convert file-based content for broadcast and multiscreen delivery"
+  },
+  "medialive": {
+   "short": "MediaLive",
+   "category": "Media Services",
+   "description": "Convert video inputs into live outputs for broadcast and streaming delivery"
+  },
+  "mediapackage": {
+   "short": "MediaPackage",
+   "category": "Media Services",
+   "description": "Deliver video to many devices using just-in-time format conversion."
+  },
+  "mediastore": {
+   "short": "MediaStore",
+   "category": "Media Services",
+   "description": "Store and deliver video assets for live or on-demand media workflows"
+  },
+  "emr": {
+   "short": "EMR",
+   "category": "Analytics",
+   "description": "Managed Hadoop Framework"
+  },
+  "endusermessaging": {
+   "short": "AWS End User Messaging",
+   "category": "Business Applications",
+   "description": "Engage your customers across multiple communication channels"
+  },
+  "entityresolution": {
+   "short": "AWS Entity Resolution",
+   "category": "Analytics",
+   "description": "Easy-to-configure, machine learning powered entity resolution service"
+  },
+  "eventbridge": {
+   "short": "Amazon EventBridge",
+   "category": "Application Integration",
+   "description": "Serverless service for building event-driven applications."
+  },
+  "fis": {
+   "short": "AWS FIS",
+   "category": "Developer Tools",
+   "description": "Improve resiliency and performance with controlled experiments."
+  },
+  "fms": {
+   "short": "AWS Firewall Manager",
+   "category": "Security, Identity, & Compliance",
+   "description": "Central management of firewall rules"
+  },
+  "forecast": {
+   "short": "Amazon Forecast",
+   "category": "Machine Learning",
+   "description": "Amazon Forecast is a fully-managed service for accurate time-series forecasting"
+  },
+  "frauddetector": {
+   "short": "Amazon Fraud Detector",
+   "category": "Machine Learning",
+   "description": "Detect more online fraud faster using machine learning"
+  },
+  "fsx": {
+   "short": "FSx",
+   "category": "Storage",
+   "description": "Fully managed third-party file systems optimized for a variety of workloads"
+  },
+  "gamelift": {
+   "short": "Amazon GameLift Servers",
+   "category": "Game Development",
+   "description": "Deploy and Scale Session-based Multiplayer Games"
+  },
+  "gameliftstreams": {
+   "short": "Amazon GameLift Streams",
+   "category": "Game Development",
+   "description": "Deliver high frame rate, low-latency game streaming at global scale"
+  },
+  "glacier": {
+   "short": "S3 Glacier",
+   "category": "Storage",
+   "description": "Amazon S3 Glacier API for vaults only. For the Glacier Deep Archive, Glacier Flexible Retrieval, or Glacier Instant Retrieval storage classes, use the S3 Console"
+  },
+  "globalaccelerator": {
+   "short": "Global Accelerator",
+   "category": "Networking & Content Delivery",
+   "description": "Improve your application\u2019s availability and performance using the AWS Global Network"
+  },
+  "glue": {
+   "short": "AWS Glue",
+   "category": "Analytics",
+   "description": "AWS Glue is a serverless data integration service."
+  },
+  "greengrass": {
+   "short": "IoT Greengrass",
+   "category": "Internet of Things",
+   "description": "Deploy and run code on your devices"
+  },
+  "groundstation": {
+   "short": "Ground Station",
+   "category": "Satellite",
+   "description": "Communicate with satellites"
+  },
+  "guardduty": {
+   "short": "GuardDuty",
+   "category": "Security, Identity, & Compliance",
+   "description": "Intelligent Threat Detection to Protect Your AWS Accounts and Workloads"
+  },
+  "health": {
+   "short": "AWS Health Dashboard",
+   "category": "Management & Governance",
+   "description": "Personalized view of AWS service health."
+  },
+  "medicalimaging": {
+   "short": "AWS HealthImaging",
+   "category": "Machine Learning",
+   "description": "Store, analyze, and share medical images"
+  },
+  "healthlake": {
+   "short": "AWS HealthLake",
+   "category": "Machine Learning",
+   "description": "Making sense of health data"
+  },
+  "omics": {
+   "short": "AWS HealthOmics",
+   "category": "Machine Learning",
+   "description": "Transform omics data into insights."
+  },
+  "iam-identity-center": {
+   "short": "IAM Identity Center",
+   "category": "Security, Identity, & Compliance",
+   "description": "Manage workforce user access to multiple AWS accounts and cloud applications"
+  },
+  "iam": {
+   "short": "IAM",
+   "category": "Security, Identity, & Compliance",
+   "description": "Manage access to AWS resources"
+  },
+  "inspector": {
+   "short": "Amazon Inspector",
+   "category": "Security, Identity, & Compliance",
+   "description": "Continual vulnerability management at scale"
+  },
+  "ivs": {
+   "short": "Amazon Interactive Video Service",
+   "category": "Media Services",
+   "description": "Managed interactive live streams"
+  },
+  "interconnect": {
+   "short": "Interconnect",
+   "category": "Networking & Content Delivery",
+   "description": "Private connectivity between networks"
+  },
+  "iot": {
+   "short": "IoT Core",
+   "category": "Internet of Things",
+   "description": "Connect Devices to the Cloud"
+  },
+  "iot-device-management": {
+   "short": "IoT Device Management",
+   "category": "Internet of Things",
+   "description": "Securely Manage Fleets as Small as One Device, or as Broad as Millions of Devices"
+  },
+  "iotfleetwise": {
+   "short": "AWS IoT FleetWise",
+   "category": "Internet of Things",
+   "description": "Easily collect, organize, and transfer vehicle data to the cloud at scale."
+  },
+  "iotsitewise": {
+   "short": "IoT SiteWise",
+   "category": "Internet of Things",
+   "description": "Data driven decisions in Industrial operations"
+  },
+  "iottwinmaker": {
+   "short": "IoT TwinMaker",
+   "category": "Internet of Things",
+   "description": "Easily create digital twins of real-world systems to optimize operations"
+  },
+  "kms": {
+   "short": "Key Management Service",
+   "category": "Security, Identity, & Compliance",
+   "description": "Securely Generate and Manage AWS Encryption Keys"
+  },
+  "keyspaces": {
+   "short": "Amazon Keyspaces",
+   "category": "Database",
+   "description": "Serverless Cassandra-compatible database"
+  },
+  "kinesis": {
+   "short": "Kinesis",
+   "category": "Analytics",
+   "description": "Work with Real-Time Streaming Data"
+  },
+  "kinesisvideo": {
+   "short": "Kinesis Video Streams",
+   "category": "Media Services",
+   "description": "Capture, Process, and Store Video Streams for Analytics and Machine Learning"
+  },
+  "lakeformation": {
+   "short": "AWS Lake Formation",
+   "category": "Analytics",
+   "description": "AWS Lake Formation makes it easy to set up a secure data lake"
+  },
+  "lambda": {
+   "short": "Lambda",
+   "category": "Compute",
+   "description": "Run code without thinking about servers"
+  },
+  "launchwizard": {
+   "short": "Launch Wizard",
+   "category": "Management & Governance",
+   "description": "Guided deployment for Enterprise applications and complex workloads"
+  },
+  "lex": {
+   "short": "Amazon Lex",
+   "category": "Machine Learning",
+   "description": "Build Voice and Text Chatbots"
+  },
+  "licensemanager": {
+   "short": "AWS License Manager",
+   "category": "Management & Governance",
+   "description": "Set rules to manage, discover, and report third-party license usage proactively"
+  },
+  "lightsail": {
+   "short": "Lightsail",
+   "category": "Compute",
+   "description": "Launch and Manage Virtual Private Servers"
+  },
+  "location": {
+   "short": "Amazon Location Service",
+   "category": "Front-end Web & Mobile",
+   "description": "Securely and easily add location data to applications."
+  },
+  "macie2": {
+   "short": "Amazon Macie",
+   "category": "Security, Identity, & Compliance",
+   "description": "Amazon Macie classifies and secures your business-critical content."
+  },
+  "m2": {
+   "short": "AWS Mainframe Modernization",
+   "category": "Migration & Transfer",
+   "description": "AWS Mainframe Modernization"
+  },
+  "managedblockchain": {
+   "short": "Amazon Managed Blockchain",
+   "category": "Blockchain",
+   "description": "Easily access, query, and manage blockchain networks."
+  },
+  "grafana": {
+   "short": "Amazon Grafana",
+   "category": "Management & Governance",
+   "description": "Fully managed Grafana service for interactive data visualizations and dashboarding"
+  },
+  "kinesisanalytics": {
+   "short": "Kinesis",
+   "category": "Analytics",
+   "description": "Work with Real-Time Streaming Data"
+  },
+  "amp": {
+   "short": "Amazon Prometheus",
+   "category": "Management & Governance",
+   "description": "A fully managed Prometheus-compatible monitoring service."
+  },
+  "kafka": {
+   "short": "MSK",
+   "category": "Analytics",
+   "description": "Fully managed, highly available, and secure service for Apache Kafka"
+  },
+  "mwaa": {
+   "short": "Managed Apache Airflow",
+   "category": "Application Integration",
+   "description": "Run Apache Airflow without provisioning or managing servers."
+  },
+  "marketplace": {
+   "short": "AWS Marketplace",
+   "category": "Cloud Financial Management",
+   "description": "Digital catalog where you can find, buy, and deploy software"
+  },
+  "mediaconnect": {
+   "short": "MediaConnect",
+   "category": "Media Services",
+   "description": "Reliable, secure, and flexible transport for live video"
+  },
+  "mediatailor": {
+   "short": "MediaTailor",
+   "category": "Media Services",
+   "description": "Personalise and monetise multiscreen content with channel assembly and server-side ad insertion."
+  },
+  "memorydb": {
+   "short": "Amazon MemoryDB",
+   "category": "Database",
+   "description": "Fully managed, Valkey- and Redis OSS-compatible, in-memory database service"
+  },
+  "migrationhub": {
+   "short": "AWS Migration Hub",
+   "category": "Migration & Transfer",
+   "description": "Simplify and accelerate the migration of your data centers to AWS"
+  },
+  "mq": {
+   "short": "Amazon MQ",
+   "category": "Application Integration",
+   "description": "Managed message broker service for Apache ActiveMQ and RabbitMQ"
+  },
+  "neptune": {
+   "short": "Neptune",
+   "category": "Database",
+   "description": "Fast, reliable graph database built for the cloud"
+  },
+  "networkfirewall": {
+   "short": "VPC",
+   "category": "Networking & Content Delivery",
+   "description": "Isolated Cloud Resources"
+  },
+  "networkmanager": {
+   "short": "Network Manager",
+   "category": "Networking & Content Delivery",
+   "description": "Manage your global network"
+  },
+  "networksecuritymanager": {
+   "short": "Network Security Manager",
+   "category": "Security, Identity, & Compliance",
+   "description": "Centrally manage network security policies across your AWS Organization"
+  },
+  "novaact": {
+   "short": "Amazon Nova Act",
+   "category": "Machine Learning",
+   "description": "Build and manage AI agents to automate UI workflows"
+  },
+  "opensearch": {
+   "short": "Amazon OpenSearch Service",
+   "category": "Analytics",
+   "description": "Run open-source OpenSearch or Elasticsearch using Managed Clusters or Serverless deployments."
+  },
+  "odb": {
+   "short": "Oracle Database@AWS",
+   "category": "Database",
+   "description": "Lift and shift Oracle Exadata workloads and rapidly innovate with the broad portfolio of AWS services"
+  },
+  "organizations": {
+   "short": "AWS Organizations",
+   "category": "Management & Governance",
+   "description": "Central governance and management across AWS accounts."
+  },
+  "outposts": {
+   "short": "AWS Outposts",
+   "category": "Compute",
+   "description": "Run AWS Services On Premises"
+  },
+  "pcs": {
+   "short": "Parallel Computing Service",
+   "category": "Compute",
+   "description": "Easily run HPC workloads at virtually any scale"
+  },
+  "partner-central": {
+   "short": "AWS Partner Central",
+   "category": "Management & Governance",
+   "description": "Manage your AWS partnership and selling on AWS Marketplace"
+  },
+  "paymentcryptography": {
+   "short": "AWS Payment Cryptography",
+   "category": "Security, Identity, & Compliance",
+   "description": "On-demand payment HSM functionality for card transactions and key management"
+  },
+  "personalize": {
+   "short": "Amazon Personalize",
+   "category": "Machine Learning",
+   "description": "Amazon Personalize helps you easily add real-time recommendations to your apps"
+  },
+  "pinpoint": {
+   "short": "Amazon Pinpoint",
+   "category": "Business Applications",
+   "description": "Multichannel communication service"
+  },
+  "polly": {
+   "short": "Amazon Polly",
+   "category": "Machine Learning",
+   "description": "Turn Text into Lifelike Speech"
+  },
+  "acmpca": {
+   "short": "AWS Private Certificate Authority",
+   "category": "Security, Identity, & Compliance",
+   "description": "Managed private certificate authority service"
+  },
+  "proton": {
+   "short": "AWS Proton",
+   "category": "Management & Governance",
+   "description": "Manage your infrastructure so developers can focus on coding."
+  },
+  "qbusiness": {
+   "short": "Amazon Q Business",
+   "category": "Machine Learning",
+   "description": "Generative AI-powered enterprise assistant"
+  },
+  "chatbot": {
+   "short": "Amazon Q Developer in chat applications (previously AWS Chatbot)",
+   "category": "Management & Governance",
+   "description": "Generative AI-powered assistant for monitoring and optimizing your AWS resources"
+  },
+  "quicksight": {
+   "short": "QuickSight",
+   "category": "Analytics",
+   "description": "Fast, easy to use business analytics"
+  },
+  "rds": {
+   "short": "Aurora and RDS",
+   "category": "Database",
+   "description": "Managed Relational Database Service"
+  },
+  "repostspace": {
+   "short": "AWS re:Post Private",
+   "category": "Customer Enablement",
+   "description": "Increase internal collaboration and innovation through a curated cloud knowledge resource"
+  },
+  "redshift": {
+   "short": "Amazon Redshift",
+   "category": "Analytics",
+   "description": "Fast, Serverless, and cost effective SQL analytics and data warehousing"
+  },
+  "rekognition": {
+   "short": "Amazon Rekognition",
+   "category": "Machine Learning",
+   "description": "Search and Analyze Images"
+  },
+  "resiliencehub": {
+   "short": "AWS Resilience Hub",
+   "category": "Management & Governance",
+   "description": "AWS Resilience Hub provides a central place to define, validate, and track the resiliency of applications on AWS."
+  },
+  "ram": {
+   "short": "Resource Access Manager",
+   "category": "Security, Identity, & Compliance",
+   "description": "Share AWS resources with other accounts or AWS Organizations"
+  },
+  "resourceexplorer2": {
+   "short": "AWS Resource Explorer",
+   "category": "Management & Governance",
+   "description": "Easily search for and discover relevant resources across AWS"
+  },
+  "resourcegroups": {
+   "short": "Resource Groups & Tag Editor",
+   "category": "Management & Governance",
+   "description": "AWS Resource Groups Lets You Search and Group AWS Resources"
+  },
+  "route53": {
+   "short": "Route 53",
+   "category": "Networking & Content Delivery",
+   "description": "Scalable DNS and Domain Name Registration"
+  },
+  "rtbfabric": {
+   "short": "RTB Fabric",
+   "category": "Networking & Content Delivery",
+   "description": "Fast, private connectivity for real-time bidding"
+  },
+  "s3": {
+   "short": "S3",
+   "category": "Storage",
+   "description": "Scalable Storage in the Cloud"
+  },
+  "sagemaker": {
+   "short": "Amazon SageMaker AI",
+   "category": "Machine Learning",
+   "description": "Build, Train, and Deploy Machine Learning Models"
+  },
+  "secretsmanager": {
+   "short": "Secrets Manager",
+   "category": "Security, Identity, & Compliance",
+   "description": "Easily rotate, manage, and retrieve secrets throughout their lifecycle"
+  },
+  "securityir": {
+   "short": "AWS Security Incident Response",
+   "category": "Security, Identity, & Compliance",
+   "description": "Quickly prepare for, respond to, and recover from security incidents"
+  },
+  "securitylake": {
+   "short": "Security Lake",
+   "category": "Security, Identity, & Compliance",
+   "description": "Automatically centralize all your security data with a few clicks"
+  },
+  "sts": {
+   "short": "STS",
+   "category": "Security, Identity, & Compliance",
+   "description": "Temporary security credentials"
+  },
+  "securityhub": {
+   "short": "Security Hub",
+   "category": "Security, Identity, & Compliance",
+   "description": "Detect, prioritize, and respond to critical cloud security issues faster"
+  },
+  "servicecatalog": {
+   "short": "Service Catalog",
+   "category": "Management & Governance",
+   "description": "Create, share, organize, and govern your curated infrastructure as code (IaC) templates"
+  },
+  "servicequotas": {
+   "short": "Service Quotas",
+   "category": "Management & Governance",
+   "description": "View and manage your AWS service quotas from a central location"
+  },
+  "ses": {
+   "short": "Amazon Simple Email Service",
+   "category": "Business Applications",
+   "description": "Email Sending and Receiving Service"
+  },
+  "shield": {
+   "short": "WAF & Shield",
+   "category": "Security, Identity, & Compliance",
+   "description": "Protects Against DDoS Attacks and Malicious Web Traffic"
+  },
+  "signer": {
+   "short": "AWS Signer",
+   "category": "Security, Identity, & Compliance",
+   "description": "Ensuring trust and integrity of your code"
+  },
+  "swf": {
+   "short": "SWF",
+   "category": "Application Integration",
+   "description": "Workflow Service for Coordinating Application Components"
+  },
+  "snowball": {
+   "short": "AWS Snow Family",
+   "category": "Migration & Transfer",
+   "description": "Large Scale Data Transport"
+  },
+  "sns": {
+   "short": "Simple Notification Service",
+   "category": "Application Integration",
+   "description": "SNS managed message topics for Pub/Sub"
+  },
+  "sqs": {
+   "short": "Simple Queue Service",
+   "category": "Application Integration",
+   "description": "SQS Managed Message Queues"
+  },
+  "sfn": {
+   "short": "Step Functions",
+   "category": "Application Integration",
+   "description": "Coordinate Distributed Applications"
+  },
+  "storagegateway": {
+   "short": "Storage Gateway",
+   "category": "Storage",
+   "description": "Hybrid Storage Integration"
+  },
+  "support": {
+   "short": "Support",
+   "category": "Customer Enablement",
+   "description": "Contact AWS for technical and account support."
+  },
+  "ssm": {
+   "short": "Systems Manager",
+   "category": "Management & Governance",
+   "description": "AWS Systems Manager is a Central Place to View and Manage AWS Resources"
+  },
+  "textract": {
+   "short": "Amazon Textract",
+   "category": "Machine Learning",
+   "description": "Easily extract text and data from virtually any document"
+  },
+  "timestream": {
+   "short": "Amazon Timestream",
+   "category": "Database",
+   "description": "Amazon Timestream is a fast, scalable, and serverless time series database for IoT and operational applications."
+  },
+  "transcribe": {
+   "short": "Amazon Transcribe",
+   "category": "Machine Learning",
+   "description": "Powerful Speech Recognition"
+  },
+  "transfer": {
+   "short": "AWS Transfer Family",
+   "category": "Migration & Transfer",
+   "description": "Fully managed support for SFTP, FTPS, FTP, and AS2"
+  },
+  "translate": {
+   "short": "Amazon Translate",
+   "category": "Machine Learning",
+   "description": "Powerful Neural Machine Translation"
+  },
+  "trustedadvisor": {
+   "short": "Trusted Advisor",
+   "category": "Management & Governance",
+   "description": "Optimize performance, improve security, reduce costs"
+  },
+  "notifications": {
+   "short": "AWS User Notifications",
+   "category": "Management & Governance",
+   "description": "Configure and view notifications from AWS services"
+  },
+  "verifiedpermissions": {
+   "short": "Amazon Verified Permissions",
+   "category": "Security, Identity, & Compliance",
+   "description": "Manage, analyze and enforce permissions across your applications"
+  },
+  "vpclattice": {
+   "short": "VPC Lattice",
+   "category": "Networking & Content Delivery",
+   "description": "Connect, secure, and monitor service-to-service communication"
+  },
+  "waf": {
+   "short": "WAF & Shield",
+   "category": "Security, Identity, & Compliance",
+   "description": "Protects Against DDoS Attacks and Malicious Web Traffic"
+  },
+  "wellarchitected": {
+   "short": "AWS Well-Architected Tool",
+   "category": "Management & Governance",
+   "description": "Use AWS Well-Architected Tool to learn best practices, measure, and improve your workloads"
+  },
+  "wickr": {
+   "short": "AWS Wickr",
+   "category": "Business Applications",
+   "description": "Secure communication with end-to-end encryption"
+  },
+  "workdocs": {
+   "short": "Amazon WorkDocs",
+   "category": "Business Applications",
+   "description": "Secure Enterprise Storage and Sharing Service"
+  },
+  "workmail": {
+   "short": "Amazon WorkMail",
+   "category": "Business Applications",
+   "description": "Secure Email and Calendaring Service"
+  },
+  "workspaces": {
+   "short": "WorkSpaces",
+   "category": "End User Computing",
+   "description": "Desktops in the Cloud"
+  },
+  "appstream": {
+   "short": "WorkSpaces Applications",
+   "category": "End User Computing",
+   "description": "Stream desktop applications securely to any web browser"
+  },
+  "workspacesweb": {
+   "short": "WorkSpaces Secure Browser",
+   "category": "End User Computing",
+   "description": "Cloud-native secure web access"
+  },
+  "workspacesthinclient": {
+   "short": "WorkSpaces Thin Client",
+   "category": "End User Computing",
+   "description": "Affordable, easy-to-manage thin client for secure access to virtual desktops"
+  },
+  "xray": {
+   "short": "X-Ray",
+   "category": "Developer Tools",
+   "description": "Analyze and Debug Your Applications"
+  },
+  "vpc": {
+   "short": "VPC",
+   "category": "Networking & Content Delivery",
+   "description": "Isolated Cloud Resources"
+  }
+ }
+}
