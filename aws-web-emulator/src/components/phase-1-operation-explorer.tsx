@@ -38,7 +38,7 @@ type ApiModel = {
   operations: ApiOperation[]
 }
 type ApiCatalogResponse = { sourceCommit: string; model: ApiModel }
-type Phase1Service =
+type OperationExplorerService =
   | "s3"
   | "ec2"
   | "vpc"
@@ -49,10 +49,23 @@ type Phase1Service =
   | "lambda"
   | "cloudwatch"
   | "cloudtrail"
+  | "route53"
+  | "elasticloadbalancing"
+  | "cloudfront"
+  | "acm"
+  | "globalaccelerator"
+  | "servicediscovery"
+  | "vpclattice"
+  | "directconnect"
+  | "interconnect"
+  | "networkmanager"
+  | "appmesh"
+  | "rtbfabric"
+  | "arc"
 
 const emptyOperations: ApiOperation[] = []
 
-const modelsByService: Record<Phase1Service, string[]> = {
+const modelsByService: Record<OperationExplorerService, string[]> = {
   s3: ["s3", "s3control", "s3files", "s3outposts", "s3tables", "s3vectors"],
   ec2: ["ec2", "ec2instanceconnect"],
   vpc: ["ec2", "ec2instanceconnect"],
@@ -77,6 +90,19 @@ const modelsByService: Record<Phase1Service, string[]> = {
     "synthetics",
   ],
   cloudtrail: ["cloudtrail", "cloudtraildata"],
+  route53: ["route53", "route53domains", "route53globalresolver", "route53profiles", "route53resolver"],
+  elasticloadbalancing: ["elasticloadbalancing", "elasticloadbalancingv2"],
+  cloudfront: ["cloudfront", "cloudfrontkeyvaluestore"],
+  acm: ["acm"],
+  globalaccelerator: ["globalaccelerator"],
+  servicediscovery: ["servicediscovery"],
+  vpclattice: ["vpclattice"],
+  directconnect: ["directconnect"],
+  interconnect: ["interconnect"],
+  networkmanager: ["networkmanager"],
+  appmesh: ["appmesh"],
+  rtbfabric: ["rtbfabric"],
+  arc: ["arcregionswitch", "arczonalshift", "route53recoverycluster", "route53recoverycontrolconfig", "route53recoveryreadiness"],
 }
 
 function initialInput(
@@ -124,14 +150,14 @@ function hideSecrets(value: unknown, reveal: boolean): unknown {
   return value
 }
 
-export function Phase1OperationExplorer({
+export function ApiOperationExplorer({
   service,
   initialModel,
   initialOperation,
   initialValues,
   startExpanded = false,
 }: {
-  service: Phase1Service
+  service: OperationExplorerService
   initialModel?: string
   initialOperation?: string
   initialValues?: Record<string, unknown>
@@ -524,3 +550,6 @@ export function Phase1OperationExplorer({
     </Card>
   )
 }
+
+// Kept as a compatibility name for the Phase 1 consoles that also use this explorer.
+export const Phase1OperationExplorer = ApiOperationExplorer

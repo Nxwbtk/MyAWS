@@ -44,11 +44,12 @@ For a different port, set `EMULATOR_PORT` when starting Compose and set `EMULATO
 
 Use the search box in the top bar or press `Alt+S`. Search matches service names, SDK aliases, and features such as S3 Tables. Console Home shows up to 12 recently visited services, ordered by most recent and saved in the current browser. The dashboard also shows the API connection, startup commands, and counts of local buckets, tables, and queues.
 
-The search catalog includes the service families registered in the checked-out emulator. The 10 Phase 1 services open AWS Console-aligned workspaces with their registered API operations and handler support status. After updating the submodule, regenerate the search catalog and Phase 1 operation inventory with Python 3.11 or newer.
+The search catalog includes the service families registered in the checked-out emulator. The Phase 1 and Phase 2 services open AWS Console-aligned workspaces with their registered API operations and handler support status. After updating the submodule, regenerate the search catalog and operation inventories with Python 3.11 or newer.
 
 ```sh
 python3 scripts/generate-service-catalog.py
 python3 scripts/generate-phase-1-operations.py
+python3 scripts/generate-phase-2-operations.py
 ```
 
 Service icons are keyed by catalog ID in `src/data/service-icons.json`. The SVGs in `public/service-icons/` come from the supplied AWS Architecture Icons package dated 07312026. Where the package lacks a named service icon, the index uses the corresponding category icon.
@@ -66,11 +67,13 @@ Service icons are keyed by catalog ID in `src/data/service-icons.json`. The SVGs
 - **CloudWatch** groups metrics, alarms, dashboards, metric streams, logs, canaries, Application Insights, RUM applications, Internet and Network Monitors, and cross-account observability sinks and links.
 - **CloudTrail** groups event history, trails, delivery status, event data stores, and saved queries.
 
-Every Phase 1 console has an API operation explorer backed by the Smithy models in the pinned emulator submodule. It shows request and response members, operation documentation, emulator handler source, and JavaScript SDK command availability. Complex requests can be entered as JSON. Writes are sent only to the configured local emulator.
+Every Phase 1 and Phase 2 console has an API operation explorer backed by the Smithy models in the pinned emulator submodule. It shows request and response members, operation documentation, emulator handler source, and JavaScript SDK command availability. Complex requests can be entered as JSON. Writes are sent only to the configured local emulator.
+
+Every Phase 2 console includes the same operation explorer, plus AWS Console-style resource areas for the emulator-backed features. Resource lists support service pagination, details, selectors, and supported row actions; workflows such as DNS changes, certificate requests, accelerator creation, service registration, and recovery resource inspection use the configured local emulator.
 
 ## Development progress
 
-All 10 Phase 1 service entry points and their model-backed operation workbenches are implemented. The pinned inventory contains 2,115 operations across 35 API models: 1,812 are marked implemented, 301 are explicit stubs, one is retired, and one has no handler. Source support does not mean every feature has passed a live request test. See [Phase 1 status](docs/phase-1-console.md), the separate [S3 verification record](docs/phase-1-s3.md), and the [service roadmap](docs/service-roadmap.md).
+All 10 Phase 1 and all 13 Phase 2 service entry points and their model-backed operation workbenches are implemented. Phase 2 covers 1,047 operations across 23 API models: 797 are marked implemented, 248 are explicit stubs, and two have no handler. Source support does not mean every feature has passed a live request test. See [Phase 1 status](docs/phase-1-console.md), the separate [S3 verification record](docs/phase-1-s3.md), [Phase 2 status and limitations](docs/phase-2-console.md), and the [service roadmap](docs/service-roadmap.md).
 
 ## Verify the frontend
 

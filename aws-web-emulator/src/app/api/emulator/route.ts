@@ -1,8 +1,14 @@
 import { Buffer } from "node:buffer"
+import * as ACMsdk from "@aws-sdk/client-acm"
 import * as AccessAnalyzerSdk from "@aws-sdk/client-accessanalyzer"
 import * as AioPsSdk from "@aws-sdk/client-aiops"
+import * as AppMeshSdk from "@aws-sdk/client-app-mesh"
+import * as ARCRegionSwitchSdk from "@aws-sdk/client-arc-region-switch"
+import * as ARCZonalShiftSdk from "@aws-sdk/client-arc-zonal-shift"
 import * as ApplicationInsightsSdk from "@aws-sdk/client-application-insights"
 import * as ApplicationSignalsSdk from "@aws-sdk/client-application-signals"
+import * as CloudFrontSdk from "@aws-sdk/client-cloudfront"
+import * as CloudFrontKeyValueStoreSdk from "@aws-sdk/client-cloudfront-keyvaluestore"
 import * as CloudTrailSdk from "@aws-sdk/client-cloudtrail"
 import * as CloudTrailDataSdk from "@aws-sdk/client-cloudtrail-data"
 import * as CloudWatchSdk from "@aws-sdk/client-cloudwatch"
@@ -32,8 +38,13 @@ import * as DaxSdk from "@aws-sdk/client-dax"
 import * as DynamoDBStreamsSdk from "@aws-sdk/client-dynamodb-streams"
 import * as Ec2Sdk from "@aws-sdk/client-ec2"
 import * as Ec2InstanceConnectSdk from "@aws-sdk/client-ec2-instance-connect"
+import * as DirectConnectSdk from "@aws-sdk/client-direct-connect"
+import * as ElasticLoadBalancingSdk from "@aws-sdk/client-elastic-load-balancing"
+import * as ElasticLoadBalancingV2Sdk from "@aws-sdk/client-elastic-load-balancing-v2"
+import * as GlobalAcceleratorSdk from "@aws-sdk/client-global-accelerator"
 import * as IamSdk from "@aws-sdk/client-iam"
 import * as IamToolboxSdk from "@aws-sdk/client-iam-toolbox"
+import * as InterconnectSdk from "@aws-sdk/client-interconnect"
 import * as InternetMonitorSdk from "@aws-sdk/client-internetmonitor"
 import * as LambdaSdk from "@aws-sdk/client-lambda"
 import * as LambdaCoreSdk from "@aws-sdk/client-lambda-core"
@@ -48,10 +59,21 @@ import {
 } from "@aws-sdk/client-sqs"
 import * as SqsSdk from "@aws-sdk/client-sqs"
 import * as NetworkFlowMonitorSdk from "@aws-sdk/client-networkflowmonitor"
+import * as NetworkManagerSdk from "@aws-sdk/client-networkmanager"
 import * as NetworkMonitorSdk from "@aws-sdk/client-networkmonitor"
 import * as OamSdk from "@aws-sdk/client-oam"
 import * as ObservabilityAdminSdk from "@aws-sdk/client-observabilityadmin"
+import * as Route53Sdk from "@aws-sdk/client-route-53"
+import * as Route53DomainsSdk from "@aws-sdk/client-route-53-domains"
+import * as Route53RecoveryClusterSdk from "@aws-sdk/client-route53-recovery-cluster"
+import * as Route53RecoveryControlConfigSdk from "@aws-sdk/client-route53-recovery-control-config"
+import * as Route53RecoveryReadinessSdk from "@aws-sdk/client-route53-recovery-readiness"
+import * as Route53GlobalResolverSdk from "@aws-sdk/client-route53globalresolver"
+import * as Route53ProfilesSdk from "@aws-sdk/client-route53profiles"
+import * as Route53ResolverSdk from "@aws-sdk/client-route53resolver"
+import * as RTBFabricSdk from "@aws-sdk/client-rtbfabric"
 import * as RumSdk from "@aws-sdk/client-rum"
+import * as ServiceDiscoverySdk from "@aws-sdk/client-servicediscovery"
 import * as S3ControlSdk from "@aws-sdk/client-s3-control"
 import * as S3FilesSdk from "@aws-sdk/client-s3files"
 import * as S3OutpostsSdk from "@aws-sdk/client-s3outposts"
@@ -60,7 +82,9 @@ import * as S3VectorsSdk from "@aws-sdk/client-s3vectors"
 import * as S3Sdk from "@aws-sdk/client-s3"
 import * as StsSdk from "@aws-sdk/client-sts"
 import * as SyntheticsSdk from "@aws-sdk/client-synthetics"
+import * as VPCLatticeSdk from "@aws-sdk/client-vpc-lattice"
 import phase1OperationData from "@/data/phase-1-operations.json"
+import phase2OperationData from "@/data/phase-2-operations.json"
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb"
 import { z } from "zod"
 import {
@@ -113,6 +137,7 @@ function sdkModule(
 }
 
 const sdkModules: Record<string, SdkModule> = {
+  acm: sdkModule(ACMsdk.ACMClient, ACMsdk),
   accessanalyzer: sdkModule(
     AccessAnalyzerSdk.AccessAnalyzerClient,
     AccessAnalyzerSdk,
@@ -140,7 +165,25 @@ const sdkModules: Record<string, SdkModule> = {
     CloudWatchOmniSdk.CloudWatchOmniClient,
     CloudWatchOmniSdk,
   ),
+  appmesh: sdkModule(AppMeshSdk.AppMeshClient, AppMeshSdk),
+  arcregionswitch: sdkModule(
+    ARCRegionSwitchSdk.ARCRegionSwitchClient,
+    ARCRegionSwitchSdk,
+  ),
+  arczonalshift: sdkModule(
+    ARCZonalShiftSdk.ARCZonalShiftClient,
+    ARCZonalShiftSdk,
+  ),
+  cloudfront: sdkModule(CloudFrontSdk.CloudFrontClient, CloudFrontSdk),
+  cloudfrontkeyvaluestore: sdkModule(
+    CloudFrontKeyValueStoreSdk.CloudFrontKeyValueStoreClient,
+    CloudFrontKeyValueStoreSdk,
+  ),
   dax: sdkModule(DaxSdk.DAXClient, DaxSdk),
+  directconnect: sdkModule(
+    DirectConnectSdk.DirectConnectClient,
+    DirectConnectSdk,
+  ),
   dynamodb: sdkModule(DynamoDBSdk.DynamoDBClient, DynamoDBSdk),
   dynamodbstreams: sdkModule(
     DynamoDBStreamsSdk.DynamoDBStreamsClient,
@@ -151,8 +194,24 @@ const sdkModules: Record<string, SdkModule> = {
     Ec2InstanceConnectSdk.EC2InstanceConnectClient,
     Ec2InstanceConnectSdk,
   ),
+  elasticloadbalancing: sdkModule(
+    ElasticLoadBalancingSdk.ElasticLoadBalancingClient,
+    ElasticLoadBalancingSdk,
+  ),
+  elasticloadbalancingv2: sdkModule(
+    ElasticLoadBalancingV2Sdk.ElasticLoadBalancingV2Client,
+    ElasticLoadBalancingV2Sdk,
+  ),
+  globalaccelerator: sdkModule(
+    GlobalAcceleratorSdk.GlobalAcceleratorClient,
+    GlobalAcceleratorSdk,
+  ),
   iam: sdkModule(IamSdk.IAMClient, IamSdk),
   iamtoolbox: sdkModule(IamToolboxSdk.IAMToolboxClient, IamToolboxSdk),
+  interconnect: sdkModule(
+    InterconnectSdk.InterconnectClient,
+    InterconnectSdk,
+  ),
   internetmonitor: sdkModule(
     InternetMonitorSdk.InternetMonitorClient,
     InternetMonitorSdk,
@@ -164,6 +223,10 @@ const sdkModules: Record<string, SdkModule> = {
     NetworkFlowMonitorSdk.NetworkFlowMonitorClient,
     NetworkFlowMonitorSdk,
   ),
+  networkmanager: sdkModule(
+    NetworkManagerSdk.NetworkManagerClient,
+    NetworkManagerSdk,
+  ),
   networkmonitor: sdkModule(
     NetworkMonitorSdk.NetworkMonitorClient,
     NetworkMonitorSdk,
@@ -173,6 +236,36 @@ const sdkModules: Record<string, SdkModule> = {
     ObservabilityAdminSdk.ObservabilityAdminClient,
     ObservabilityAdminSdk,
   ),
+  route53: sdkModule(Route53Sdk.Route53Client, Route53Sdk),
+  route53domains: sdkModule(
+    Route53DomainsSdk.Route53DomainsClient,
+    Route53DomainsSdk,
+  ),
+  route53globalresolver: sdkModule(
+    Route53GlobalResolverSdk.Route53GlobalResolverClient,
+    Route53GlobalResolverSdk,
+  ),
+  route53profiles: sdkModule(
+    Route53ProfilesSdk.Route53ProfilesClient,
+    Route53ProfilesSdk,
+  ),
+  route53resolver: sdkModule(
+    Route53ResolverSdk.Route53ResolverClient,
+    Route53ResolverSdk,
+  ),
+  route53recoverycluster: sdkModule(
+    Route53RecoveryClusterSdk.Route53RecoveryClusterClient,
+    Route53RecoveryClusterSdk,
+  ),
+  route53recoverycontrolconfig: sdkModule(
+    Route53RecoveryControlConfigSdk.Route53RecoveryControlConfigClient,
+    Route53RecoveryControlConfigSdk,
+  ),
+  route53recoveryreadiness: sdkModule(
+    Route53RecoveryReadinessSdk.Route53RecoveryReadinessClient,
+    Route53RecoveryReadinessSdk,
+  ),
+  rtbfabric: sdkModule(RTBFabricSdk.RTBFabricClient, RTBFabricSdk),
   rum: sdkModule(RumSdk.RUMClient, RumSdk),
   s3: sdkModule(S3Sdk.S3Client, S3Sdk, {
     forcePathStyle: true,
@@ -187,6 +280,11 @@ const sdkModules: Record<string, SdkModule> = {
   sqs: sdkModule(SqsSdk.SQSClient, SqsSdk, { useQueueUrlAsEndpoint: false }),
   sts: sdkModule(StsSdk.STSClient, StsSdk),
   synthetics: sdkModule(SyntheticsSdk.SyntheticsClient, SyntheticsSdk),
+  servicediscovery: sdkModule(
+    ServiceDiscoverySdk.ServiceDiscoveryClient,
+    ServiceDiscoverySdk,
+  ),
+  vpclattice: sdkModule(VPCLatticeSdk.VPCLatticeClient, VPCLatticeSdk),
 }
 
 function localRequest(request: Request, write = false) {
@@ -315,9 +413,11 @@ function queueUrl(
 }
 
 function findOperationModel(modelId: string) {
-  for (const service of phase1OperationData.services) {
-    const model = service.models.find(({ id }) => id === modelId)
-    if (model) return model
+  for (const inventory of [phase1OperationData, phase2OperationData]) {
+    for (const service of inventory.services) {
+      const model = service.models.find(({ id }) => id === modelId)
+      if (model) return model
+    }
   }
 }
 
@@ -350,7 +450,7 @@ async function runOperation(
   const model = findOperationModel(modelId)
   const operation = model?.operations.find(({ name }) => name === operationName)
   if (!operation)
-    throw new EmulatorError("That operation is not in the Phase 1 API catalog.", 404)
+    throw new EmulatorError("That operation is not in the Phase 1 or Phase 2 API catalog.", 404)
   if (operation.status === "retired")
     throw new EmulatorError(
       `${modelId}.${operationName} is retired in the MyAWS console.`,
@@ -472,7 +572,7 @@ export async function GET(request: Request) {
     if (input.kind === "operation-catalog") {
       const model = findOperationModel(input.model)
       if (!model)
-        throw new EmulatorError("That API model is not in Phase 1.", 404)
+        throw new EmulatorError("That API model is not in Phase 1 or Phase 2.", 404)
       const sdk = sdkModules[input.model]
       const operations = model.operations.map((operation) => ({
         ...operation,

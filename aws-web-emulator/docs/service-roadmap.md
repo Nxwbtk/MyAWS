@@ -2,7 +2,7 @@
 
 ขอบเขตของแผนคือ **230 กลุ่มบริการและ 436 API models** ที่ลงทะเบียนใน AWS Emulator commit `c29ca200a147` เพิ่มหน้า **Amazon VPC** แยกจาก **Amazon EC2** เพราะ Console ของ AWS มีทางเข้าแยกกัน รวมเป็น **231 หน้าบริการ** โดย VPC ยังใช้ model ของ EC2 สำหรับการเรียก API [รายการ API ในโปรเจกต์](../src/data/service-catalog.json) · [คู่มือ VPC](https://docs.aws.amazon.com/vpc/latest/userguide/view-vpc-resource-map.html) · [EC2 API สำหรับ DescribeVpcs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html)
 
-Phase 1 มีหน้า console สำหรับทั้ง 10 บริการแล้ว และมี operation explorer ที่สร้างจาก Smithy models ของ emulator commit `c29ca200a147`. Inventory มี 2,115 operations ใน 35 models: 1,812 ทำเครื่องหมาย implemented, 301 เป็น stub, 1 retired และ 1 ไม่มี handler. หน้า console และ inventory ไม่ได้แปลว่า operation ทุกตัวผ่านการทดสอบ runtime; ให้ยึด [บันทึก Phase 1](phase-1-console.md) และบันทึกเฉพาะบริการเป็นหลัก ส่วน Phase 2–11 ยังอยู่ในแผน คอลัมน์เริ่มและจบระบุลำดับทำงานของแต่ละ Phase
+Phase 1 และ Phase 2 มีหน้า console และ operation explorer สำหรับทั้ง 23 บริการแล้ว อ้างอิง emulator commit `c29ca200a147`. Phase 1 inventory มี 2,115 operations ใน 35 models; Phase 2 inventory มี 1,047 operations ใน 23 models: 797 implemented, 248 stubs และ 2 ไม่มี handler. จำนวน handler เป็นสถานะจาก source ไม่ได้หมายความว่า operation ทุกตัวผ่าน runtime test หรือมี AWS parity; ดู [บันทึก Phase 1](phase-1-console.md), [บันทึก Phase 2 และข้อจำกัด](phase-2-console.md) และบันทึกเฉพาะบริการ ส่วน Phase 3–11 ยังอยู่ในแผน คอลัมน์เริ่มและจบระบุลำดับทำงานของแต่ละ Phase
 
 | Phase | ขอบเขต | เริ่ม | จบ | จำนวนหน้า |
 | --- | --- | --- | --- | ---: |
@@ -48,7 +48,7 @@ Phase 1 มีหน้า console สำหรับทั้ง 10 บริ�
 
 สถานะและข้อจำกัดของ handler ตาม service/model รวมถึงผลตรวจปัจจุบันอยู่ใน [บันทึก Phase 1](phase-1-console.md).
 
-### Phase 2 เครือข่ายและการส่งเนื้อหา
+### Phase 2 เครือข่ายและการส่งเนื้อหา — เสร็จแล้ว
 
 DNS, load balancer, CDN, การเชื่อมต่อเครือข่าย และการกู้คืนการรับส่งข้อมูล
 
@@ -65,6 +65,8 @@ DNS, load balancer, CDN, การเชื่อมต่อเครือข�
 11. AWS App Mesh (`appmesh`)
 12. AWS RTB Fabric (`rtbfabric`)
 13. Amazon Application Recovery Controller (ARC) (`arc`)
+
+ทั้ง 13 บริการมี resource workspace, API operation explorer และ coverage inventory แล้ว รายละเอียดหน้า ฟีเจอร์ที่ตรวจใน AWS Console การทดสอบ local emulator และ upstream gaps อยู่ใน [บันทึก Phase 2](phase-2-console.md). ข้อจำกัดหลักคือ emulator มี 248 stub operations กับ 2 Direct Connect operations ที่ไม่มี handler; AWS App Mesh สิ้นสุดการให้บริการตั้งแต่ 30 กันยายน 2026 และ AWS Console ที่ตรวจพบ notice ว่า resources เดิมเข้าถึงได้ถึง 30 มีนาคม 2027. สถานะนี้เป็นข้อจำกัด upstream/อายุบริการ ไม่ใช่การทำหน้าบริการ Phase 2 ขาด
 
 ### Phase 3 Compute คอนเทนเนอร์ และโครงสร้างพื้นฐาน
 

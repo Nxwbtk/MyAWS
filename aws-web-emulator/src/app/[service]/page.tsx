@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import { Suspense } from "react"
 import { Ec2Console } from "@/components/ec2-console"
 import { Phase1ServiceConsole } from "@/components/phase-1-service-console"
+import { Phase2ServiceConsole } from "@/components/phase-2-service-console"
 import { ResourceConsole } from "@/components/resource-console"
 import { S3Console } from "@/components/s3-console"
 import { ServiceIcon } from "@/components/service-icon"
@@ -38,6 +39,8 @@ export default async function ServicePage({ params }: PageProps<"/[service]">) {
     return <ResourceConsole key={managed.data} service={managed.data} />
   if (["iam", "sts", "lambda", "cloudwatch", "cloudtrail"].includes(entry.id))
     return <Phase1ServiceConsole key={entry.id} service={entry.id as "iam" | "sts" | "lambda" | "cloudwatch" | "cloudtrail"} />
+  if (["route53", "elasticloadbalancing", "cloudfront", "acm", "globalaccelerator", "servicediscovery", "vpclattice", "directconnect", "interconnect", "networkmanager", "appmesh", "rtbfabric", "arc"].includes(entry.id))
+    return <Phase2ServiceConsole key={entry.id} service={entry.id as "route53" | "elasticloadbalancing" | "cloudfront" | "acm" | "globalaccelerator" | "servicediscovery" | "vpclattice" | "directconnect" | "interconnect" | "networkmanager" | "appmesh" | "rtbfabric" | "arc"} />
 
   return (
     <>
