@@ -2,27 +2,36 @@
 
 **Source:** AWS Emulator submodule commit `c29ca200a147e8100a600a7aaaf26acf82d31158` · **Operation inventory:** generated from the registered Smithy models and Rust operation sources.
 
-The console now has a service workspace for all 10 Phase 1 entries. Resource screens provide AWS-style resource lists and detail panels for S3, VPC, EC2, DynamoDB, SQS, IAM, Lambda, CloudWatch, and CloudTrail. STS has a caller-identity panel and temporary-credential workflows because it has no standalone resource inventory. The operation explorer remains available on every Phase 1 page for the broader Smithy API surface; it shows modeled request/response members, operation documentation, handler source, and JavaScript SDK command availability. It sends requests only to the local emulator configured for MyAWS.
+Every Phase 1 service has a dedicated console built with [Cloudscape](https://cloudscape.design/) that follows the layout, navigation, wording, and workflows of the real AWS Management Console. Features that need an API the local emulator doesn't implement stay visible but disabled, with the reason shown. The consoles send requests only to the local emulator configured for MyAWS. Each service lives in its own folder under `src/components/` (`s3`, `vpc`, `ec2`, `dynamodb`, `sqs`, `iam`, `sts`, `lambda`, `cloudwatch`, `cloudtrail`).
 
 ## Service coverage
 
 | Service | Main console areas | Registered models | Operations | Implemented | Stub | Retired | No handler |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| S3 | General and directory buckets, objects, tables, vectors, files, access points, grants, Storage Lens, Batch Operations, account settings, Outposts | 6 | 305 | 259 | 44 | 1 | 1 |
-| VPC | VPCs, subnets, route tables, internet gateways, security groups, VPC creation | EC2 model | Included under EC2 | — | — | — | — |
-| EC2 | Instances, AMIs, volumes, security groups, key pairs, network interfaces, instance connect | EC2, EC2 Instance Connect | 809 | 656 | 153 | 0 | 0 |
-| DynamoDB | Tables, table configuration, item scan/put; Streams and DAX through API explorer | 3 | 85 | 78 | 7 | 0 | 0 |
-| SQS | Queues, delivery configuration, depth, send/receive/poll | 1 | 23 | 23 | 0 | 0 | 0 |
-| IAM | Users, groups, roles, policies, policy simulation, Access Analyzer | 3 | 220 | 207 | 13 | 0 | 0 |
-| STS | Caller identity, session credentials, assume-role and federation | 1 | 11 | 11 | 0 | 0 | 0 |
-| Lambda | Functions, event sources, function URLs, versions, aliases, layers | 4 | 138 | 130 | 8 | 0 | 0 |
-| CloudWatch | Metrics, alarms, dashboards, metric streams, logs, synthetics, Application Insights, RUM, Internet and Network Monitors, cross-account sinks and links | 13 | 463 | 389 | 74 | 0 | 0 |
-| CloudTrail | Event history, trails, status, event data stores, saved queries, data events | 2 | 61 | 59 | 2 | 0 | 0 |
+| S3 | General and directory buckets, objects, upload, properties, permissions, management, table and vector buckets, file systems, access points, Access Grants, Storage Lens, Batch Operations, account settings | 6 | 305 | 259 | 44 | 1 | 1 |
+| VPC | Dashboard, VPCs (VPC only / VPC and more), subnets, route tables, gateways, DHCP option sets, Elastic IPs, NACLs, security groups, endpoints, NAT, peering, prefix lists, VPN, transit gateways, mirroring, flow logs | EC2 model | Included under EC2 | — | — | — | — |
+| EC2 | Dashboard, instances and launch wizard, instance types, launch templates, Spot, reservations, hosts, AMIs, AMI catalog, volumes, snapshots, placement groups, key pairs, network interfaces | EC2, EC2 Instance Connect | 809 | 656 | 153 | 0 | 0 |
+| DynamoDB | Dashboard, tables, create table, table detail tabs, Explore items (scan/query, item editor), PartiQL editor, backups, exports, imports, DAX clusters, subnet and parameter groups, events | 3 | 85 | 78 | 7 | 0 | 0 |
+| SQS | Queues, create/edit queue, queue detail tabs, send and receive messages, DLQ redrive, Lambda triggers, tagging, monitoring | 1 | 23 | 23 | 0 | 0 | 0 |
+| IAM | Dashboard, users (create wizard, security credentials), user groups, roles (create wizard, trust policy), policies (JSON editor, versions), identity providers, account settings, credential report | 3 | 220 | 207 | 13 | 0 | 0 |
+| STS | Caller identity, assume role, session token, federation token, web identity, decode authorization message, access key info | 1 | 11 | 11 | 0 | 0 | 0 |
+| Lambda | Dashboard, functions, create function, code editor with deploy, test events and invoke, monitor, configuration, aliases, versions, layers, event source mappings, code signing | 4 | 138 | 130 | 8 | 0 | 0 |
+| CloudWatch | Overview, log groups and streams, Logs Insights, Live Tail, all metrics with graphs, alarms (create wizard, history), dashboards with metric, text and alarm widgets | 13 | 463 | 389 | 74 | 0 | 0 |
+| CloudTrail | Dashboard, event history and event records, Insights, trails (create with bucket policy, logging, event selectors), Lake event data stores and SQL query | 2 | 61 | 59 | 2 | 0 | 0 |
 | **Total API inventory** | **10 service entries; VPC shares the EC2 model** | **35** | **2,115** | **1,812** | **301** | **1** | **1** |
 
 “Implemented” means the pinned Rust source contains an operation handler without the explicit `SCAFFOLDED, NOT IMPLEMENTED` marker, excluding retired S3 `GetObjectTorrent`. It is a source inventory, not a claim that every request succeeds. A separate runtime check disables calls when the JavaScript SDK client or command is unavailable; the catalog currently exposes SDK commands for 1,788 operations, with 24 source handlers lacking a published command in the installed JavaScript SDK packages. The separate S3 test record covers all 259 active operations.
 
 ## Verification
+
+### Cloudscape console rebuild (November 2026)
+
+- Each console was compared read-only with the authenticated real AWS Console (navigation, page titles, table columns, create forms, and detail tabs). No real AWS resources were created, changed, or deleted.
+- `npx tsc --noEmit` and `eslint` passed after each service. Every console route was rendered in the browser and checked for errors.
+- Main workflows were run against the local emulator through the UI: S3 bucket and object management; VPC and EC2 create, state changes and delete; DynamoDB table create, item edit, backups and DAX; SQS queue create/edit, send, poll, delete and DLQ redrive; IAM user, group, role and policy wizards, access keys and credential report; STS assume-role, session and federation tokens; Lambda create, code deploy and test invoke with logs; CloudWatch log groups, Logs Insights, Live Tail, metric graphs, alarm creation and dashboards; CloudTrail trail creation with a new bucket, event history and Lake queries.
+- Lambda, SQS, and DynamoDB monitor tabs show the CloudWatch metrics that the emulator publishes.
+
+### Earlier API-level checks
 
 - `npm run lint`, `npx tsc --noEmit`, the Next.js production build, and `git diff --check` passed after the final console changes.
 - All 10 local service routes rendered their service-specific headings. All 35 operation-catalog endpoints returned the complete 2,115-operation inventory.

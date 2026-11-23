@@ -69,23 +69,23 @@ Service icons are keyed by catalog ID in `src/data/service-icons.json`. The SVGs
 ## Resource consoles
 
 - **S3** follows the AWS Console page by page: general purpose and directory buckets, create bucket (all sections), bucket Objects / Metadata / Properties / Permissions / Metrics / Management / File systems / Access Points tabs, object details and versions, upload with status, empty and delete confirmations, table buckets, vector buckets, file systems, Access Points, Access Grants, Storage Lens, Batch Operations, and account Block Public Access. Controls for operations the emulator lacks stay visible but disabled.
-- **VPC** lists VPCs, subnets, route tables, internet gateways, and security groups and can create IPv4 VPCs with an optional Name tag.
-- **EC2** lists instances, owned AMIs, volumes, security groups, key pairs, and network interfaces.
-- **DynamoDB** creates on-demand tables with string keys, displays configuration, and lets you explore, scan, or put items as JSON.
-- **SQS** creates standard and FIFO queues, displays delivery settings and queue depth, and sends or polls for messages. Polling uses the queue's visibility timeout.
-- **IAM** groups identity, permissions, and Access Analyzer workflows.
-- **STS** provides caller identity, session credentials, and assume-role workflows.
-- **Lambda** lists functions, event source mappings, function URLs, published versions, aliases, and layers; function-scoped views can page through the selected function's versions and aliases.
-- **CloudWatch** groups metrics, alarms, dashboards, metric streams, logs, canaries, Application Insights, RUM applications, Internet and Network Monitors, and cross-account observability sinks and links.
-- **CloudTrail** groups event history, trails, delivery status, event data stores, and saved queries.
+- **VPC** follows the VPC console: dashboard, VPCs (VPC only or VPC and more), subnets, route tables, internet and egress-only gateways, DHCP option sets, Elastic IPs, network ACLs, security groups with rule editors, endpoints, endpoint services, NAT gateways, peering, managed prefix lists, VPN, transit gateways, traffic mirroring, and flow logs.
+- **EC2** follows the EC2 console: dashboard, instances with the launch wizard and instance state actions, instance types, launch templates, Spot requests, reservations, dedicated hosts, AMIs and the AMI catalog, volumes, snapshots, placement groups, key pairs, and network interfaces.
+- **DynamoDB** covers tables and the create-table form, table detail tabs (overview, indexes, monitor, backups, exports and streams, permissions, additional settings), Explore items with scan and query, a JSON item editor, the PartiQL editor, backups, exports, imports, and DAX.
+- **SQS** covers queues, the create and edit queue form, queue detail tabs, send and receive messages with polling, Lambda triggers, and DLQ redrive.
+- **IAM** covers the dashboard, users (create wizard, security credentials, access keys), user groups, roles (create wizard, trust relationships), policies (JSON editor, versions, attached entities), identity providers, account settings, and the credential report.
+- **STS** shows the caller identity and issues temporary credentials (assume role, session token, federation token, web identity), and decodes authorization messages.
+- **Lambda** covers the dashboard, functions, create function, a code editor that deploys to the emulator, test events with invocation logs, monitoring, configuration sections, aliases, versions, layers, event source mappings, and code signing configurations.
+- **CloudWatch** covers log groups and streams, Logs Insights, Live Tail, the metrics browser with graphs, alarms with the create wizard and history, and dashboards with metric, text, and alarm widgets.
+- **CloudTrail** covers the dashboard, event history with event records, Insights, trails, and Lake event data stores with SQL queries.
 
-Every Phase 1 and Phase 2 console has an API operation explorer backed by the Smithy models in the pinned emulator submodule. It shows request and response members, operation documentation, emulator handler source, and JavaScript SDK command availability. Complex requests can be entered as JSON. Writes are sent only to the configured local emulator.
+Phase 2 consoles also have an API operation explorer backed by the Smithy models in the pinned emulator submodule. It shows request and response members, operation documentation, emulator handler source, and JavaScript SDK command availability. Complex requests can be entered as JSON. Writes are sent only to the configured local emulator.
 
 Every Phase 2 console includes the same operation explorer, plus AWS Console-style resource areas for the emulator-backed features. Resource lists support service pagination, details, selectors, and supported row actions; workflows such as DNS changes, certificate requests, accelerator creation, service registration, and recovery resource inspection use the configured local emulator.
 
 ## Development progress
 
-All 10 Phase 1 and all 13 Phase 2 service entry points and their model-backed operation workbenches are implemented. Phase 2 covers 1,047 operations across 23 API models: 797 are marked implemented, 248 are explicit stubs, and two have no handler. Source support does not mean every feature has passed a live request test. See [Phase 1 status](docs/phase-1-console.md), the separate [S3 verification record](docs/phase-1-s3.md), [Phase 2 status and limitations](docs/phase-2-console.md), and the [service roadmap](docs/service-roadmap.md).
+All 10 Phase 1 services have Cloudscape consoles that follow the real AWS Console. All 13 Phase 2 service entry points and their model-backed operation workbenches are implemented. Phase 2 covers 1,047 operations across 23 API models: 797 are marked implemented, 248 are explicit stubs, and two have no handler. Source support does not mean every feature has passed a live request test. See [Phase 1 status](docs/phase-1-console.md), the separate [S3 verification record](docs/phase-1-s3.md), [Phase 2 status and limitations](docs/phase-2-console.md), and the [service roadmap](docs/service-roadmap.md).
 
 ## Verify the frontend
 

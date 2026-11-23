@@ -6,9 +6,7 @@ import { DynamoDbApp } from "@/components/dynamodb/ddb-app"
 import { Ec2App } from "@/components/ec2/ec2-app"
 import { IamApp } from "@/components/iam/iam-app"
 import { LambdaApp } from "@/components/lambda/lambda-app"
-import { Phase1ServiceConsole } from "@/components/phase-1-service-console"
 import { Phase2ServiceConsole } from "@/components/phase-2-service-console"
-import { ResourceConsole } from "@/components/resource-console"
 import { S3App } from "@/components/s3/s3-app"
 import { SqsApp } from "@/components/sqs/sqs-app"
 import { StsApp } from "@/components/sts/sts-app"
@@ -24,7 +22,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { serviceSchema } from "@/lib/contracts"
 import { catalogCommit, findCatalogService } from "@/lib/service-catalog"
 
 export async function generateMetadata({ params }: PageProps<"/[service]/[[...path]]">) {
@@ -46,11 +43,6 @@ export default async function ServicePage({ params }: PageProps<"/[service]/[[..
   if (entry.id === "sts") return <Suspense fallback={null}><StsApp path={path} /></Suspense>
   if (entry.id === "sqs") return <Suspense fallback={null}><SqsApp path={path} /></Suspense>
   if (entry.id === "dynamodb") return <Suspense fallback={null}><DynamoDbApp path={path} /></Suspense>
-  const managed = serviceSchema.safeParse(entry.id)
-  if (managed.success)
-    return <ResourceConsole key={managed.data} service={managed.data} />
-  if (["iam", "sts", "lambda", "cloudwatch", "cloudtrail"].includes(entry.id))
-    return <Phase1ServiceConsole key={entry.id} service={entry.id as "iam" | "sts" | "lambda" | "cloudwatch" | "cloudtrail"} />
   if (["route53", "elasticloadbalancing", "cloudfront", "acm", "globalaccelerator", "servicediscovery", "vpclattice", "directconnect", "interconnect", "networkmanager", "appmesh", "rtbfabric", "arc"].includes(entry.id))
     return <Phase2ServiceConsole key={entry.id} service={entry.id as "route53" | "elasticloadbalancing" | "cloudfront" | "acm" | "globalaccelerator" | "servicediscovery" | "vpclattice" | "directconnect" | "interconnect" | "networkmanager" | "appmesh" | "rtbfabric" | "arc"} />
 
