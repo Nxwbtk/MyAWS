@@ -1016,3 +1016,10 @@ a.myaws-footer-item:hover {
 .myaws-live-tail { font-family: Monaco, Menlo, Consolas, monospace; font-size: 12px; max-height: 480px; overflow: auto; white-space: pre-wrap; word-break: break-word; }
 .myaws-live-tail .ts { color: var(--color-text-body-secondary, #8d99a8); }
 .myaws-live-tail .grp { color: var(--color-text-link-default, #539fe5); }
+
+.myaws-metric-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.myaws-metric-cards > button { all: unset; cursor: pointer; border: 1px solid var(--color-border-divider-default, #414d5c); border-radius: 12px; padding: 12px 16px; }
+.myaws-metric-cards > button:hover { border-color: var(--color-border-item-focused, #539fe5); }
+.myaws-dashboard-grid { display: grid; grid-template-columns: repeat(24, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 688px) { .myaws-dashboard-grid > div { grid-column: 1 / -1 !important; } }
+.myaws-metric-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }

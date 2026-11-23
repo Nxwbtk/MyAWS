@@ -24,6 +24,7 @@ import { useFollow } from "@/components/shell/page-layout"
 import { Copyable } from "@/components/ec2-family/engine"
 import { DeleteQueueModal, PurgeQueueModal } from "@/components/sqs/queues"
 import { SqsLayout } from "@/components/sqs/sqs-app"
+import { MetricGrid } from "@/components/cloudwatch/metrics"
 import { arnName, encryption, epoch, isFifo, redrive, seconds, useQueue, type Attributes } from "@/components/sqs/shared"
 import { callAws, unavailableReason, useAws } from "@/lib/aws"
 import { consoleDate } from "@/lib/format"
@@ -107,7 +108,7 @@ export function QueueDetailPage({ name, tab }: { name: string; tab: string }) {
               { id: "lambda", label: "Lambda triggers", content: <LambdaTriggers arn={a?.QueueArn} /> },
               { id: "pipes", label: "EventBridge Pipes", content: <Section title="EventBridge Pipes" counter="(0)" actions={<Button disabled disabledReason="EventBridge Pipes are not available in the local emulator.">Connect queue to pipe</Button>}><Box color="text-status-inactive">EventBridge Pipes are not available in the local emulator.</Box></Section> },
               { id: "dlq", label: "Dead-letter queue", content: <DeadLetter url={queue.url} attributes={a} /> },
-              { id: "monitoring", label: "Monitoring", content: <Alert type="info">CloudWatch metrics for Amazon SQS are not reported by the local emulator.</Alert> },
+              { id: "monitoring", label: "Monitoring", content: <MetricGrid namespace="AWS/SQS" dimensions={[{ Name: "QueueName", Value: name }]} metrics={[{ name: "ApproximateNumberOfMessagesVisible", stat: "Average", title: "Approximate number of messages visible" }, { name: "NumberOfMessagesSent", stat: "Sum", title: "Number of messages sent" }, { name: "NumberOfMessagesReceived", stat: "Sum", title: "Number of messages received" }, { name: "NumberOfMessagesDeleted", stat: "Sum", title: "Number of messages deleted" }, { name: "ApproximateAgeOfOldestMessage", stat: "Maximum", title: "Approximate age of oldest message" }, { name: "SentMessageSize", stat: "Average", title: "Sent message size" }]} /> },
               { id: "tagging", label: "Tagging", content: <Tagging url={queue.url} /> },
               { id: "policy", label: "Access policy", content: <Section title="Access policy (Permissions)" info actions={<Button href={`${base}/edit`} onFollow={follow}>Edit</Button>}><CodeView value={pretty(a?.Policy)} empty="No access policy" /></Section> },
               { id: "encryption", label: "Encryption", content: <Section title="Encryption" info actions={<Button href={`${base}/edit`} onFollow={follow}>Edit</Button>} columns={2} items={[{ label: "Server-side encryption", value: encryption(a) === "–" ? "Disabled" : <StatusIndicator type="success">Enabled</StatusIndicator> }, { label: "Encryption key type", value: encryption(a) }, ...(a?.KmsMasterKeyId ? [{ label: "Customer master key", value: a.KmsMasterKeyId }, { label: "Data key reuse period", value: seconds(a.KmsDataKeyReusePeriodSeconds) }] : [])]} /> },

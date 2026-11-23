@@ -31,6 +31,7 @@ import { Copyable } from "@/components/ec2-family/engine"
 import { useFollow } from "@/components/shell/page-layout"
 import { DeleteFunctionsModal } from "@/components/lambda/functions"
 import { LambdaLayout } from "@/components/lambda/lambda-app"
+import { MetricGrid } from "@/components/cloudwatch/metrics"
 import { decodePayload, encodeText, fetchCode, fnHref, lambdaDate, runtimeLabel, runtimes, unzipBase64, waitForUpdate, zipFiles, type FunctionConfig } from "@/components/lambda/shared"
 import { callAws, useAws } from "@/lib/aws"
 import { consoleDate } from "@/lib/format"
@@ -429,7 +430,7 @@ function MonitorTab({ name, config }: { name: string; config?: FunctionConfig })
   const events = useAws<{ events?: { timestamp?: number; message?: string; logStreamName?: string }[] }>("cloudwatchlogs", "FilterLogEvents", { logGroupName: group, limit: 50 }, { retry: false })
   return (
     <SpaceBetween size="l">
-      <Container header={<Header variant="h2">Metrics</Header>}><Box color="text-status-inactive">Lambda metrics (invocations, duration, errors, throttles) are not reported by the local emulator.</Box></Container>
+      <Container header={<Header variant="h2" description="CloudWatch metrics for the last 3 hours.">Metrics</Header>}><MetricGrid namespace="AWS/Lambda" dimensions={[{ Name: "FunctionName", Value: name }]} metrics={[{ name: "Invocations", stat: "Sum" }, { name: "Duration", stat: "Average" }, { name: "Errors", stat: "Sum", title: "Error count" }, { name: "Throttles", stat: "Sum" }, { name: "ConcurrentExecutions", stat: "Maximum", title: "Concurrent executions" }]} /></Container>
       <Table
         header={<Header variant="h2" description={`Log group ${group}`} actions={<SpaceBetween direction="horizontal" size="xs"><Button iconName="refresh" ariaLabel="Refresh" onClick={() => void events.refetch()} /><Button href={`/cloudwatch/log-groups/${encodeURIComponent(group)}`} onFollow={follow}>View CloudWatch logs</Button></SpaceBetween>}>Recent invocations</Header>}
         items={[...(events.data?.events ?? [])].reverse()}

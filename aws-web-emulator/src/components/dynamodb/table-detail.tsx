@@ -23,6 +23,7 @@ import { CodeView, EditModal, JsonField, Section, pretty } from "@/components/co
 import { TagEditor, type Tag } from "@/components/console/tag-editor"
 import { useFollow } from "@/components/shell/page-layout"
 import { DdbLayout } from "@/components/dynamodb/ddb-app"
+import { MetricGrid } from "@/components/cloudwatch/metrics"
 import { KeyField } from "@/components/dynamodb/create-table"
 import { bytes, capacityMode, keyOf, typeOf, useTable, type Index, type Table as TableT } from "@/components/dynamodb/shared"
 import { DeleteTablesModal, TableStatus } from "@/components/dynamodb/tables"
@@ -83,7 +84,7 @@ export function TableDetailPage({ name, tab }: { name: string; tab: string }) {
             tabs={[
               { id: "overview", label: "Overview", content: <Overview table={data} /> },
               { id: "indexes", label: "Indexes", content: <Indexes table={data} onCreate={() => setModal("index")} refresh={refresh} /> },
-              { id: "monitor", label: "Monitor", content: <Alert type="info">CloudWatch metrics for DynamoDB are not reported by the local emulator.</Alert> },
+              { id: "monitor", label: "Monitor", content: <MetricGrid namespace="AWS/DynamoDB" dimensions={[{ Name: "TableName", Value: name }]} metrics={[{ name: "ConsumedReadCapacityUnits", stat: "Sum", title: "Read usage (sum)" }, { name: "ConsumedWriteCapacityUnits", stat: "Sum", title: "Write usage (sum)" }, { name: "ReadThrottleEvents", stat: "Sum", title: "Read throttled requests" }, { name: "WriteThrottleEvents", stat: "Sum", title: "Write throttled requests" }]} /> },
               { id: "global", label: "Global tables", content: <Section title="Replicas" counter={`(${data?.Replicas?.length ?? 0})`}><Box color="text-status-inactive">Global table replicas are not available in the local emulator.</Box></Section> },
               { id: "backups", label: "Backups", content: <Backups table={data} /> },
               { id: "streams", label: "Exports and streams", content: <Streams table={data} refresh={refresh} /> },
@@ -127,7 +128,7 @@ function Overview({ table }: { table?: TableT }) {
           { label: "Creation date", value: consoleDate(table?.CreationDateTime) },
         ]}
       />
-      <Section title="Table capacity metrics"><Box color="text-status-inactive">Capacity metrics are not reported by the local emulator.</Box></Section>
+      <Section title="Table capacity metrics"><MetricGrid namespace="AWS/DynamoDB" dimensions={[{ Name: "TableName", Value: table?.TableName ?? "" }]} metrics={[{ name: "ConsumedReadCapacityUnits", stat: "Sum", title: "Read capacity units" }, { name: "ConsumedWriteCapacityUnits", stat: "Sum", title: "Write capacity units" }]} /></Section>
     </SpaceBetween>
   )
 }

@@ -11,6 +11,9 @@ import { ConsoleLayout } from "@/components/ec2-family/engine"
 import type { Crumb } from "@/components/shell/page-layout"
 import { CloudWatchOverview } from "@/components/cloudwatch/overview"
 import { LiveTailPage, LogGroupDetailPage, LogGroupsPage, LogStreamPage, LogsInsightsPage } from "@/components/cloudwatch/logs"
+import { MetricsPage } from "@/components/cloudwatch/metrics"
+import { AlarmDetailPage, AlarmsPage, CreateAlarmPage } from "@/components/cloudwatch/alarms"
+import { DashboardDetailPage, DashboardsPage } from "@/components/cloudwatch/dashboards"
 
 const link = (text: string, href: string, info?: ReactNode): SideNavigationProps.Item => ({ type: "link", text, href, info })
 
@@ -81,6 +84,15 @@ export function CloudWatchApp({ path }: { path: string[] }) {
       return <LogsInsightsPage initialGroup={params.get("group") ?? undefined} />
     case "live-tail":
       return <LiveTailPage />
+    case "metrics":
+      return <MetricsPage />
+    case "alarms":
+      if (a === "create") return <CreateAlarmPage />
+      if (a) return <AlarmDetailPage name={decodeURIComponent(a)} />
+      return <AlarmsPage stateFilter={params.get("state") ?? undefined} />
+    case "dashboards":
+      if (a) return <DashboardDetailPage name={decodeURIComponent(a)} />
+      return <DashboardsPage />
     default:
       return <Unavailable section={section} />
   }
