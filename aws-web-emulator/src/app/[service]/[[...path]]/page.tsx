@@ -8,6 +8,7 @@ import { Phase2ServiceConsole } from "@/components/phase-2-service-console"
 import { ResourceConsole } from "@/components/resource-console"
 import { S3App } from "@/components/s3/s3-app"
 import { SqsApp } from "@/components/sqs/sqs-app"
+import { StsApp } from "@/components/sts/sts-app"
 import { VpcApp } from "@/components/vpc/vpc-app"
 import { ServiceIcon } from "@/components/service-icon"
 import { Badge } from "@/components/ui/badge"
@@ -36,6 +37,7 @@ export default async function ServicePage({ params }: PageProps<"/[service]/[[..
   if (entry.id === "vpc") return <Suspense fallback={null}><VpcApp path={path} /></Suspense>
   if (entry.id === "ec2") return <Suspense fallback={null}><Ec2App path={path} /></Suspense>
   if (entry.id === "iam") return <Suspense fallback={null}><IamApp path={path} /></Suspense>
+  if (entry.id === "sts") return <Suspense fallback={null}><StsApp path={path} /></Suspense>
   if (entry.id === "sqs") return <Suspense fallback={null}><SqsApp path={path} /></Suspense>
   if (entry.id === "dynamodb") return <Suspense fallback={null}><DynamoDbApp path={path} /></Suspense>
   const managed = serviceSchema.safeParse(entry.id)
