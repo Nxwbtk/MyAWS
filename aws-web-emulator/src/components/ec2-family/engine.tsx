@@ -113,6 +113,8 @@ export type ResourceDef = {
   readOnlyReason?: string
   /** Extra dropdown menus shown before Actions, such as Instance state. */
   menus?: { label: string; actions: Action[] }[]
+  /** Index of the column that links to the details page. */
+  linkColumn?: number
 }
 
 export function useResources(def: ResourceDef, input?: Record<string, unknown>) {
@@ -280,7 +282,7 @@ export function ResourceListPage({
       return typeof value === "string" || typeof value === "number" ? value : undefined
     }),
     cell: (item) =>
-      index === 1 && !def.noDetailPage ? (
+      index === (def.linkColumn ?? 1) && !def.noDetailPage ? (
         <Link href={`${base}/${encodeURIComponent(def.key(item))}`} onFollow={follow}>
           {field.value(item, ctx)}
         </Link>
@@ -333,7 +335,7 @@ export function ResourceListPage({
           trackBy={def.key}
           filterPlaceholder={def.filterPlaceholder ?? "Find resources by attribute or tag"}
           columns={columns}
-          defaultSort={def.columns[1]?.id}
+          defaultSort={def.columns[def.linkColumn ?? 1]?.id}
           empty={
             <EmptyState
               title={def.empty ?? `No ${def.title.toLowerCase()} found`}
