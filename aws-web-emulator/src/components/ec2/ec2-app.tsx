@@ -72,6 +72,8 @@ export function Ec2App({ path }: { path: string[] }) {
   if (!section) return <Ec2Dashboard />
   const def: ResourceDef | undefined = ec2Defs[section]
   if (def) {
+    const Special: ComponentType | undefined = id ? ec2CreatePages[`${section}/${id}`] : undefined
+    if (Special) return <Special />
     if (id === "create") {
       const Create: ComponentType | undefined = ec2CreatePages[section]
       if (Create) return <Create />
