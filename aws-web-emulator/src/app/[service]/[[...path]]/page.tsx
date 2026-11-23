@@ -5,6 +5,7 @@ import { Phase1ServiceConsole } from "@/components/phase-1-service-console"
 import { Phase2ServiceConsole } from "@/components/phase-2-service-console"
 import { ResourceConsole } from "@/components/resource-console"
 import { S3App } from "@/components/s3/s3-app"
+import { VpcApp } from "@/components/vpc/vpc-app"
 import { ServiceIcon } from "@/components/service-icon"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
@@ -29,7 +30,8 @@ export default async function ServicePage({ params }: PageProps<"/[service]/[[..
   const entry = findCatalogService(service)
   if (!entry) notFound()
   if (entry.id === "s3") return <Suspense fallback={null}><S3App path={path} /></Suspense>
-  if (entry.id === "ec2" || entry.id === "vpc")
+  if (entry.id === "vpc") return <Suspense fallback={null}><VpcApp path={path} /></Suspense>
+  if (entry.id === "ec2")
     return <Ec2Console key={entry.id} service={entry.id} />
   const managed = serviceSchema.safeParse(entry.id)
   if (managed.success)

@@ -978,3 +978,19 @@ a.myaws-footer-item:hover {
   align-items: center;
   gap: 6px;
 }
+
+.myaws-resource-map {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.myaws-resource-map-column {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.myaws-resource-map-node {
+  padding: 8px 10px;
+  border: 1px solid rgba(127, 127, 127, 0.35);
+  border-radius: 8px;
+}

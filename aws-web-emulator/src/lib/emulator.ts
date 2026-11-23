@@ -99,7 +99,7 @@ const enabledRegions = new Set<string>()
 // emulator so every service accepts requests signed for it.
 async function ensureRegionEnabled(region: string) {
   if (enabledRegions.has(region)) return
-  const config = await emulatorClientConfig()
+  const config = await baseClientConfig()
   const client = new AccountClient({ ...config, region: "us-east-1" })
   try {
     const { RegionOptStatus } = await client.send(
@@ -121,6 +121,12 @@ async function ensureRegionEnabled(region: string) {
 }
 
 export async function emulatorClientConfig() {
+  const config = await baseClientConfig()
+  await ensureRegionEnabled(config.region)
+  return config
+}
+
+async function baseClientConfig() {
   const { endpoint, region, stateDir } = emulatorSettings()
   const httpsAgent = await emulatorAgent(stateDir)
   const credentialsProvider = fromIni({

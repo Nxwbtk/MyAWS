@@ -70,6 +70,7 @@ export function PageLayout({
   // The console collapses service navigation on create and wizard pages.
   const [navigationOpen, setNavigationOpen] = useState(contentType !== "form" && contentType !== "wizard")
   const [toolsOpen, setToolsOpen] = useState(false)
+  const [splitPanelOpen, setSplitPanelOpen] = useState(true)
   return (
     <AppLayoutToolbar
       headerSelector="#myaws-top-nav"
@@ -91,6 +92,9 @@ export function PageLayout({
       onToolsChange={({ detail }) => setToolsOpen(detail.open)}
       notifications={notifications}
       splitPanel={splitPanel}
+      splitPanelOpen={splitPanelOpen}
+      onSplitPanelToggle={({ detail }) => setSplitPanelOpen(detail.open)}
+      splitPanelPreferences={{ position: "bottom" }}
       content={<div id="main-content">{content}</div>}
     />
   )

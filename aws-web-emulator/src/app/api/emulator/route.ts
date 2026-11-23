@@ -412,6 +412,16 @@ function queueUrl(
   return url.href
 }
 
+// EC2 in this emulator revision refuses every opt-in Region with AuthFailure and has no
+// way to opt in, so EC2-family models run in a Region enabled by default while the
+// console keeps showing the configured Region.
+const optInRefusingModels = new Set(["ec2", "ec2instanceconnect"])
+function apiRegion(modelId: string, region: string) {
+  return optInRefusingModels.has(modelId) && region === "ap-southeast-7"
+    ? (process.env.EMULATOR_EC2_REGION ?? "ap-southeast-1")
+    : region
+}
+
 function findOperationModel(modelId: string) {
   for (const inventory of [phase1OperationData, phase2OperationData]) {
     for (const service of inventory.services) {
@@ -480,7 +490,7 @@ async function runOperation(
       501,
     )
 
-  const client = new sdk.Client({ ...config, ...sdk.options } as EmulatorConfig)
+  const client = new sdk.Client({ ...config, region: apiRegion(modelId, config.region), ...sdk.options } as EmulatorConfig)
   try {
     const sdkInput = { ...input }
     for (const field of operation.inputFields) {
@@ -593,7 +603,7 @@ export async function GET(request: Request) {
 
     switch (input.kind) {
       case "ec2":
-        return json(await listEc2(config, input.section))
+        return json(await listEc2({ ...config, region: apiRegion("ec2", config.region) }, input.section))
       case "s3": {
         const buckets: Resource[] = []
         for await (const page of paginateListBuckets(
@@ -833,7 +843,7 @@ export async function POST(request: Request) {
           ),
         )
       case "vpc":
-        return json(await createVpc(config, input), 201)
+        return json(await createVpc({ ...config, region: apiRegion("ec2", config.region) }, input), 201)
       case "s3":
         await s3Client(config).send(
           new CreateBucketCommand({
