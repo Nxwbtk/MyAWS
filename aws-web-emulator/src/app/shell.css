@@ -1012,3 +1012,7 @@ a.myaws-footer-item:hover {
 .myaws-lambda-deploy { margin-top: 16px; }
 .myaws-lambda-code textarea { font-family: Monaco, Menlo, Consolas, monospace !important; font-size: 13px !important; }
 @media (max-width: 688px) { .myaws-lambda-editor { grid-template-columns: 1fr; } .myaws-lambda-files { border-right: 0; } }
+
+.myaws-live-tail { font-family: Monaco, Menlo, Consolas, monospace; font-size: 12px; max-height: 480px; overflow: auto; white-space: pre-wrap; word-break: break-word; }
+.myaws-live-tail .ts { color: var(--color-text-body-secondary, #8d99a8); }
+.myaws-live-tail .grp { color: var(--color-text-link-default, #539fe5); }
