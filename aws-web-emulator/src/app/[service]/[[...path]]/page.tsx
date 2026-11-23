@@ -3,6 +3,7 @@ import { Suspense } from "react"
 import { DynamoDbApp } from "@/components/dynamodb/ddb-app"
 import { Ec2App } from "@/components/ec2/ec2-app"
 import { IamApp } from "@/components/iam/iam-app"
+import { LambdaApp } from "@/components/lambda/lambda-app"
 import { Phase1ServiceConsole } from "@/components/phase-1-service-console"
 import { Phase2ServiceConsole } from "@/components/phase-2-service-console"
 import { ResourceConsole } from "@/components/resource-console"
@@ -37,6 +38,7 @@ export default async function ServicePage({ params }: PageProps<"/[service]/[[..
   if (entry.id === "vpc") return <Suspense fallback={null}><VpcApp path={path} /></Suspense>
   if (entry.id === "ec2") return <Suspense fallback={null}><Ec2App path={path} /></Suspense>
   if (entry.id === "iam") return <Suspense fallback={null}><IamApp path={path} /></Suspense>
+  if (entry.id === "lambda") return <Suspense fallback={null}><LambdaApp path={path} /></Suspense>
   if (entry.id === "sts") return <Suspense fallback={null}><StsApp path={path} /></Suspense>
   if (entry.id === "sqs") return <Suspense fallback={null}><SqsApp path={path} /></Suspense>
   if (entry.id === "dynamodb") return <Suspense fallback={null}><DynamoDbApp path={path} /></Suspense>

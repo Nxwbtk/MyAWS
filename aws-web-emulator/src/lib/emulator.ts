@@ -158,3 +158,32 @@ async function baseClientConfig() {
     maxAttempts: 1,
   }
 }
+
+/** Downloads a presigned URL that points back at the local emulator (for example Lambda code). */
+export async function downloadFromEmulator(url: string, limit = 50 * 1024 * 1024) {
+  const { endpoint, stateDir } = emulatorSettings()
+  const target = new URL(url)
+  if (target.origin !== endpoint) throw new EmulatorError("The download URL doesn't point at the local emulator.", 400)
+  const agent = await emulatorAgent(stateDir)
+  return new Promise<Buffer>((resolve, reject) => {
+    const req = request(target, { agent, timeout: 10_000 }, (response) => {
+      if ((response.statusCode ?? 500) >= 400) {
+        response.resume()
+        reject(new EmulatorError(`Download returned HTTP ${response.statusCode}.`, 502))
+        return
+      }
+      const chunks: Buffer[] = []
+      let size = 0
+      response.on("data", (chunk: Buffer) => {
+        size += chunk.length
+        if (size > limit) req.destroy(new EmulatorError("The download is too large.", 413))
+        else chunks.push(chunk)
+      })
+      response.on("end", () => resolve(Buffer.concat(chunks)))
+      response.on("error", reject)
+    })
+    req.on("timeout", () => req.destroy(new Error("Download timed out.")))
+    req.on("error", reject)
+    req.end()
+  })
+}

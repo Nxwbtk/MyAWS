@@ -1002,3 +1002,13 @@ a.myaws-footer-item:hover {
 
 .myaws-ddb-table-pick { padding: 2px 0; }
 .myaws-ddb-table-pick.active { border-left: 2px solid var(--color-border-item-selected, #0972d3); padding-left: 6px; }
+
+.myaws-lambda-diagram { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.myaws-lambda-node { border: 1px solid var(--color-border-divider-default, #414d5c); border-radius: 12px; padding: 12px 20px; min-width: 220px; }
+.myaws-lambda-editor { display: grid; grid-template-columns: 220px 1fr; gap: 16px; }
+.myaws-lambda-files { display: flex; flex-direction: column; gap: 2px; border-right: 1px solid var(--color-border-divider-default, #414d5c); padding-right: 12px; }
+.myaws-lambda-files > button { all: unset; cursor: pointer; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+.myaws-lambda-files > button.active { background: var(--color-background-item-selected, rgba(9, 114, 211, 0.2)); }
+.myaws-lambda-deploy { margin-top: 16px; }
+.myaws-lambda-code textarea { font-family: Monaco, Menlo, Consolas, monospace !important; font-size: 13px !important; }
+@media (max-width: 688px) { .myaws-lambda-editor { grid-template-columns: 1fr; } .myaws-lambda-files { border-right: 0; } }
