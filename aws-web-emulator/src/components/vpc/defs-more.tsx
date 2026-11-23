@@ -14,6 +14,7 @@ import { Copyable, OperationModal, ResourceTableLite, State, dash, nameTag, type
 import { ResLink, VpcSelect, useList } from "@/components/vpc/shared"
 import { callAws } from "@/lib/aws"
 import { securityDefs } from "@/components/vpc/defs-security"
+import { networkDefs } from "@/components/vpc/defs-network"
 import { CreateFlowLog, FlowLogsTab } from "@/components/vpc/flow-logs"
 
 const s = (value: unknown) => (value === undefined || value === null ? undefined : String(value))
@@ -681,5 +682,6 @@ export const moreDefs: Record<string, ResourceDef> = {
   "dhcp-options": dhcpDef,
   addresses: eipDef,
   ...securityDefs,
+  ...networkDefs,
 }
 

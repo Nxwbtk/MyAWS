@@ -19,6 +19,7 @@ import { TagEditor, type Tag } from "@/components/console/tag-editor"
 import { tagSpec, VpcSelect, useList } from "@/components/vpc/shared"
 import { VpcLayout } from "@/components/vpc/vpc-app"
 import { securityCreatePages } from "@/components/vpc/create-security"
+import { networkCreatePages } from "@/components/vpc/create-network"
 import { callAws } from "@/lib/aws"
 
 export function CreatePage({
@@ -378,6 +379,7 @@ export const vpcCreatePages: Record<string, ComponentType> = {
   "dhcp-options": CreateDhcpPage,
   addresses: AllocateAddressPage,
   ...securityCreatePages,
+  ...networkCreatePages,
 }
 
 
