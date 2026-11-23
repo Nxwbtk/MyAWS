@@ -111,6 +111,8 @@ export type ResourceDef = {
   empty?: string
   headerExtra?: ReactNode
   readOnlyReason?: string
+  /** Extra dropdown menus shown before Actions, such as Instance state. */
+  menus?: { label: string; actions: Action[] }[]
 }
 
 export function useResources(def: ResourceDef, input?: Record<string, unknown>) {
@@ -119,6 +121,8 @@ export function useResources(def: ResourceDef, input?: Record<string, unknown>) 
   const query = useQuery({
     queryKey: ["emulator", "aws", model, def.operation, "all", input ?? def.input ?? {}],
     enabled: available,
+    // Poll while any resource is in a transitional state, as the console does.
+    refetchInterval: (query) => (/"(pending|stopping|shutting-down|creating|deleting|attaching|detaching|modifying|associating|provisioning|initiating|enabling|disabling)"/i.test(JSON.stringify(query.state.data ?? [])) ? 4000 : false),
     queryFn: async () => {
       const all: Item[] = []
       let token: string | undefined
@@ -170,9 +174,9 @@ export function ConsoleLayout({
   )
 }
 
-function actionItems(def: ResourceDef, selected: Item[]): ButtonDropdownProps.ItemOrGroup[] {
+function actionItems(def: ResourceDef, selected: Item[], only?: Action[]): ButtonDropdownProps.ItemOrGroup[] {
   const model = def.model ?? "ec2"
-  const all: Action[] = [
+  const all: Action[] = only ?? [
     ...(def.actions ?? []),
     ...(def.tagResource !== false ? [{ id: "__tags", text: "Manage tags", enabled: (items: Item[]) => items.length === 1 } as Action] : []),
     ...(def.deleteAction ? [{ id: "__delete", text: `Delete ${def.singular}`, operation: def.deleteAction.operation, enabled: (items: Item[]) => items.length >= 1 } as Action] : []),
@@ -205,6 +209,10 @@ function actionItems(def: ResourceDef, selected: Item[]): ButtonDropdownProps.It
   )
 }
 
+function allActions(def: ResourceDef) {
+  return [...(def.actions ?? []), ...(def.menus ?? []).flatMap((menu) => menu.actions)]
+}
+
 function ActionHost({
   def,
   active,
@@ -222,14 +230,14 @@ function ActionHost({
   if (active === "__tags") return <ManageTagsModal resourceId={def.key(items[0])} tags={((items[0].Tags as AwsTag[]) ?? []).map((tag) => ({ Key: tag.Key ?? "", Value: tag.Value }))} close={close} ctx={ctx} />
   if (active === "__delete" && def.deleteAction)
     return <DeleteModal def={def} items={items} close={close} ctx={ctx} />
-  const action = def.actions?.find((item) => item.id === active)
+  const action = allActions(def).find((item) => item.id === active)
   if (action?.modal) return <>{action.modal({ items, close, ctx })}</>
   return null
 }
 
 async function runAction(def: ResourceDef, id: string, items: Item[], ctx: Ctx, open: (id: string) => void) {
   if (id === "__tags" || id === "__delete") return open(id)
-  const action = def.actions?.find((item) => item.id === id)
+  const action = allActions(def).find((item) => item.id === id)
   if (!action) return
   if (action.href) return ctx.router.push(action.href(items))
   if (action.modal) return open(id)
@@ -260,7 +268,9 @@ export function ResourceListPage({
   const [selected, setSelected] = useState<Item[]>([])
   const [active, setActive] = useState<string>()
   const items = resources.data ?? []
-  const current = selected.length === 1 ? items.find((item) => def.key(item) === def.key(selected[0])) : undefined
+  // Selection holds snapshots; act on the latest copy of each selected resource.
+  const fresh = selected.map((sel) => items.find((item) => def.key(item) === def.key(sel)) ?? sel)
+  const current = fresh.length === 1 ? fresh[0] : undefined
 
   const columns: Column<Item>[] = def.columns.map((field, index) => ({
     id: field.id,
@@ -335,8 +345,13 @@ export function ResourceListPage({
             <SpaceBetween direction="horizontal" size="xs">
               <Button iconName="refresh" ariaLabel="Refresh" loading={resources.isFetching} onClick={() => void resources.refetch()} />
               {def.headerExtra}
+              {def.menus?.map((menu) => (
+                <ButtonDropdown key={menu.label} items={actionItems(def, fresh, menu.actions)} onItemClick={({ detail }) => void runAction(def, detail.id, fresh, ctx, setActive)}>
+                  {menu.label}
+                </ButtonDropdown>
+              ))}
               {(def.actions?.length || def.deleteAction || def.tagResource !== false) && (
-                <ButtonDropdown items={actionItems(def, selected)} onItemClick={({ detail }) => void runAction(def, detail.id, selected, ctx, setActive)}>
+                <ButtonDropdown items={actionItems(def, fresh)} onItemClick={({ detail }) => void runAction(def, detail.id, fresh, ctx, setActive)}>
                   Actions
                 </ButtonDropdown>
               )}
@@ -348,7 +363,7 @@ export function ResourceListPage({
             </SpaceBetween>
           }
         />
-        <ActionHost def={def} active={active} items={selected} close={() => { setActive(undefined) }} ctx={ctx} />
+        <ActionHost def={def} active={active} items={fresh} close={() => { setActive(undefined) }} ctx={ctx} />
       </>
     ),
   }) as React.ReactElement
@@ -399,9 +414,16 @@ export function ResourceDetailPage({
             info={<Link variant="info">Info</Link>}
             actions={
               item && (
+                <SpaceBetween direction="horizontal" size="xs">
+                {def.menus?.map((menu) => (
+                  <ButtonDropdown key={menu.label} items={actionItems(def, [item], menu.actions)} onItemClick={({ detail }) => void runAction(def, detail.id, [item], ctx, setActive)}>
+                    {menu.label}
+                  </ButtonDropdown>
+                ))}
                 <ButtonDropdown items={actionItems(def, [item])} onItemClick={({ detail }) => void runAction(def, detail.id, [item], ctx, setActive)}>
                   Actions
                 </ButtonDropdown>
+                </SpaceBetween>
               )
             }
           >

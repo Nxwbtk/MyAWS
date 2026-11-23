@@ -994,3 +994,8 @@ a.myaws-footer-item:hover {
   border: 1px solid rgba(127, 127, 127, 0.35);
   border-radius: 8px;
 }
+
+.myaws-sticky-summary {
+  position: sticky;
+  top: 72px;
+}

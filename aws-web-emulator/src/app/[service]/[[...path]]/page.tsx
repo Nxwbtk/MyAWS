@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
-import { Ec2Console } from "@/components/ec2-console"
+import { Ec2App } from "@/components/ec2/ec2-app"
 import { Phase1ServiceConsole } from "@/components/phase-1-service-console"
 import { Phase2ServiceConsole } from "@/components/phase-2-service-console"
 import { ResourceConsole } from "@/components/resource-console"
@@ -31,8 +31,7 @@ export default async function ServicePage({ params }: PageProps<"/[service]/[[..
   if (!entry) notFound()
   if (entry.id === "s3") return <Suspense fallback={null}><S3App path={path} /></Suspense>
   if (entry.id === "vpc") return <Suspense fallback={null}><VpcApp path={path} /></Suspense>
-  if (entry.id === "ec2")
-    return <Ec2Console key={entry.id} service={entry.id} />
+  if (entry.id === "ec2") return <Suspense fallback={null}><Ec2App path={path} /></Suspense>
   const managed = serviceSchema.safeParse(entry.id)
   if (managed.success)
     return <ResourceConsole key={managed.data} service={managed.data} />
