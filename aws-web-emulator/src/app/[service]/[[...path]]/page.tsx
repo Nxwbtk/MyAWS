@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
+import { DynamoDbApp } from "@/components/dynamodb/ddb-app"
 import { Ec2App } from "@/components/ec2/ec2-app"
 import { Phase1ServiceConsole } from "@/components/phase-1-service-console"
 import { Phase2ServiceConsole } from "@/components/phase-2-service-console"
@@ -32,6 +33,7 @@ export default async function ServicePage({ params }: PageProps<"/[service]/[[..
   if (entry.id === "s3") return <Suspense fallback={null}><S3App path={path} /></Suspense>
   if (entry.id === "vpc") return <Suspense fallback={null}><VpcApp path={path} /></Suspense>
   if (entry.id === "ec2") return <Suspense fallback={null}><Ec2App path={path} /></Suspense>
+  if (entry.id === "dynamodb") return <Suspense fallback={null}><DynamoDbApp path={path} /></Suspense>
   const managed = serviceSchema.safeParse(entry.id)
   if (managed.success)
     return <ResourceConsole key={managed.data} service={managed.data} />

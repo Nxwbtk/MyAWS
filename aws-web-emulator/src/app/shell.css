@@ -999,3 +999,6 @@ a.myaws-footer-item:hover {
   position: sticky;
   top: 72px;
 }
+
+.myaws-ddb-table-pick { padding: 2px 0; }
+.myaws-ddb-table-pick.active { border-left: 2px solid var(--color-border-item-selected, #0972d3); padding-left: 6px; }
