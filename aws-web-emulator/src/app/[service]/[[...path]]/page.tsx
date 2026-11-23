@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
+import { CloudTrailApp } from "@/components/cloudtrail/ct-app"
 import { CloudWatchApp } from "@/components/cloudwatch/cw-app"
 import { DynamoDbApp } from "@/components/dynamodb/ddb-app"
 import { Ec2App } from "@/components/ec2/ec2-app"
@@ -39,6 +40,7 @@ export default async function ServicePage({ params }: PageProps<"/[service]/[[..
   if (entry.id === "vpc") return <Suspense fallback={null}><VpcApp path={path} /></Suspense>
   if (entry.id === "ec2") return <Suspense fallback={null}><Ec2App path={path} /></Suspense>
   if (entry.id === "iam") return <Suspense fallback={null}><IamApp path={path} /></Suspense>
+  if (entry.id === "cloudtrail") return <Suspense fallback={null}><CloudTrailApp path={path} /></Suspense>
   if (entry.id === "cloudwatch") return <Suspense fallback={null}><CloudWatchApp path={path} /></Suspense>
   if (entry.id === "lambda") return <Suspense fallback={null}><LambdaApp path={path} /></Suspense>
   if (entry.id === "sts") return <Suspense fallback={null}><StsApp path={path} /></Suspense>
