@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import { Suspense } from "react"
 import { AcmApp } from "@/components/acm/acm-app"
 import { CloudFrontApp } from "@/components/cloudfront/cf-app"
+import { GlobalAcceleratorApp } from "@/components/globalaccelerator/ga-app"
 import { CloudTrailApp } from "@/components/cloudtrail/ct-app"
 import { CloudWatchApp } from "@/components/cloudwatch/cw-app"
 import { DynamoDbApp } from "@/components/dynamodb/ddb-app"
@@ -43,6 +44,7 @@ export default async function ServicePage({ params }: PageProps<"/[service]/[[..
   if (entry.id === "elasticloadbalancing") return <Suspense fallback={null}><Ec2App path={path.length ? path : ["load-balancers"]} /></Suspense>
   if (entry.id === "acm") return <Suspense fallback={null}><AcmApp path={path} /></Suspense>
   if (entry.id === "cloudfront") return <Suspense fallback={null}><CloudFrontApp path={path} /></Suspense>
+  if (entry.id === "globalaccelerator") return <Suspense fallback={null}><GlobalAcceleratorApp path={path} /></Suspense>
   if (entry.id === "route53") return <Suspense fallback={null}><Route53App path={path} /></Suspense>
   if (entry.id === "cloudtrail") return <Suspense fallback={null}><CloudTrailApp path={path} /></Suspense>
   if (entry.id === "cloudwatch") return <Suspense fallback={null}><CloudWatchApp path={path} /></Suspense>

@@ -405,7 +405,7 @@ export function ResourceDetailPage({
   const resources = useResources(def)
   const item = resources.data?.find((entry) => def.key(entry) === id)
   const [active, setActive] = useState<string>()
-  const title = item ? `${id}${nameTag(item) ? ` / ${nameTag(item)}` : ""}` : id
+  const title = item ? (def.display ? def.display(item) || id : `${id}${nameTag(item) ? ` / ${nameTag(item)}` : ""}`) : id
   return layout({
     breadcrumbs: [{ text: def.title, href: def.path }, { text: id, href: `${def.path}/${encodeURIComponent(id)}` }],
     children: (
