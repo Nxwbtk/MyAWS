@@ -7,6 +7,7 @@ import { Ec2App } from "@/components/ec2/ec2-app"
 import { IamApp } from "@/components/iam/iam-app"
 import { LambdaApp } from "@/components/lambda/lambda-app"
 import { Phase2ServiceConsole } from "@/components/phase-2-service-console"
+import { Route53App } from "@/components/route53/r53-app"
 import { S3App } from "@/components/s3/s3-app"
 import { SqsApp } from "@/components/sqs/sqs-app"
 import { StsApp } from "@/components/sts/sts-app"
@@ -37,6 +38,7 @@ export default async function ServicePage({ params }: PageProps<"/[service]/[[..
   if (entry.id === "vpc") return <Suspense fallback={null}><VpcApp path={path} /></Suspense>
   if (entry.id === "ec2") return <Suspense fallback={null}><Ec2App path={path} /></Suspense>
   if (entry.id === "iam") return <Suspense fallback={null}><IamApp path={path} /></Suspense>
+  if (entry.id === "route53") return <Suspense fallback={null}><Route53App path={path} /></Suspense>
   if (entry.id === "cloudtrail") return <Suspense fallback={null}><CloudTrailApp path={path} /></Suspense>
   if (entry.id === "cloudwatch") return <Suspense fallback={null}><CloudWatchApp path={path} /></Suspense>
   if (entry.id === "lambda") return <Suspense fallback={null}><LambdaApp path={path} /></Suspense>
