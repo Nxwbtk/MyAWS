@@ -2,27 +2,27 @@
 
 Phase 2 adds resource workspaces for all 13 networking, content delivery, and recovery services in the roadmap. The emulator source is pinned at `c29ca200a147e8100a600a7aaaf26acf82d31158` in `aws-emulator`.
 
-## Service workspaces
+## Service consoles
 
-Each service page is searchable, can be opened from its own service route, and is included in Recently visited. Resource areas call the local emulator through the same AWS SDK-backed route as Phase 1. The operation explorer exposes request and response shapes, Smithy documentation, handler source status, and JavaScript SDK command availability for every model operation.
+Every Phase 2 service has a dedicated console built with [Cloudscape](https://cloudscape.design/) that follows the navigation, wording, and workflows of the real AWS Management Console. Features that need an API the local emulator doesn't implement stay visible but disabled, with the reason shown. The consoles send requests only to the local emulator configured for MyAWS.
 
-| Service | Resource areas and workflows |
-| --- | --- |
-| Route 53 | Hosted zones and record sets, health checks, traffic policies, registered domains, Resolver endpoints/rules/query logs, Route 53 Profiles and associations, Global Resolver resources, DNS views, and firewall domain lists. Supports hosted-zone and health-check create/delete plus record changes. |
-| Elastic Load Balancing | Classic and v2 load balancers, listeners, target groups, and target health. |
-| CloudFront | Distributions, invalidations, Functions, origin access controls/identities, key-value stores and keys, cache/origin/response policies, static anycast IPs, VPC origins, SaaS tenant resources, trust stores, key groups/public keys, field-level encryption, and continuous-deployment policies. |
-| AWS Certificate Manager | Certificate inventory, details, request/import actions, and ACME accounts, endpoints, validations, and external bindings. |
-| Global Accelerator | Accelerators, listeners, and endpoint groups; supports accelerator creation and lifecycle through the operation explorer. |
-| Cloud Map | Namespaces, services, and instances; supports namespace/service creation, instance registration/deregistration, and service deletion. |
-| VPC Lattice | Services, service-network associations, target groups, and targets. Supports service, service-network, target-group, and service-network association workflows. Manual identifier selectors cover emulator list operations that are currently stubs. |
-| Direct Connect | Connections, virtual interfaces, Direct Connect gateways, locations, and resiliency groups. |
-| Interconnect | Provider environments, connections, and environment-scoped attach points. |
-| Network Manager | Global networks, sites, devices, links, connections, attachments, and peerings. |
-| App Mesh | Meshes and virtual nodes with detail views. |
-| RTB Fabric | Requester/responder gateway identifiers and their links, including primitive-array responses. |
-| Application Recovery Controller (ARC) | Region-switch plans and executions, zonal shifts and managed resources, recovery clusters/control panels/routing controls/safety rules, and readiness checks/groups/cells/resource sets. |
+| Service | Folder under `src/components/` | Console areas |
+| --- | --- | --- |
+| Route 53 | `route53` | Dashboard, hosted zones and records (create, edit, delete, test record), DNSSEC, health checks, Profiles, Global Resolver, VPC Resolver endpoints/rules/query logging, registered domains and requests, CIDR collections, traffic policies and policy records |
+| Elastic Load Balancing | `ec2/defs-elb.tsx` | Load balancers with listeners, network mapping, security, attributes, and tags; target groups with targets and health checks; trust stores; create pages. Opens inside the EC2 console, as in AWS. |
+| CloudFront | `cloudfront` | Distributions (create, enable/disable, delete), settings, origins, behaviors, error pages, invalidations, tags; cache, origin request, and response headers policies; Functions (code, test, publish, associations); origin access controls, public keys, key groups, key value stores |
+| AWS Certificate Manager | `acm` | Certificates, request public certificate, import and reimport, domain validation records with one-click Route 53 record creation, export, tags |
+| Global Accelerator | `globalaccelerator` | Accelerators (create standard or custom routing, enable/disable, delete), listeners, endpoint groups, flow log attributes, tags |
+| Cloud Map | `servicediscovery` | Namespaces (HTTP, private DNS, public DNS), services, service instances, operations, tags |
+| VPC Lattice | `vpclattice` | Lattice services with service network associations, auth policy, and tags; create service networks and target groups |
+| Direct Connect | `directconnect` | Dashboard, connections, virtual interfaces (private), Direct Connect gateways with gateway associations, resiliency groups |
+| Interconnect | `interconnect` | Multicloud connections, partner environments, tags |
+| Network Manager | `networkmanager` | Dashboard, global networks with sites, devices, links, transit gateway registrations, core network attachments, tags; attachments; peerings |
+| App Mesh | `appmesh` | Meshes with virtual nodes and egress filter |
+| RTB Fabric | `rtbfabric` | Dashboard, requester and responder gateways with links (create, accept, reject, delete) and tags |
+| Application Recovery Controller (ARC) | `arc` | Region switch plans, zonal shifts and managed resources, routing control clusters and control panels (routing controls, safety rules), recovery groups, cells, resource sets, readiness checks |
 
-Resource lists include operation-specific pagination where modeled, details where the service has a describe/get call, linked selectors, and supported row actions. Less common or less-developed workflows remain available through the model-backed operation explorer, which accepts JSON inputs. That explorer reports emulator and SDK support explicitly; it does not imply AWS feature parity where the emulator source contains a stub.
+Global Accelerator, Cloud Map, VPC Lattice, Direct Connect, Interconnect, Network Manager, App Mesh, RTB Fabric, and ARC are built on a shared declarative framework in `src/components/console/service-app.tsx`: resource lists and detail pages, create forms, sub-resource tables, tag editors, and policy documents are described as data.
 
 ## Emulator operation inventory
 
@@ -99,11 +99,7 @@ The comparison covered the primary console navigation and inventory patterns: Ro
 
 ## Verification record
 
-- `npx tsc --noEmit`, `npm run lint`, `npm run build`, and `git diff --check` pass.
-- All 13 service routes return HTTP 200 from the running frontend, and render both the local resource workspace and API operation explorer.
-- The operation catalog was queried for all 23 models. It exposes JavaScript SDK commands for all 797 source-implemented operations and excludes unsupported operations from runnable status.
-- The 60 list operations that did not require fixture identifiers returned successfully against an isolated blank emulator. Two calls needed service-specific identifiers: `interconnect.ListAttachPoints` requires `environmentId`, and `vpclattice.ListServiceNetworkServiceAssociations` requires `serviceIdentifier` or `serviceNetworkIdentifier`. The workspace now provides selectors/manual identifier entry for both.
-- Isolated fixture workflows passed for Route 53 hosted-zone create/list-record-sets/delete; ACM request/describe/delete; Cloud Map namespace/service/instance registration and cleanup; Global Accelerator create/list/delete; VPC Lattice service and target-group creation with required target-group configuration; App Mesh mesh create/list/delete; Network Manager global-network create/describe/delete; ARC cluster/control-panel/routing-control create/list/delete; and CloudFront KeyValueStore create/list.
-- All fixture calls used a disposable local emulator with temporary state. That container and state are removed after verification. They did not use or change the user's running emulator on port 9297 or real AWS resources.
-
-These are representative resource and lifecycle checks, not a request-by-request test of all 797 implemented operations. Features whose upstream handler is stubbed or absent remain documented as emulator gaps rather than being presented as verified workflows.
+- `npx tsc --noEmit` and ESLint pass for every console.
+- Every console was opened in the browser against the local emulator. Its list and detail pages were checked, and its main create, update, and delete workflows were run through the UI or the emulator API. Examples include a Route 53 record change, an ACM certificate request and import, a CloudFront distribution create and delete, and a CloudFront function test and publish. Others are a Global Accelerator listener and endpoint group, a Cloud Map instance registration, and a VPC Lattice association. The rest are a Direct Connect virtual interface, an Interconnect connection, a Network Manager site, an App Mesh virtual node, an RTB Fabric link accepted on the responder gateway, and an ARC zonal shift and routing control.
+- The CloudFront KeyValueStore data API (`cloudfrontkeyvaluestore`) fails with "Invalid URL" through the emulator proxy. The key value store page shows a notice instead of key value pairs.
+- No real AWS resources were created, changed, or deleted.

@@ -79,13 +79,11 @@ Service icons are keyed by catalog ID in `src/data/service-icons.json`. The SVGs
 - **CloudWatch** covers log groups and streams, Logs Insights, Live Tail, the metrics browser with graphs, alarms with the create wizard and history, and dashboards with metric, text, and alarm widgets.
 - **CloudTrail** covers the dashboard, event history with event records, Insights, trails, and Lake event data stores with SQL queries.
 
-Phase 2 consoles also have an API operation explorer backed by the Smithy models in the pinned emulator submodule. It shows request and response members, operation documentation, emulator handler source, and JavaScript SDK command availability. Complex requests can be entered as JSON. Writes are sent only to the configured local emulator.
-
-Every Phase 2 console includes the same operation explorer, plus AWS Console-style resource areas for the emulator-backed features. Resource lists support service pagination, details, selectors, and supported row actions; workflows such as DNS changes, certificate requests, accelerator creation, service registration, and recovery resource inspection use the configured local emulator.
+Every Phase 2 service also has a Cloudscape console that follows the real AWS Console: Route 53, Elastic Load Balancing, CloudFront, AWS Certificate Manager, Global Accelerator, Cloud Map, VPC Lattice, Direct Connect, Interconnect, Network Manager, App Mesh, RTB Fabric, and Application Recovery Controller. Features without an emulator API stay visible but disabled.
 
 ## Development progress
 
-All 10 Phase 1 services have Cloudscape consoles that follow the real AWS Console. All 13 Phase 2 service entry points and their model-backed operation workbenches are implemented. Phase 2 covers 1,047 operations across 23 API models: 797 are marked implemented, 248 are explicit stubs, and two have no handler. Source support does not mean every feature has passed a live request test. See [Phase 1 status](docs/phase-1-console.md), the separate [S3 verification record](docs/phase-1-s3.md), [Phase 2 status and limitations](docs/phase-2-console.md), and the [service roadmap](docs/service-roadmap.md).
+All 10 Phase 1 services have Cloudscape consoles that follow the real AWS Console. All 13 Phase 2 services have Cloudscape consoles as well. Phase 2 covers 1,047 operations across 23 API models: 797 are marked implemented, 248 are explicit stubs, and two have no handler. Source support does not mean every feature has passed a live request test. See [Phase 1 status](docs/phase-1-console.md), the separate [S3 verification record](docs/phase-1-s3.md), [Phase 2 status and limitations](docs/phase-2-console.md), and the [service roadmap](docs/service-roadmap.md).
 
 ## Verify the frontend
 

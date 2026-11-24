@@ -17,7 +17,6 @@ import { DynamoDbApp } from "@/components/dynamodb/ddb-app"
 import { Ec2App } from "@/components/ec2/ec2-app"
 import { IamApp } from "@/components/iam/iam-app"
 import { LambdaApp } from "@/components/lambda/lambda-app"
-import { Phase2ServiceConsole } from "@/components/phase-2-service-console"
 import { Route53App } from "@/components/route53/r53-app"
 import { S3App } from "@/components/s3/s3-app"
 import { SqsApp } from "@/components/sqs/sqs-app"
@@ -68,8 +67,6 @@ export default async function ServicePage({ params }: PageProps<"/[service]/[[..
   if (entry.id === "sts") return <Suspense fallback={null}><StsApp path={path} /></Suspense>
   if (entry.id === "sqs") return <Suspense fallback={null}><SqsApp path={path} /></Suspense>
   if (entry.id === "dynamodb") return <Suspense fallback={null}><DynamoDbApp path={path} /></Suspense>
-  if (["route53", "elasticloadbalancing", "cloudfront", "acm", "globalaccelerator", "servicediscovery", "vpclattice", "directconnect", "interconnect", "networkmanager", "appmesh", "rtbfabric", "arc"].includes(entry.id))
-    return <Phase2ServiceConsole key={entry.id} service={entry.id as "route53" | "elasticloadbalancing" | "cloudfront" | "acm" | "globalaccelerator" | "servicediscovery" | "vpclattice" | "directconnect" | "interconnect" | "networkmanager" | "appmesh" | "rtbfabric" | "arc"} />
 
   return (
     <>
