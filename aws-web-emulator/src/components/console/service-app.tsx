@@ -502,3 +502,8 @@ export function TagsPanel({ id, load, save }: { id: string; load: () => Promise<
     </>
   )
 }
+
+export function LinkTo({ href, children }: { href: string; children: ReactNode }) {
+  const follow = useFollow()
+  return <Link href={href} onFollow={follow}>{children}</Link>
+}
