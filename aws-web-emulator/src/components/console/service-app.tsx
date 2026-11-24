@@ -507,3 +507,80 @@ export function LinkTo({ href, children }: { href: string; children: ReactNode }
   const follow = useFollow()
   return <Link href={href} onFollow={follow}>{children}</Link>
 }
+
+/** Tags tab for APIs that take tags as a { key: value } map. */
+export function MapTags({ model, arn, arnKey = "resourceArn", listOp = "ListTagsForResource", tagOp = "TagResource", untagOp = "UntagResource", tagsKey = "tags", keysKey = "tagKeys" }: { model: string; arn: string; arnKey?: string; listOp?: string; tagOp?: string; untagOp?: string; tagsKey?: string; keysKey?: string }) {
+  return (
+    <TagsPanel
+      id={arn}
+      load={async () => Object.entries(((await callAws<Item>(model, listOp, { [arnKey]: arn }))[tagsKey] as Record<string, string> | undefined) ?? {}).map(([Key, Value]) => ({ Key, Value }))}
+      save={async (add, remove) => {
+        if (remove.length) await callAws(model, untagOp, { [arnKey]: arn, [keysKey]: remove })
+        if (add.length) await callAws(model, tagOp, { [arnKey]: arn, [tagsKey]: tagMap(add) })
+      }}
+    />
+  )
+}
+
+/** JSON document (policy) viewer with an editor. */
+export function JsonDocPanel({ title, description, id, load, save, remove }: { title: string; description?: string; id: string; load: () => Promise<string | undefined>; save: (doc: string) => Promise<unknown>; remove?: () => Promise<unknown> }) {
+  const q = useQuery({ queryKey: ["emulator", "doc", id], queryFn: async () => (await load()) ?? "" })
+  const [edit, setEdit] = useState<string>()
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState<string>()
+  const pretty = (s: string) => { try { return JSON.stringify(JSON.parse(s), null, 2) } catch { return s } }
+  return (
+    <Container
+      header={
+        <Header
+          variant="h2"
+          description={description}
+          actions={
+            edit === undefined ? (
+              <SpaceBetween direction="horizontal" size="xs">
+                {remove && q.data && <Button onClick={async () => { try { await remove(); flash.success(`${title} removed.`); await q.refetch() } catch (e) { flash.error(errorMessage(e)) } }}>Remove</Button>}
+                <Button onClick={() => setEdit(pretty(q.data ?? "") || "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": []\n}")}>Edit</Button>
+              </SpaceBetween>
+            ) : (
+              <SpaceBetween direction="horizontal" size="xs">
+                <Button variant="link" onClick={() => { setEdit(undefined); setError(undefined) }}>Cancel</Button>
+                <Button
+                  variant="primary"
+                  loading={busy}
+                  onClick={async () => {
+                    setBusy(true)
+                    setError(undefined)
+                    try {
+                      JSON.parse(edit)
+                      await save(edit)
+                      flash.success(`${title} saved.`)
+                      setEdit(undefined)
+                      await q.refetch()
+                    } catch (e) {
+                      setError(errorMessage(e))
+                    } finally {
+                      setBusy(false)
+                    }
+                  }}
+                >
+                  Save changes
+                </Button>
+              </SpaceBetween>
+            )
+          }
+        >
+          {title}
+        </Header>
+      }
+    >
+      {edit === undefined ? (
+        q.isPending ? <Box>Loading</Box> : q.data ? <Box variant="code"><pre style={{ margin: 0, whiteSpace: "pre-wrap" }}>{pretty(q.data)}</pre></Box> : <Box color="text-body-secondary">No {title.toLowerCase()}.</Box>
+      ) : (
+        <SpaceBetween size="s">
+          <div className="myaws-lambda-code"><Textarea rows={14} value={edit} onChange={({ detail }) => setEdit(detail.value)} /></div>
+          {error && <Alert type="error">{error}</Alert>}
+        </SpaceBetween>
+      )}
+    </Container>
+  )
+}
