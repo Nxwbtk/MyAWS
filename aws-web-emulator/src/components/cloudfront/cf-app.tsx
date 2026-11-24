@@ -5,6 +5,9 @@ import ContentLayout from "@cloudscape-design/components/content-layout"
 import Header from "@cloudscape-design/components/header"
 import { useSearchParams } from "next/navigation"
 import { CreateDistributionPage, DistributionDetailPage, DistributionsPage } from "@/components/cloudfront/distributions"
+import { CreateFunctionPage, FunctionDetailPage, FunctionsPage } from "@/components/cloudfront/functions"
+import { PoliciesPage, PolicyDetailPage, PolicyEditPage, kindFromSlug } from "@/components/cloudfront/policies"
+import { SpecPage, cfSpecs } from "@/components/cloudfront/security"
 import { CfLayout } from "@/components/cloudfront/shared"
 
 const titles: Record<string, string> = {
@@ -26,11 +29,25 @@ function Unavailable({ section }: { section: string }) {
 
 export function CloudFrontApp({ path }: { path: string[] }) {
   const params = useSearchParams()
-  const [section = "distributions", id] = path
+  const [section = "distributions", id, sub, action] = path
   if (section === "distributions") {
     if (id === "create") return <CreateDistributionPage />
     if (id) return <DistributionDetailPage id={decodeURIComponent(id)} tab={params.get("tab") ?? "general"} />
     return <DistributionsPage />
   }
+  if (section === "policies") {
+    const kind = kindFromSlug(id)
+    if (!kind) return <PoliciesPage tab={params.get("tab") ?? "cache"} />
+    if (sub === "create") return <PolicyEditPage kind={kind} />
+    if (sub && action === "edit") return <PolicyEditPage kind={kind} id={sub} />
+    if (sub) return <PolicyDetailPage kind={kind} id={sub} />
+    return <PoliciesPage tab={id ?? "cache"} />
+  }
+  if (section === "functions") {
+    if (id === "create") return <CreateFunctionPage />
+    if (id) return <FunctionDetailPage name={decodeURIComponent(id)} tab={params.get("tab") ?? "build"} />
+    return <FunctionsPage />
+  }
+  if (cfSpecs[section]) return <SpecPage section={section} id={id ? decodeURIComponent(id) : undefined} />
   return <Unavailable section={section} />
 }

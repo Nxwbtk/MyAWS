@@ -21,7 +21,7 @@ import Table from "@cloudscape-design/components/table"
 import Textarea from "@cloudscape-design/components/textarea"
 import TextFilter from "@cloudscape-design/components/text-filter"
 import Tiles from "@cloudscape-design/components/tiles"
-import { useQuery } from "@tanstack/react-query"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useMemo, useState, type ReactNode } from "react"
 import { errorMessage, flash } from "@/components/console/flash"
@@ -547,6 +547,7 @@ function RequestTypePage() {
 }
 
 function RequestPublicPage() {
+  const client = useQueryClient()
   const router = useRouter()
   const [names, setNames] = useState<string[]>([""])
   const [exportable, setExportable] = useState("DISABLED")
@@ -583,6 +584,7 @@ function RequestPublicPage() {
                     Options: { Export: exportable },
                     ...(tags.filter((t) => t.Key).length ? { Tags: tags.filter((t) => t.Key).map((t) => ({ Key: t.Key, Value: t.Value ?? "" })) } : {}),
                   })
+                  await client.invalidateQueries({ queryKey: ["emulator", "acm"] })
                   flash.success(`Successfully requested certificate with ID ${certId(r.CertificateArn)}. A certificate request with a status of pending validation has been created. Further action is needed to complete the validation and approval of the certificate.`)
                   router.push(`/acm/certificates/${certId(r.CertificateArn)}`)
                 } catch (e) {
@@ -632,6 +634,7 @@ function RequestPublicPage() {
 }
 
 function ImportPage({ arn }: { arn?: string }) {
+  const client = useQueryClient()
   const router = useRouter()
   const [body, setBody] = useState("")
   const [key, setKey] = useState("")
@@ -664,6 +667,7 @@ function ImportPage({ arn }: { arn?: string }) {
                     ...(chain.trim() ? { CertificateChain: enc(chain) } : {}),
                     ...(!arn && tags.filter((t) => t.Key).length ? { Tags: tags.filter((t) => t.Key).map((t) => ({ Key: t.Key, Value: t.Value ?? "" })) } : {}),
                   })
+                  await client.invalidateQueries({ queryKey: ["emulator", "acm"] })
                   flash.success(`Successfully ${arn ? "reimported" : "imported"} certificate with ID ${certId(r.CertificateArn)}.`)
                   router.push(`/acm/certificates/${certId(r.CertificateArn)}`)
                 } catch (e) {

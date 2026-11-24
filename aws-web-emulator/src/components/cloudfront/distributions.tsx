@@ -25,7 +25,7 @@ import Tabs from "@cloudscape-design/components/tabs"
 import Textarea from "@cloudscape-design/components/textarea"
 import TextFilter from "@cloudscape-design/components/text-filter"
 import Autosuggest from "@cloudscape-design/components/autosuggest"
-import { useQuery } from "@tanstack/react-query"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
 import { useMemo, useState } from "react"
 import { errorMessage, flash } from "@/components/console/flash"
@@ -259,7 +259,7 @@ function OriginFields({ form, set, idEditable = true }: { form: OriginForm; set:
   return (
     <SpaceBetween size="l">
       <FormField label="Origin domain" description="Choose an AWS origin, or enter your origin's domain name.">
-        <Autosuggest
+        <Autosuggest expandToViewport
           value={form.domain}
           placeholder="Choose origin domain"
           enteredTextLabel={(v) => `Use: "${v}"`}
@@ -373,7 +373,7 @@ function BehaviorFields({ form, set, origins, isDefault }: { form: BehaviorForm;
   return (
     <SpaceBetween size="l">
       {!isDefault && <FormField label="Path pattern" description="Path pattern is case sensitive."><Input value={form.path} placeholder="/images/*" onChange={({ detail }) => set({ ...form, path: detail.value })} /></FormField>}
-      <FormField label="Origin and origin groups"><Select selectedOption={form.origin ? { value: form.origin, label: form.origin } : null} placeholder="Choose origin" options={origins.map((o) => ({ value: o, label: o }))} onChange={({ detail }) => set({ ...form, origin: detail.selectedOption.value ?? "" })} /></FormField>
+      <FormField label="Origin and origin groups"><Select expandToViewport selectedOption={form.origin ? { value: form.origin, label: form.origin } : null} placeholder="Choose origin" options={origins.map((o) => ({ value: o, label: o }))} onChange={({ detail }) => set({ ...form, origin: detail.selectedOption.value ?? "" })} /></FormField>
       <FormField label="Compress objects automatically"><RadioGroup value={form.compress ? "yes" : "no"} onChange={({ detail }) => set({ ...form, compress: detail.value === "yes" })} items={[{ value: "no", label: "No" }, { value: "yes", label: "Yes" }]} /></FormField>
       <FormField label="Viewer protocol policy"><RadioGroup value={form.viewer} onChange={({ detail }) => set({ ...form, viewer: detail.value })} items={viewerProtocols} /></FormField>
       <FormField label="Allowed HTTP methods"><RadioGroup value={form.methods} onChange={({ detail }) => set({ ...form, methods: detail.value })} items={methodSets} /></FormField>
@@ -396,12 +396,12 @@ function SettingsFields({ form, set }: { form: SettingsForm; set: (f: SettingsFo
   return (
     <SpaceBetween size="l">
       <FormField label="Price class" description="Choose the price class associated with the maximum price that you want to pay."><RadioGroup value={form.priceClass} onChange={({ detail }) => set({ ...form, priceClass: detail.value })} items={priceClasses} /></FormField>
-      <FormField label="AWS WAF web ACL" description="Not available in the local emulator."><Select disabled selectedOption={null} placeholder="Do not enable security protections" options={[]} /></FormField>
+      <FormField label="AWS WAF web ACL" description="Not available in the local emulator."><Select expandToViewport disabled selectedOption={null} placeholder="Do not enable security protections" options={[]} /></FormField>
       <FormField label={<>Alternate domain name (CNAME) <i>- optional</i></>} description="Add the custom domain names that you use in URLs for the files served by this distribution. Enter one per line."><Textarea rows={2} value={form.aliases} placeholder="www.example.com" onChange={({ detail }) => set({ ...form, aliases: detail.value })} /></FormField>
       <FormField label={<>Custom SSL certificate <i>- optional</i></>} description="Associate a certificate from AWS Certificate Manager.">
-        <Select selectedOption={certOptions.find((c) => c.value === form.cert) ?? null} placeholder="Choose certificate" statusType={certs.isPending ? "loading" : "finished"} empty="No issued certificates" options={[{ value: "", label: "Default CloudFront certificate (*.cloudfront.net)" }, ...certOptions]} onChange={({ detail }) => set({ ...form, cert: detail.selectedOption.value ?? "" })} />
+        <Select expandToViewport selectedOption={certOptions.find((c) => c.value === form.cert) ?? null} placeholder="Choose certificate" statusType={certs.isPending ? "loading" : "finished"} empty="No issued certificates" options={[{ value: "", label: "Default CloudFront certificate (*.cloudfront.net)" }, ...certOptions]} onChange={({ detail }) => set({ ...form, cert: detail.selectedOption.value ?? "" })} />
       </FormField>
-      <FormField label="Supported HTTP versions"><Select selectedOption={{ value: form.http, label: label(httpVersions, form.http) }} options={httpVersions} onChange={({ detail }) => set({ ...form, http: detail.selectedOption.value ?? "http2" })} /></FormField>
+      <FormField label="Supported HTTP versions"><Select expandToViewport selectedOption={{ value: form.http, label: label(httpVersions, form.http) }} options={httpVersions} onChange={({ detail }) => set({ ...form, http: detail.selectedOption.value ?? "http2" })} /></FormField>
       <FormField label={<>Default root object <i>- optional</i></>} description="The object (file name) to return when a viewer requests the root URL (/) instead of a specific object."><Input value={form.root} placeholder="index.html" onChange={({ detail }) => set({ ...form, root: detail.value })} /></FormField>
       <FormField label="Standard logging" description="Get logs of viewer requests delivered to an Amazon S3 bucket.">
         <RadioGroup value={form.logging ? "on" : "off"} onChange={({ detail }) => set({ ...form, logging: detail.value === "on" })} items={[{ value: "off", label: "Off" }, { value: "on", label: "On" }]} />
@@ -447,6 +447,7 @@ function applySettings(c: DistributionConfig, f: SettingsForm): DistributionConf
 }
 
 export function CreateDistributionPage() {
+  const client = useQueryClient()
   const router = useRouter()
   const [origin, setOrigin] = useState<OriginForm>(emptyOrigin())
   const [behavior, setBehavior] = useState<BehaviorForm>({ path: "", origin: "", viewer: "redirect-to-https", methods: "GET,HEAD", cacheMethods: false, compress: true, cache: "658327ea-f89d-4fab-a63d-7e88639e58f6", originReq: "", headers: "" })
@@ -485,6 +486,7 @@ export function CreateDistributionPage() {
                   const r = t.length
                     ? await callAws<{ Distribution: Distribution }>("cloudfront", "CreateDistributionWithTags", { DistributionConfigWithTags: { DistributionConfig: config, Tags: { Items: t.map((x) => ({ Key: x.Key, Value: x.Value ?? "" })) } } })
                     : await callAws<{ Distribution: Distribution }>("cloudfront", "CreateDistribution", { DistributionConfig: config })
+                  await client.invalidateQueries({ queryKey: ["emulator", "cloudfront", "distributions"] })
                   flash.success(`Successfully created new distribution ${r.Distribution.Id}.`)
                   router.push(`/cloudfront/distributions/${r.Distribution.Id}`)
                 } catch (e) {
@@ -827,13 +829,13 @@ function ErrorPagesTab({ dist, refresh }: { dist: Distribution; refresh: () => P
       >
         {form && (
           <SpaceBetween size="l">
-            <FormField label="HTTP error code"><Select disabled={form.edit} selectedOption={{ value: form.code, label: form.code }} options={errorCodes.map((c) => ({ value: String(c), label: String(c) }))} onChange={({ detail }) => setForm({ ...form, code: detail.selectedOption.value ?? "404" })} /></FormField>
+            <FormField label="HTTP error code"><Select expandToViewport disabled={form.edit} selectedOption={{ value: form.code, label: form.code }} options={errorCodes.map((c) => ({ value: String(c), label: String(c) }))} onChange={({ detail }) => setForm({ ...form, code: detail.selectedOption.value ?? "404" })} /></FormField>
             <FormField label="Error caching minimum TTL" description="Seconds"><Input type="number" value={form.ttl} onChange={({ detail }) => setForm({ ...form, ttl: detail.value })} /></FormField>
             <FormField label="Customize error response"><RadioGroup value={form.custom ? "yes" : "no"} onChange={({ detail }) => setForm({ ...form, custom: detail.value === "yes" })} items={[{ value: "no", label: "No" }, { value: "yes", label: "Yes" }]} /></FormField>
             {form.custom && (
               <>
                 <FormField label="Response page path"><Input value={form.path} placeholder="/error.html" onChange={({ detail }) => setForm({ ...form, path: detail.value })} /></FormField>
-                <FormField label="HTTP response code"><Select selectedOption={form.response ? { value: form.response, label: form.response } : null} placeholder="Choose response code" options={["200", ...errorCodes.map(String)].map((c) => ({ value: c, label: c }))} onChange={({ detail }) => setForm({ ...form, response: detail.selectedOption.value ?? "" })} /></FormField>
+                <FormField label="HTTP response code"><Select expandToViewport selectedOption={form.response ? { value: form.response, label: form.response } : null} placeholder="Choose response code" options={["200", ...errorCodes.map(String)].map((c) => ({ value: c, label: c }))} onChange={({ detail }) => setForm({ ...form, response: detail.selectedOption.value ?? "" })} /></FormField>
               </>
             )}
           </SpaceBetween>
