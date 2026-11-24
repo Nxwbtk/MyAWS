@@ -4,6 +4,7 @@ import type { ResourceDef } from "@/components/ec2-family/engine"
 import { instancesDef } from "@/components/ec2/defs-instances"
 import { vpcDefs } from "@/components/vpc/defs"
 import { ec2MoreDefs } from "@/components/ec2/defs-more"
+import { elbDefs } from "@/components/ec2/defs-elb"
 
 /** Reuse a VPC console resource under the EC2 console path. */
 function underEc2(section: string, vpcSection: string): ResourceDef {
@@ -20,4 +21,5 @@ export const ec2Defs: Record<string, ResourceDef> = {
   "security-groups": underEc2("security-groups", "security-groups"),
   addresses: underEc2("addresses", "addresses"),
   ...ec2MoreDefs,
+  ...elbDefs,
 }

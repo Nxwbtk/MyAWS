@@ -39,7 +39,7 @@ export const ec2Nav: SideNavigationProps.Item[] = [
     text: "Network & Security",
     items: [link("Security Groups", "/ec2/security-groups"), link("Elastic IPs", "/ec2/addresses"), link("Placement Groups", "/ec2/placement-groups"), link("Key Pairs", "/ec2/key-pairs"), link("Network Interfaces", "/ec2/network-interfaces")],
   },
-  { type: "section", text: "Load Balancing", items: [link("Load Balancers", "/elasticloadbalancing"), link("Target Groups", "/elasticloadbalancing"), link("Trust Stores", "/elasticloadbalancing")] },
+  { type: "section", text: "Load Balancing", items: [link("Load Balancers", "/ec2/load-balancers"), link("Target Groups", "/ec2/target-groups"), link("Trust Stores", "/ec2/trust-stores")] },
   { type: "section", text: "Auto Scaling", items: [link("Auto Scaling Groups", "/autoscaling")] },
   link("Settings", "/ec2/settings"),
 ]

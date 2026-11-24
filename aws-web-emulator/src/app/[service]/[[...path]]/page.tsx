@@ -38,6 +38,7 @@ export default async function ServicePage({ params }: PageProps<"/[service]/[[..
   if (entry.id === "vpc") return <Suspense fallback={null}><VpcApp path={path} /></Suspense>
   if (entry.id === "ec2") return <Suspense fallback={null}><Ec2App path={path} /></Suspense>
   if (entry.id === "iam") return <Suspense fallback={null}><IamApp path={path} /></Suspense>
+  if (entry.id === "elasticloadbalancing") return <Suspense fallback={null}><Ec2App path={path.length ? path : ["load-balancers"]} /></Suspense>
   if (entry.id === "route53") return <Suspense fallback={null}><Route53App path={path} /></Suspense>
   if (entry.id === "cloudtrail") return <Suspense fallback={null}><CloudTrailApp path={path} /></Suspense>
   if (entry.id === "cloudwatch") return <Suspense fallback={null}><CloudWatchApp path={path} /></Suspense>
