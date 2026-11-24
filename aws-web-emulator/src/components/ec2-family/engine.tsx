@@ -115,6 +115,8 @@ export type ResourceDef = {
   menus?: { label: string; actions: Action[] }[]
   /** Index of the column that links to the details page. */
   linkColumn?: number
+  /** Fetches full details for each listed item (for list APIs that return only IDs). */
+  expand?: (item: Item) => Promise<Item>
 }
 
 export function useResources(def: ResourceDef, input?: Record<string, unknown>) {
@@ -133,7 +135,7 @@ export function useResources(def: ResourceDef, input?: Record<string, unknown>) 
         all.push(...def.items(page))
         token = page.NextToken as string | undefined
       } while (token && all.length < 2000)
-      return all
+      return def.expand ? Promise.all(all.map((item) => def.expand!(item))) : all
     },
   })
   return { ...query, available, unavailable: unavailableReason(model, def.operation) }

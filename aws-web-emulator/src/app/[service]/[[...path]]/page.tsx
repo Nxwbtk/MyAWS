@@ -9,6 +9,7 @@ import { DirectConnectApp } from "@/components/directconnect/dx-app"
 import { InterconnectApp } from "@/components/interconnect/ic-app"
 import { NetworkManagerApp } from "@/components/networkmanager/nm-app"
 import { AppMeshApp } from "@/components/appmesh/mesh-app"
+import { RtbFabricApp } from "@/components/rtbfabric/rtb-app"
 import { CloudTrailApp } from "@/components/cloudtrail/ct-app"
 import { CloudWatchApp } from "@/components/cloudwatch/cw-app"
 import { DynamoDbApp } from "@/components/dynamodb/ddb-app"
@@ -57,6 +58,7 @@ export default async function ServicePage({ params }: PageProps<"/[service]/[[..
   if (entry.id === "interconnect") return <Suspense fallback={null}><InterconnectApp path={path} /></Suspense>
   if (entry.id === "networkmanager") return <Suspense fallback={null}><NetworkManagerApp path={path} /></Suspense>
   if (entry.id === "appmesh") return <Suspense fallback={null}><AppMeshApp path={path} /></Suspense>
+  if (entry.id === "rtbfabric") return <Suspense fallback={null}><RtbFabricApp path={path} /></Suspense>
   if (entry.id === "route53") return <Suspense fallback={null}><Route53App path={path} /></Suspense>
   if (entry.id === "cloudtrail") return <Suspense fallback={null}><CloudTrailApp path={path} /></Suspense>
   if (entry.id === "cloudwatch") return <Suspense fallback={null}><CloudWatchApp path={path} /></Suspense>
