@@ -5,6 +5,7 @@ import { CloudFrontApp } from "@/components/cloudfront/cf-app"
 import { GlobalAcceleratorApp } from "@/components/globalaccelerator/ga-app"
 import { CloudMapApp } from "@/components/servicediscovery/cm-app"
 import { VpcLatticeApp } from "@/components/vpclattice/lattice-app"
+import { DirectConnectApp } from "@/components/directconnect/dx-app"
 import { CloudTrailApp } from "@/components/cloudtrail/ct-app"
 import { CloudWatchApp } from "@/components/cloudwatch/cw-app"
 import { DynamoDbApp } from "@/components/dynamodb/ddb-app"
@@ -49,6 +50,7 @@ export default async function ServicePage({ params }: PageProps<"/[service]/[[..
   if (entry.id === "globalaccelerator") return <Suspense fallback={null}><GlobalAcceleratorApp path={path} /></Suspense>
   if (entry.id === "servicediscovery") return <Suspense fallback={null}><CloudMapApp path={path} /></Suspense>
   if (entry.id === "vpclattice") return <Suspense fallback={null}><VpcLatticeApp path={path} /></Suspense>
+  if (entry.id === "directconnect") return <Suspense fallback={null}><DirectConnectApp path={path} /></Suspense>
   if (entry.id === "route53") return <Suspense fallback={null}><Route53App path={path} /></Suspense>
   if (entry.id === "cloudtrail") return <Suspense fallback={null}><CloudTrailApp path={path} /></Suspense>
   if (entry.id === "cloudwatch") return <Suspense fallback={null}><CloudWatchApp path={path} /></Suspense>
